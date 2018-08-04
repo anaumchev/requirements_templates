@@ -1,5 +1,7 @@
 note
 	description: "Behavior of all concepts with equality and copy."
+	description: "Follow the EIS link below for an example."
+	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/examples/is_array2_any.e"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 	date: "8/3/2018"

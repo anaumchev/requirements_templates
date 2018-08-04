@@ -2,6 +2,8 @@ note
 	description: "Behavioral description of a concept that behaves like array."
 	description: "Find a detailed description by the EIS linke below."
 	EIS: "protocol=URI", "src=https://www.cise.ufl.edu/class/cen6075/notes/Lecture34_fa16.ppt"
+	description: "Follow the EIS link below for an example."
+	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/examples/is_array_array.e"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 	date: "8/3/2018"
@@ -19,7 +21,8 @@ inherit
 	IS_ANY [A]
 	--	Arrays feature an equality relation and a copy operation.
 
-feature -- Definitions
+feature
+	-- Definitions
 
 	make (new_first, new_last: I): A
 			-- Define making up a new array from given indexes in terms of your concept.

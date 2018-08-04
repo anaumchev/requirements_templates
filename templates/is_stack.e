@@ -2,6 +2,8 @@ note
 	description: "Behavioral description of a concept that behaves like stack."
 	description: "Find a detailed description by the EIS linke below."
 	EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide02.html"
+	description: "Follow the EIS link below for an example."
+	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/examples/is_linked_stack_stack.e"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 	date: "8/3/2018"
