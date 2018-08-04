@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-17-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-17-0 http://www.eiffel.com/developers/xml/configuration-1-17-0.xsd" name="requirements_templates" uuid="86310E7E-1250-44C2-BE26-F1CDDE903097">
+	<target name="requirements_templates">
+		<root all_classes="true"/>
+		<file_rule>
+			<exclude>/CVS$</exclude>
+			<exclude>/EIFGENs$</exclude>
+			<exclude>/\.git$</exclude>
+			<exclude>/\.svn$</exclude>
+		</file_rule>
+		<option warning="true">
+			<assertions precondition="true" postcondition="true" check="true" invariant="true" loop="true" supplier_precondition="true"/>
+		</option>
+		<setting name="console_application" value="true"/>
+		<capability>
+			<concurrency support="none"/>
+		</capability>
+		<precompile name="base_pre" location="$ISE_PRECOMP\base-safe.ecf"/>
+		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
+		<cluster name="requirements_templates" location=".\" recursive="true"/>
+	</target>
+</system>
