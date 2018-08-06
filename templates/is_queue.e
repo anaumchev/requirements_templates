@@ -18,7 +18,7 @@ deferred class
 inherit
 
 	IS_ANY [Q]
-	--	queues feature an equality relation and a copy operation.
+	--	Queues feature an equality relation and a copy operation.
 
 feature
 	--	Deferred definitions to effect based on your concept.

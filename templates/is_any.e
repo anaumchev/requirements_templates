@@ -62,6 +62,18 @@ feature
 		end
 
 feature
+	--	ADT axioms
+
+	a_0 (object, old_other, other: G)
+		require
+			are_equal (other, old_other)
+		do
+			copy_from_other (object, other)
+		ensure
+			are_equal (object, old_other)
+		end
+
+feature
 	--	Well-definedness axioms.
 
 	copy_well_defined (object_1, object_2, other: G)
