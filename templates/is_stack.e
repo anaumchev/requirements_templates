@@ -55,7 +55,7 @@ feature
 		end
 
 feature
-	-- Stack axioms.
+	-- Stack ADT axioms.
 
 	a_3_empty (s_1, s_2: S)
 			-- Querying a stack for emptyness does not change its equivalence class.

@@ -50,7 +50,7 @@ feature
 		end
 
 feature
-	-- Array axioms.
+	-- Array ADT axioms.
 
 	a_1 (new_first, new_last: I)
 			--	The index of the first element of a newly created array equals the

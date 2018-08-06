@@ -40,7 +40,8 @@ feature
 
 	are_equal (v_1, v_2: LINKED_STACK [G]): BOOLEAN
 		do
-			Result := v_1.linear_representation.to_array.same_items (v_2.linear_representation.to_array)
+--			Result := v_1.linear_representation.to_array.same_items (v_2.linear_representation.to_array)
+			Result := v_1 ~ v_2
 		end
 
 	copy_from_other (object, other: LINKED_STACK [G])

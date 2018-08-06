@@ -14,8 +14,9 @@
 		<setting name="console_application" value="true"/>
 		<capability>
 			<concurrency support="none"/>
+			<void_safety support="none" use="none"/>
 		</capability>
-		<precompile name="base_pre" location="$ISE_PRECOMP\base-safe.ecf"/>
+		<precompile name="base_pre" location="$ISE_PRECOMP\base.ecf"/>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
 		<cluster name="requirements_templates" location=".\" recursive="true"/>
 	</target>
