@@ -9,7 +9,7 @@ note
 	date: "8/3/2018"
 
 deferred class
-	IS_ARRAY [A, E, I -> PART_COMPARABLE]
+	ARRAY_ADT [A, E]
 	--	Arrays ``A'' contain ``E'' objects indexed by comparable ``I'' objects.
 	--	To apply this template to your concept,
 	--	inherit from this class with your concepts for ``A'', ``E'' and ``I''.
@@ -18,33 +18,33 @@ deferred class
 
 inherit
 
-	IS_WITH_EQUALITY [A]
+	EQUALITY_ADT [A]
 	--	Arrays feature an equality relation.
 
 feature
 	-- Definitions
 
-	make (new_first, new_last: I): A
+	make (new_first, new_last: INTEGER): A
 			-- Define making up a new array from given indexes in terms of your concept.
 		deferred
 		end
 
-	put (array: A; index: I; element: E)
+	put (array: A; index: INTEGER; element: E)
 			-- Define putting an indexed element into a new array in terms of your concept.
 		deferred
 		end
 
-	first (array: A): I
+	first (array: A): INTEGER
 			-- Define retrieving the index of the first element in an array in terms of your concept.
 		deferred
 		end
 
-	last (array: A): I
+	last (array: A): INTEGER
 			-- Define retrieving the index of the last element in an array in terms of your concept.
 		deferred
 		end
 
-	eval (array: A; index: I): E
+	eval (array: A; index: INTEGER): E
 			-- Define retrieving an element of an array by index in terms of your concept.
 		deferred
 		end
@@ -52,7 +52,7 @@ feature
 feature
 	-- Array ADT axioms.
 
-	a_1 (new_first, new_last: I)
+	a_1 (new_first, new_last: INTEGER)
 			--	The index of the first element of a newly created array equals the
 			--	value of the first argument supplied to the creation routine.
 		local
@@ -64,7 +64,7 @@ feature
 			end
 		end
 
-	a_2 (array: A; index: I; element: E; old_first: I)
+	a_2 (array: A; index: INTEGER; element: E; old_first: INTEGER)
 			--	Putting an element by index to an array does not affect
 			--	the index of the first element of the array.
 		require
@@ -75,7 +75,7 @@ feature
 			first (array) ~ old_first
 		end
 
-	a_3 (new_first, new_last: I)
+	a_3 (new_first, new_last: INTEGER)
 			--	The index of the last element of a newly created array equals the
 			--	value of the second argument supplied to the creation routine.
 		local
@@ -87,7 +87,7 @@ feature
 			end
 		end
 
-	a_4 (array: A; index: I; element: E; old_last: I)
+	a_4 (array: A; index: INTEGER; element: E; old_last: INTEGER)
 			--	Putting an element by index to an array does not affect
 			--	the index of the last element of the array.
 		require
@@ -98,7 +98,7 @@ feature
 			last (array) ~ old_last
 		end
 
-	a_5 (array: A; index: I; element: E)
+	a_5 (array: A; index: INTEGER; element: E)
 			--	For an index from the interval between the indexes of the first and the last elements of an array,
 			--	putting an element by the index to the array makes the element available for retrieval by the index.
 		require
@@ -110,13 +110,13 @@ feature
 			eval (array, index) ~ element
 		end
 
-	a_6 (array: A; index_put: I; element: E; index_eval: I; old_element: E)
+	a_6 (array: A; index_put: INTEGER; element: E; index_eval: INTEGER; old_element: E)
 			--	For an index from the interval between the indexes of the first and the last elements of an array,
 			--	putting an element by the index to the array does not affect the elements available by other indexes.
 		require
 			index_eval >= first (array)
 			index_eval <= last (array)
-			index_put /= index_eval
+			index_put /~ index_eval
 			eval (array, index_eval) ~ old_element
 		do
 			put (array, index_put, element)
@@ -127,7 +127,7 @@ feature
 feature
 	-- Well-definedness axioms.
 
-	make_well_defined (new_first, new_last: I)
+	make_well_defined (new_first, new_last: INTEGER)
 		local
 			array_1, array_2: A
 		do
@@ -141,7 +141,7 @@ feature
 			end
 		end
 
-	put_well_defined (array_1, array_2: A; index: I; element: E)
+	put_well_defined (array_1, array_2: A; index: INTEGER; element: E)
 		require
 			array_1 ~ array_2
 		do
@@ -167,7 +167,7 @@ feature
 			last (array_1) ~ last (array_2)
 		end
 
-	eval_well_defined (array_1, array_2: A; index: I)
+	eval_well_defined (array_1, array_2: A; index: INTEGER)
 		require
 			array_1 ~ array_2
 		do

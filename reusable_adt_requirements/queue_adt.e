@@ -8,7 +8,7 @@ note
 	date: "8/6/2018"
 
 deferred class
-	IS_QUEUE [Q, T]
+	QUEUE_ADT [Q, T]
 	--	Queues ``Q'' contain ``T'' objects.
 	--	To apply this template to your concept,
 	--	inherit from this class with your concepts for ``Q'' and ``T''.
@@ -17,7 +17,7 @@ deferred class
 
 inherit
 
-	IS_WITH_EQUALITY [Q]
+	EQUALITY_ADT [Q]
 	--	Queues feature an equality relation.
 
 feature

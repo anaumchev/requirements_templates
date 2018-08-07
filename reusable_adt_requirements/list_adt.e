@@ -5,11 +5,11 @@ note
 	revision: "$Revision$"
 
 deferred class
-	IS_LIST [L, E]
+	LIST_ADT [L, E]
 
 inherit
 
-	IS_WITH_EQUALITY [L]
+	EQUALITY_ADT [L]
 
 feature
 

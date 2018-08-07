@@ -9,7 +9,7 @@ class
 
 inherit
 
-	IS_WITH_COPY [ARRAY [G]]
+	COPY_ADT [ARRAY [G]]
 
 feature
 

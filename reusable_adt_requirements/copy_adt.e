@@ -5,11 +5,11 @@ note
 	revision: "$Revision$"
 
 deferred class
-	IS_WITH_COPY [G]
+	COPY_ADT [G]
 
 inherit
 
-	IS_WITH_EQUALITY [G]
+	EQUALITY_ADT [G]
 
 feature
 	--	Deferred definitions to effect based on your concept.

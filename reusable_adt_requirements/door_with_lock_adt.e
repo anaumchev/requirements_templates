@@ -7,7 +7,7 @@ note
 	date: "8/6/2018"
 
 deferred class
-	IS_DOOR_WITH_LOCK [D]
+	DOOR_WITH_LOCK_ADT [D]
 	--	To apply this template to your concept,
 	--	inherit from this class with your concept for ``D''.
 	--	The resulting class has to be effective (non-deferred).

@@ -9,7 +9,7 @@ class
 
 inherit
 
-	IS_ARRAY [ARRAY [G], G, INTEGER]
+	ARRAY_ADT [ARRAY [G], G]
 
 	IS_ARRAY_WITH_COPY [G]
 

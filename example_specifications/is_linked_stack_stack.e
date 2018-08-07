@@ -9,7 +9,7 @@ class
 
 inherit
 
-	IS_STACK [LINKED_STACK [G], G]
+	STACK_ADT [LINKED_STACK [G], G]
 
 feature
 

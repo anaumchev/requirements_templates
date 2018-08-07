@@ -9,7 +9,7 @@ class
 
 inherit
 
-	IS_LGS [ASM_LGS]
+	LGS_ADT [ASM_LGS]
 
 feature
 	-- Definitions: handle state range.

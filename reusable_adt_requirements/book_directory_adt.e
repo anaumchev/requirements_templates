@@ -7,7 +7,7 @@ note
 	date: "8/7/2018"
 
 deferred class
-	IS_BOOK_DIRECTORY [D, B, BC, T, L, LS -> IS_LIST [L, B]]
+	BOOK_DIRECTORY_ADT [D, B, BC, T, L, LS -> LIST_ADT [L, B]]
 	--	Book directories ``D'' contain books ``B'' with topics ``T'' and book copies ``BC''.
 	--	Searching by topics returns lists of books ``L''.
 	--	To apply this template to your concepts,
@@ -18,7 +18,7 @@ deferred class
 
 inherit
 
-	IS_WITH_EQUALITY [D]
+	EQUALITY_ADT [D]
 
 feature
 

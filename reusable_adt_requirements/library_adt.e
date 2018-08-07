@@ -7,7 +7,7 @@ note
 	date: "8/7/2018"
 
 deferred class
-	IS_LIBRARY [L, B]
+	LIBRARY_ADT [L, B]
 	--	Libraries ``L'' contain books ``B''.
 	--	To apply this template to your concepts,
 	--	inherit from this class with your concepts for ``L'' and ``B''.
@@ -16,7 +16,7 @@ deferred class
 
 inherit
 
-	IS_WITH_EQUALITY [L]
+	EQUALITY_ADT [L]
 	--	Libraries feature an equality relation.
 
 feature

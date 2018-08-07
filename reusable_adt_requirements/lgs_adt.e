@@ -9,7 +9,7 @@ note
 	date: "8/6/2018"
 
 deferred class
-	IS_LGS [L]
+	LGS_ADT [L]
 	--	To apply this template to your concept,
 	--	inherit from this class with your concepts for ``L''.
 	--	The resulting class has to be effective (non-deferred).

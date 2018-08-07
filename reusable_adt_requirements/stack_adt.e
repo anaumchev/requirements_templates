@@ -9,7 +9,7 @@ note
 	date: "8/3/2018"
 
 deferred class
-	IS_STACK [S, T]
+	STACK_ADT [S, T]
 	--	Stacks ``S'' contain ``T'' objects.
 	--	To apply this template to your concept,
 	--	inherit from this class with your concepts for ``S'' and ``T''.
@@ -18,7 +18,7 @@ deferred class
 
 inherit
 
-	IS_WITH_EQUALITY [S]
+	EQUALITY_ADT [S]
 	--	Stacks feature an equality relation.
 
 feature

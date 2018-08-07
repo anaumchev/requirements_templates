@@ -7,7 +7,7 @@ note
 	date: "8/3/2018"
 
 deferred class
-	IS_WITH_EQUALITY [G]
+	EQUALITY_ADT [G]
 	--	To apply this template to your concept,
 	--	inherit from this class with your concept for ``G''.
 	--	The resulting class has to be effective (non-deferred).
