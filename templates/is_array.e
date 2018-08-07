@@ -60,7 +60,7 @@ feature
 		do
 			new_array := make (new_first, new_last)
 			check
-				first (new_array) = new_first
+				first (new_array) ~ new_first
 			end
 		end
 
@@ -68,11 +68,11 @@ feature
 			--	Putting an element by index to an array does not affect
 			--	the index of the first element of the array.
 		require
-			first (array) = old_first
+			first (array) ~ old_first
 		do
 			put (array, index, element)
 		ensure
-			first (array) = old_first
+			first (array) ~ old_first
 		end
 
 	a_3 (new_first, new_last: I)
@@ -83,7 +83,7 @@ feature
 		do
 			new_array := make (new_first, new_last)
 			check
-				last (new_array) = new_last
+				last (new_array) ~ new_last
 			end
 		end
 
@@ -91,11 +91,11 @@ feature
 			--	Putting an element by index to an array does not affect
 			--	the index of the last element of the array.
 		require
-			last (array) = old_last
+			last (array) ~ old_last
 		do
 			put (array, index, element)
 		ensure
-			last (array) = old_last
+			last (array) ~ old_last
 		end
 
 	a_5 (array: A; index: I; element: E)
@@ -107,7 +107,7 @@ feature
 		do
 			put (array, index, element)
 		ensure
-			eval (array, index) = element
+			eval (array, index) ~ element
 		end
 
 	a_6 (array: A; index_put: I; element: E; index_eval: I; old_element: E)
@@ -117,11 +117,11 @@ feature
 			index_eval >= first (array)
 			index_eval <= last (array)
 			index_put /= index_eval
-			eval (array, index_eval) = old_element
+			eval (array, index_eval) ~ old_element
 		do
 			put (array, index_put, element)
 		ensure
-			eval (array, index_eval) = old_element
+			eval (array, index_eval) ~ old_element
 		end
 
 feature
@@ -137,42 +137,42 @@ feature
 				array_1 /= array_2
 			end
 			check
-				are_equal (array_1, array_2)
+				array_1 ~ array_2
 			end
 		end
 
 	put_well_defined (array_1, array_2: A; index: I; element: E)
 		require
-			are_equal (array_1, array_2)
+			array_1 ~ array_2
 		do
 			put (array_1, index, element)
 			put (array_2, index, element)
 		ensure
-			are_equal (array_1, array_2)
+			array_1 ~ array_2
 		end
 
 	first_well_defined (array_1, array_2: A)
 		require
-			are_equal (array_1, array_2)
+			array_1 ~ array_2
 		do
 		ensure
-			first (array_1) = first (array_2)
+			first (array_1) ~ first (array_2)
 		end
 
 	last_well_defined (array_1, array_2: A)
 		require
-			are_equal (array_1, array_2)
+			array_1 ~ array_2
 		do
 		ensure
-			last (array_1) = last (array_2)
+			last (array_1) ~ last (array_2)
 		end
 
 	eval_well_defined (array_1, array_2: A; index: I)
 		require
-			are_equal (array_1, array_2)
+			array_1 ~ array_2
 		do
 		ensure
-			eval (array_1, index) = eval (array_2, index)
+			eval (array_1, index) ~ eval (array_2, index)
 		end
 
 end

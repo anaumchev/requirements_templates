@@ -13,11 +13,6 @@ inherit
 
 feature
 
-	are_equal (v_1, v_2: ARRAY [G]): BOOLEAN
-		do
-			Result := v_1.same_items (v_2)
-		end
-
 	copy_from_other (object, other: ARRAY [G])
 		do
 			object.copy (other)

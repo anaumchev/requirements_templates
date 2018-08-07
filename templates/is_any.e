@@ -16,11 +16,6 @@ deferred class
 feature
 	--	Deferred definitions to effect based on your concept.
 
-	are_equal (v_1, v_2: G): BOOLEAN
-			-- Define an equality relation over objects of your concept.
-		deferred
-		end
-
 	copy_from_other (object, other: G)
 			-- Define what it means to copy to an object of your concept from another one.
 		deferred
@@ -35,7 +30,7 @@ feature
 			EIS: "protocol=URI", "src=http://www.mathwords.com/r/reflexive_property.htm"
 		do
 		ensure
-			are_equal (v, v)
+			v ~ v
 		end
 
 	equality_commutativity (v_1, v_2: G)
@@ -43,10 +38,10 @@ feature
 		note
 			EIS: "protocol=URI", "src=http://www.mathwords.com/s/symmetric_property.htm"
 		require
-			are_equal (v_1, v_2)
+			v_1 ~ v_2
 		do
 		ensure
-			are_equal (v_2, v_1)
+			v_2 ~ v_1
 		end
 
 	equality_transitivity (v_1, v_2, v_3: G)
@@ -54,11 +49,11 @@ feature
 		note
 			EIS: "protocol=URI", "src=http://www.mathwords.com/t/transitive_property.htm"
 		require
-			are_equal (v_1, v_2)
-			are_equal (v_2, v_3)
+			v_1 ~ v_2
+			v_2 ~ v_3
 		do
 		ensure
-			are_equal (v_1, v_3)
+			v_1 ~ v_3
 		end
 
 feature
@@ -66,11 +61,11 @@ feature
 
 	a_0 (object, old_other, other: G)
 		require
-			are_equal (other, old_other)
+			other ~ old_other
 		do
 			copy_from_other (object, other)
 		ensure
-			are_equal (object, old_other)
+			object ~ old_other
 		end
 
 feature
@@ -82,12 +77,12 @@ feature
 		note
 			EIS: "protocol=URI", "src=https://en.wikipedia.org/wiki/Well-defined"
 		require
-			are_equal (object_1, object_2)
+			object_1 ~ object_2
 		do
 			copy_from_other (object_1, other)
 			copy_from_other (object_2, other)
 		ensure
-			are_equal (object_1, object_2)
+			object_1 ~ object_2
 		end
 
 end
