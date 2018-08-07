@@ -11,7 +11,7 @@ inherit
 
 	IS_ARRAY [ARRAY [G], G, INTEGER]
 
-	IS_ARRAY_ANY [G]
+	IS_ARRAY_WITH_COPY [G]
 
 feature
 

@@ -1,5 +1,5 @@
 note
-	description: "Behavioral description of a concept that behaves like array."
+	description: "Reusable abstract data type specification of array."
 	description: "Find a detailed description by the EIS linke below."
 	EIS: "protocol=URI", "src=https://www.cise.ufl.edu/class/cen6075/notes/Lecture34_fa16.ppt"
 	description: "Follow the EIS link below for an example."
@@ -18,8 +18,8 @@ deferred class
 
 inherit
 
-	IS_ANY [A]
-	--	Arrays feature an equality relation and a copy operation.
+	IS_WITH_EQUALITY [A]
+	--	Arrays feature an equality relation.
 
 feature
 	-- Definitions

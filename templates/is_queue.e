@@ -1,5 +1,5 @@
 note
-	description: "Behavioral description of a concept that behaves like queue."
+	description: "Reusable abstract data type specification of queue."
 	description: "Find a detailed description by the EIS linke below."
 	EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 	description: "The operations' names are changed to the more traditional ones: push -> enqueue, pop -> dequeue, top -> front."
@@ -17,8 +17,8 @@ deferred class
 
 inherit
 
-	IS_ANY [Q]
-	--	Queues feature an equality relation and a copy operation.
+	IS_WITH_EQUALITY [Q]
+	--	Queues feature an equality relation.
 
 feature
 	--	Deferred definitions to effect based on your concept.

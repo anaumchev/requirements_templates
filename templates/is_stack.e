@@ -1,5 +1,5 @@
 note
-	description: "Behavioral description of a concept that behaves like stack."
+	description: "Reusable abstract data type specification of stack."
 	description: "Find a detailed description by the EIS linke below."
 	EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide02.html"
 	description: "Follow the EIS link below for an example."
@@ -18,8 +18,8 @@ deferred class
 
 inherit
 
-	IS_ANY [S]
-	--	Stacks feature an equality relation and a copy operation.
+	IS_WITH_EQUALITY [S]
+	--	Stacks feature an equality relation.
 
 feature
 	--	Deferred definitions to effect based on your concept.

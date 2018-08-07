@@ -1,5 +1,5 @@
 note
-	description: "Behavioral description of a concept that behaves like the Landing Gear System."
+	description: "Reusable abstract data type specification of Landing Gear System."
 	description: "Find a detailed description by the EIS linke below."
 	EIS: "protocol=URI", "src=https://www.irit.fr/ABZ2014/landing_system.pdf"
 	description: "Follow the EIS link below for an example."

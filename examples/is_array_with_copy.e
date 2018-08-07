@@ -5,11 +5,11 @@ note
 	revision: "$Revision$"
 
 class
-	IS_ARRAY_ANY [G]
+	IS_ARRAY_WITH_COPY [G]
 
 inherit
 
-	IS_ANY [ARRAY [G]]
+	IS_WITH_COPY [ARRAY [G]]
 
 feature
 
