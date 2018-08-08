@@ -2,6 +2,8 @@ note
 	description: "Reusable abstract data type specification of array."
 	description: "Find a detailed description by the EIS linke below."
 	EIS: "protocol=URI", "src=https://www.cise.ufl.edu/class/cen6075/notes/Lecture34_fa16.ppt"
+	description: "Also found in the ``Abstract Data Types and Software Validation '' article by Guttag, Horowitz and Musser, p. 17."
+	EIS: "protocol=URI", "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
 	description: "Follow the EIS link below for an example."
 	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/examples/is_array_array.e"
 	author: "Alexandr Naumchev"
