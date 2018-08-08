@@ -1,6 +1,6 @@
 note
 	description: "Reusable abstract data type specification of door with a lock."
-	description: "Find a detailed description by the EIS linke below."
+	description: "Find a detailed description by the EIS link below."
 	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/templates/41_1.pdf"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"

@@ -1,6 +1,6 @@
 note
 	description: "Reusable abstract data type specification of array."
-	description: "Find a detailed description by the EIS linke below."
+	description: "Find a detailed description by the EIS link below."
 	EIS: "protocol=URI", "src=https://www.cise.ufl.edu/class/cen6075/notes/Lecture34_fa16.ppt"
 	description: "Also found in the ``Abstract Data Types and Software Validation '' article by Guttag, Horowitz and Musser, p. 17."
 	EIS: "protocol=URI", "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
@@ -100,7 +100,35 @@ feature
 			last (array) ~ old_last
 		end
 
-	a_5 (array: A; index: INTEGER; element: E)
+	a_5 (new_first, new_last: INTEGER; index: INTEGER; element: E)
+		local
+			array: A
+		do
+			array := make (new_first, new_last)
+			check
+				eval (array, index) /~ element
+			end
+		end
+
+	a_6 (array: A; index_put, index_eval: INTEGER; element_1, element_2: E)
+		require
+			index_eval < first (array)
+		do
+			put (array, index_put, element_1)
+		ensure
+			eval (array, index_eval) /~ element_2
+		end
+
+	a_7 (array: A; index_put, index_eval: INTEGER; element_1, element_2: E)
+		require
+			index_eval > last (array)
+		do
+			put (array, index_put, element_1)
+		ensure
+			eval (array, index_eval) /~ element_2
+		end
+
+	a_8 (array: A; index: INTEGER; element: E)
 			--	For an index from the interval between the indexes of the first and the last elements of an array,
 			--	putting an element by the index to the array makes the element available for retrieval by the index.
 		require
@@ -112,7 +140,7 @@ feature
 			eval (array, index) ~ element
 		end
 
-	a_6 (array: A; index_put: INTEGER; element: E; index_eval: INTEGER; old_element: E)
+	a_9 (array: A; index_put: INTEGER; element: E; index_eval: INTEGER; old_element: E)
 			--	For an index from the interval between the indexes of the first and the last elements of an array,
 			--	putting an element by the index to the array does not affect the elements available by other indexes.
 		require

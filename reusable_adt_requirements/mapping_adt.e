@@ -37,13 +37,13 @@ feature
 feature
 	--	Abstract data type axioms.
 
-	a_1 (dval: D)
+	a_1 (dval: D; rval: R)
 		local
 			map: M
 		do
 			map := new_map
 			check
-				ev_map (map, dval) ~ ({R}).default
+				ev_map (map, dval) /~ rval
 			end
 		end
 

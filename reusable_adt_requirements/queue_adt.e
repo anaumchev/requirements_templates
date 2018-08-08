@@ -1,6 +1,6 @@
 note
 	description: "Reusable abstract data type specification of queue."
-	description: "The signature is taken from the article by the EIS link below."
+	description: "The signature is taken from the article by the EIS link below, page 4."
 	EIS: "protocol=URI", "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 	description: "The operations' names are changed to the more traditional ones: push -> enqueue, pop -> dequeue, top -> front."
 	author: "Alexandr Naumchev"
@@ -277,6 +277,18 @@ feature
 			add (q_2, t_1)
 		ensure
 			front (q_1) ~ front (q_2)
+		end
+
+	a_17 (t: T)
+		note
+			EIS: "protocol=URI", "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
+		local
+			q: Q
+		do
+			q := eq
+			check
+				front (q) /~ t
+			end
 		end
 
 feature

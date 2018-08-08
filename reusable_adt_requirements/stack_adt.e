@@ -1,7 +1,9 @@
 note
 	description: "Reusable abstract data type specification of stack."
-	description: "Find a detailed description by the EIS linke below."
+	description: "Find a detailed description by the EIS link below."
 	EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide02.html"
+	description: "Also found in the ``Abstract Data Types and the Development of Data Structures'' article by John Guttag, page 2."
+	EIS: "protocol=URI", "src=http://cecs.wright.edu/people/faculty/tkprasad/courses/cs784/guttag-cacm77.pdf"
 	description: "Follow the EIS link below for an example."
 	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/examples/is_linked_stack_stack.e"
 	author: "Alexandr Naumchev"
@@ -56,6 +58,18 @@ feature
 
 feature
 	--	Abstract data type axioms.
+
+	a_2 (t: T)
+		note
+			EIS: "protocol=URI", "src=http://cecs.wright.edu/people/faculty/tkprasad/courses/cs784/guttag-cacm77.pdf"
+		local
+			s: S
+		do
+			s := new
+			check
+				top (s) /~ t
+			end
+		end
 
 	a_3_empty (s_1, s_2: S)
 			-- Querying a stack for emptyness does not change its equivalence class.
