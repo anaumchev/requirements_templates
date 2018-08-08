@@ -111,6 +111,16 @@ feature
 			Result := 5
 		end
 
+	max_extension_time (lgs: ASM_LGS): INTEGER
+		do
+			Result := 25
+		end
+
+	max_retraction_time (lgs: ASM_LGS): INTEGER
+		do
+			Result := 30
+		end
+
 feature
 	-- Definitions: control procedure
 

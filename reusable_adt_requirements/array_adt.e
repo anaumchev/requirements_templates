@@ -22,7 +22,7 @@ inherit
 	--	Arrays feature an equality relation.
 
 feature
-	-- Definitions
+	-- Deferred definitions.
 
 	make (new_first, new_last: INTEGER): A
 			-- Define making up a new array from given indexes in terms of your concept.
@@ -50,7 +50,7 @@ feature
 		end
 
 feature
-	-- Array ADT axioms.
+	-- Abstract data type axioms.
 
 	a_1 (new_first, new_last: INTEGER)
 			--	The index of the first element of a newly created array equals the

@@ -21,7 +21,7 @@ inherit
 	--	Queues feature an equality relation.
 
 feature
-	--	Deferred definitions to effect based on your concept.
+	--	Deferred definitions.
 
 	eq: Q
 			-- Define a new queue in terms of your concept.
@@ -54,7 +54,7 @@ feature
 		end
 
 feature
-	-- Queue ADT axioms.
+	--	Abstract data type axioms.
 
 	a_3_empty (q_1, q_2: Q)
 			-- Querying a queue for emptyness does not change its equivalence class.
@@ -280,7 +280,7 @@ feature
 		end
 
 feature
-	--	Stack theorems.
+	--	Theorems.
 
 	theorem_1 (q: Q; t: T; k, n: INTEGER)
 			--	Pushing a stack k times increases its size by k.

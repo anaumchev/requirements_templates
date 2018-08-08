@@ -22,7 +22,7 @@ inherit
 	--	Stacks feature an equality relation.
 
 feature
-	--	Deferred definitions to effect based on your concept.
+	--	Deferred definitions.
 
 	new: S
 			-- Define a new stack in terms of your concept.
@@ -55,7 +55,7 @@ feature
 		end
 
 feature
-	-- Stack ADT axioms.
+	--	Abstract data type axioms.
 
 	a_3_empty (s_1, s_2: S)
 			-- Querying a stack for emptyness does not change its equivalence class.
@@ -182,7 +182,7 @@ feature
 		end
 
 feature
-	--	Stack theorems.
+	--	Theorems.
 
 	theorem_1 (s: S; t: T; k, n: INTEGER)
 			--	Pushing a stack k times increases its size by k.

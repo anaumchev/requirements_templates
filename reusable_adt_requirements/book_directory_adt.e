@@ -21,6 +21,8 @@ inherit
 	EQUALITY_ADT [D]
 
 feature
+	-- Deferred definitions.
+
 
 	empty_dir: D
 		deferred
@@ -35,7 +37,8 @@ feature
 		end
 
 feature
-
+	-- Abstract data type axioms.
+	
 	a_1 (tp: T)
 		local
 			dir: D

@@ -14,6 +14,7 @@ inherit
 	EQUALITY_ADT [S]
 
 feature
+	--	Deferred definitions.
 
 	init: S
 			--	Allocate and initialize the symbol table.
@@ -49,6 +50,7 @@ feature
 		end
 
 feature
+	--	Abstract data type axioms.
 
 	a_2 (s_t_1, s_t_2: S)
 		require

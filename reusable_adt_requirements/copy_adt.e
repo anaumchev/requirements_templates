@@ -12,7 +12,7 @@ inherit
 	EQUALITY_ADT [G]
 
 feature
-	--	Deferred definitions to effect based on your concept.
+	-- Deferred definitions.
 
 	copy_from_other (object, other: G)
 			-- Define what it means to copy to an object of your concept from another one.
@@ -20,7 +20,7 @@ feature
 		end
 
 feature
-	--	ADT axioms
+	-- Abstract data type axioms.
 
 	a_0 (object, old_other, other: G)
 		require

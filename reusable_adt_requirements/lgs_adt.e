@@ -16,7 +16,7 @@ deferred class
 	--	Test or model check the resulting class.
 
 feature
-	-- Definitions: handle state range.
+	--	Deferred definitions: handle state range.
 
 	up_position (lgs: L): INTEGER
 		deferred
@@ -27,7 +27,7 @@ feature
 		end
 
 feature
-	-- Definitions: door state range.
+	--	Deferred definitions: door state range.
 
 	closed_position (lgs: L): INTEGER
 		deferred
@@ -46,7 +46,7 @@ feature
 		end
 
 feature
-	-- Definitions: gear state range.
+	--	Deferred definitions: gear state range.
 
 	retracting_state (lgs: L): INTEGER
 		deferred
@@ -65,7 +65,7 @@ feature
 		end
 
 feature
-	-- Definitions: state space.
+	--	Deferred definitions: state space.
 
 	handle_status (lgs: L): INTEGER
 		deferred
@@ -80,7 +80,7 @@ feature
 		end
 
 feature
-	--	Definitions: constants for timing constraints.
+	--	Deferred definitions: constants for timing constraints.
 
 	door_open_to_closed (lgs: L): INTEGER
 		deferred
@@ -98,16 +98,23 @@ feature
 		deferred
 		end
 
+	max_retraction_time (lgs: L): INTEGER
+		deferred
+		end
+
+	max_extension_time (lgs: L): INTEGER
+		deferred
+		end
+
 feature
-	-- Definitions: control procedure
+	--	Deferred definitions: control procedure
 
 	main (lgs: L)
 		deferred
 		end
 
-feature -- Temporal assumptions.
-
-		-- Assume the system is
+feature {NONE}
+	-- Temporal assumptions.
 
 	run_with_handle_down (lgs: L)
 		do
@@ -117,8 +124,6 @@ feature -- Temporal assumptions.
 			from_retracted_to_extended (lgs)
 		end
 
-		-- Assume the system is
-
 	run_with_handle_up (lgs: L)
 		do
 			check
@@ -126,7 +131,6 @@ feature -- Temporal assumptions.
 			end
 			from_retracted_to_extended (lgs)
 		end
-			-- Assume the system is
 
 	run_in_normal_mode (lgs: L)
 		do
@@ -156,13 +160,12 @@ feature -- Temporal assumptions.
 			main (lgs)
 		end
 
-feature -- Timing assumptions.
-
-		-- Assume an axiomatically defined
+feature {NONE}
+	-- Timing assumptions.
 
 	distance: INTEGER
 
-		-- Assume it takes 8 time units
+		-- Assume it takes ``door_open_to_closed'' time units
 		-- to take the door
 
 	from_open_to_closed (lgs: L)
@@ -178,12 +181,12 @@ feature -- Timing assumptions.
 			run_in_normal_mode (lgs)
 				-- changing the door status to 'closed_position':
 			if (old_door_status /= closed_position (lgs) and door_status (lgs) = closed_position (lgs)) then
-					-- takes up to 8 time units:
+					-- takes up to ``door_open_to_closed'' time units:
 				distance := distance + door_open_to_closed (lgs)
 			end
 		end
 
-		-- Assume it takes 12 time units
+		-- Assume it takes ``door_closed_to_open'' time units
 		-- to take the door
 
 	from_closed_to_open (lgs: L)
@@ -198,12 +201,12 @@ feature -- Timing assumptions.
 			from_open_to_closed (lgs)
 				-- changing the door status to 'open_position':
 			if (old_door_status /= open_position (lgs) and door_status (lgs) = open_position (lgs)) then
-					-- takes up to 12 time units:
+					-- takes up to ``door_closed_to_open'' time units:
 				distance := distance + door_closed_to_open (lgs)
 			end
 		end
 
-		-- Assume it takes 10 time units
+		-- Assume it takes ``gear_extended_to_retracted'' time units
 		-- to take the gear
 
 	from_extended_to_retracted (lgs: L)
@@ -219,12 +222,12 @@ feature -- Timing assumptions.
 				-- changing the gear status
 				-- to 'retracted_position':
 			if (old_gear_status /= retracted_position (lgs) and gear_status (lgs) = retracted_position (lgs)) then
-					-- takes up to 10 time units:
+					-- takes up to ``gear_extended_to_retracted'' time units:
 				distance := distance + gear_extended_to_retracted (lgs)
 			end
 		end
 
-		-- Assume it takes 5 time units
+		-- Assume it takes ``gear_retracted_to_extended'' time units
 		-- to take the gear
 
 	from_retracted_to_extended (lgs: L)
@@ -240,12 +243,13 @@ feature -- Timing assumptions.
 				-- changing the gear status
 				-- to 'extended_position':
 			if (old_gear_status /= extended_position (lgs) and gear_status (lgs) = extended_position (lgs)) then
-					-- takes up to 5 time units:
+					-- takes up to ``gear_retracted_to_extended'' time units:
 				distance := distance + gear_retracted_to_extended (lgs)
 			end
 		end
 
-feature -- Temporal requirements.
+feature
+	-- Temporal requirements.
 
 		-- Require the system to
 
@@ -264,31 +268,6 @@ feature -- Temporal requirements.
 			run_with_handle_up (lgs)
 			check
 				assert: gear_status (lgs) /= extending_state (lgs)
-			end
-		end
-
-		-- Require that
-
-	retraction (lgs: L)
-			-- never takes more than
-			-- 6 steps:
-		local
-			steps: INTEGER
-		do
-			from
-				steps := 0
-				never_extend_with_handle_up (lgs)
-			until
-				steps = 5
-			loop
-				run_with_handle_up (lgs)
-				steps := steps + 1
-			end
-			check
-				assert: gear_status (lgs) = retracted_position (lgs)
-			end
-			check
-				assert: door_status (lgs) = closed_position (lgs)
 			end
 		end
 
@@ -330,13 +309,14 @@ feature -- Temporal requirements.
 			end
 		end
 
-feature -- Timing requirements.
+feature
+	-- Timing requirements.
 
 		-- Require that
 
 	extension_duration (lgs: L)
 			-- never takes more than
-			-- 25 time units:
+			-- ``max_extension_time'' time units:
 		local
 			old_distance: INTEGER
 		do
@@ -344,7 +324,7 @@ feature -- Timing requirements.
 				old_distance := distance
 				never_retract_with_handle_down (lgs)
 			until
-				gear_status (lgs) = extended_position (lgs) and door_status (lgs) = closed_position (lgs) or (distance - old_distance) = 25
+				gear_status (lgs) = extended_position (lgs) and door_status (lgs) = closed_position (lgs) or (distance - old_distance) = max_extension_time (lgs)
 			loop
 				run_with_handle_down (lgs)
 			end
@@ -360,14 +340,23 @@ feature -- Timing requirements.
 
 	retraction_duration (lgs: L)
 			-- never takes more than
-			-- 30 time units:
+			-- ``max_retraction_time'' time units:
 		local
 			old_distance: INTEGER
 		do
-			old_distance := distance
-			retraction (lgs)
+			from
+				old_distance := distance
+				never_extend_with_handle_up (lgs)
+			until
+				gear_status (lgs) = retracted_position (lgs) and door_status (lgs) = closed_position (lgs) or (distance - old_distance) = max_retraction_time (lgs)
+			loop
+				run_with_handle_up (lgs)
+			end
 			check
-				assert: (distance - old_distance) <= 30
+				assert: gear_status (lgs) = retracted_position (lgs)
+			end
+			check
+				assert: door_status (lgs) = closed_position (lgs)
 			end
 		end
 

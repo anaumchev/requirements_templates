@@ -20,7 +20,7 @@ inherit
 	--	Libraries feature an equality relation.
 
 feature
-	--	Deferred definitions to be effected.
+	--	Deferred definitions.
 
 	empty_lib: L
 		deferred
@@ -51,7 +51,7 @@ feature
 		end
 
 feature
-	--	Library axioms to model check or test.
+	--	Abstract data type axioms.
 
 	a_1 (lib: L; bc: B)
 		local
@@ -234,7 +234,7 @@ feature
 		end
 
 feature
-	--	Well-definedness axioms to model check or test.
+	--	Well-definedness axioms.
 
 	empty_lib_well_defined
 		local

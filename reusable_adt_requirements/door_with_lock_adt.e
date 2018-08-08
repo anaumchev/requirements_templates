@@ -14,6 +14,7 @@ deferred class
 	--	Test or model check the resulting class.
 
 feature
+	-- Deferred definitions.
 
 	is_open (d: D): BOOLEAN
 		deferred
@@ -48,7 +49,7 @@ feature
 		end
 
 feature
-	--	ADT axioms.
+	-- Abstract data type axioms.
 
 	a_1 (d: D)
 		require

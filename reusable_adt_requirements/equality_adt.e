@@ -14,7 +14,7 @@ deferred class
 	--	Test or model check the resulting class.
 
 feature
-	-- Axioms of equality.
+	-- Abstract data type axioms.
 
 	equality_reflexivity (v: G)
 			--	Equality is reflexive.
@@ -47,7 +47,5 @@ feature
 		ensure
 			v_1 ~ v_3
 		end
-
-
 
 end
