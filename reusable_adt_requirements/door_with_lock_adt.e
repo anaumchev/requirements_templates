@@ -4,7 +4,6 @@ note
 	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/templates/41_1.pdf"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
-	date: "8/6/2018"
 
 deferred class
 	DOOR_WITH_LOCK_ADT [D]

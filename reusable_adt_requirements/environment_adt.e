@@ -4,7 +4,6 @@ note
 	EIS: "protocol=URI", "src=https://www.researchgate.net/profile/William_Waite/publication/220197497_An_Abstract_Data_Type_for_Name_Analysis/links/02e7e51eee56744a24000000.pdf"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
-	date: "8/8/2018"
 
 deferred class
 	ENVIRONMENT_ADT [E, I, D]
@@ -16,7 +15,7 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit
+inherit {NONE}
 
 	EQUALITY_ADT [E]
 

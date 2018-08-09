@@ -4,7 +4,6 @@ note
 	EIS: "protocol=URI", "src=https://link.springer.com/article/10.1007/BF00260922"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
-	date: "8/8/2018"
 
 deferred class
 	SET_ADT [S, E]

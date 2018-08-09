@@ -1,13 +1,14 @@
 note
-	description: "Summary description for {IS_WITH_COPY}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "Reusable abstract data type specification of a type with a copy operation."
+	description: "Follow the EIS link below for an example."
+	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/example_specifications/is_array2_with_copy.e"
+	author: "Alexandr Naumchev"
+	email: "anaumchev@gmail.com"
 
 deferred class
 	COPY_ADT [G]
 
-inherit
+inherit {NONE}
 
 	EQUALITY_ADT [G]
 

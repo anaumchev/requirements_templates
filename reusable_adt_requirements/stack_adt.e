@@ -8,7 +8,6 @@ note
 	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/examples/is_linked_stack_stack.e"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
-	date: "8/3/2018"
 
 deferred class
 	STACK_ADT [S, T]
@@ -18,10 +17,9 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit
+inherit {NONE}
 
 	EQUALITY_ADT [S]
-	--	Stacks feature an equality relation.
 
 feature
 	--	Deferred definitions.

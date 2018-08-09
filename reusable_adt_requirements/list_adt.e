@@ -4,7 +4,6 @@ note
 	EIS: "protocol=URI", "src=https://en.wikipedia.org/wiki/List_(abstract_data_type)#Abstract_definition"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
-	date: "8/7/2018"
 
 deferred class
 	LIST_ADT [L, E]
@@ -14,7 +13,7 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit
+inherit {NONE}
 
 	EQUALITY_ADT [L]
 

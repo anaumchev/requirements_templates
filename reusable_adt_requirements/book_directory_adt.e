@@ -4,7 +4,6 @@ note
 	EIS: "protocol=URI", "src=https://www.amazon.com/Requirements-Engineering-System-Software-Specifications/dp/0470012706"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
-	date: "8/7/2018"
 
 deferred class
 	BOOK_DIRECTORY_ADT [D, B, BC, T, L, LS -> LIST_ADT [L, B]]
@@ -16,7 +15,7 @@ deferred class
 	--	Test or model check the resulting class.
 
 
-inherit
+inherit {NONE}
 
 	EQUALITY_ADT [D]
 
@@ -38,7 +37,7 @@ feature
 
 feature
 	-- Abstract data type axioms.
-	
+
 	a_1 (tp: T)
 		local
 			dir: D

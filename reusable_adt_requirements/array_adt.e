@@ -2,26 +2,22 @@ note
 	description: "Reusable abstract data type specification of array."
 	description: "Find a detailed description by the EIS link below."
 	EIS: "protocol=URI", "src=https://www.cise.ufl.edu/class/cen6075/notes/Lecture34_fa16.ppt"
-	description: "Also found in the ``Abstract Data Types and Software Validation '' article by Guttag, Horowitz and Musser, p. 17."
-	EIS: "protocol=URI", "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
 	description: "Follow the EIS link below for an example."
 	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/examples/is_array_array.e"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
-	date: "8/3/2018"
 
 deferred class
 	ARRAY_ADT [A, E]
-	--	Arrays ``A'' contain ``E'' objects indexed by comparable ``I'' objects.
+	--	Arrays ``A'' contain ``E'' objects.
 	--	To apply this template to your concept,
-	--	inherit from this class with your concepts for ``A'', ``E'' and ``I''.
+	--	inherit from this class with your concepts for ``A'' and ``E''.
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit
+inherit {NONE}
 
 	EQUALITY_ADT [A]
-	--	Arrays feature an equality relation.
 
 feature
 	-- Deferred definitions.

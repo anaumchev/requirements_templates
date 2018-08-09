@@ -5,7 +5,6 @@ note
 	EIS: "protocol=URI", "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
-	date: "8/8/2018"
 
 deferred class
 	STACK_WITH_REPLACE_ADT [S, E]
@@ -16,13 +15,13 @@ deferred class
 	--	Test or model check the resulting class.
 
 inherit {NONE}
-		--	The above article uses different names of the ``new'' and ``empty'' operations.
 
 	STACK_ADT [S, E]
 		rename
 			new as new_stack,
 			empty as is_new
 		end
+	--	The above article uses different names of the ``new'' and ``empty'' operations.
 
 feature
 	--	Deferred definitions.

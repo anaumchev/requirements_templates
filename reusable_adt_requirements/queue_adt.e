@@ -5,7 +5,6 @@ note
 	description: "The operations' names are changed to the more traditional ones: push -> enqueue, pop -> dequeue, top -> front."
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
-	date: "8/6/2018"
 
 deferred class
 	QUEUE_ADT [Q, T]
@@ -15,10 +14,9 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit
+inherit {NONE}
 
 	EQUALITY_ADT [Q]
-	--	Queues feature an equality relation.
 
 feature
 	--	Deferred definitions.

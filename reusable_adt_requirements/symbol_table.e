@@ -6,12 +6,11 @@ note
 	EIS: "protocol=URI", "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
-	date: "8/7/2018"
 
 deferred class
 	SYMBOL_TABLE [S, I, A]
 
-inherit
+inherit {NONE}
 
 	EQUALITY_ADT [S]
 

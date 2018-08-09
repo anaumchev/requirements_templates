@@ -6,7 +6,6 @@ note
 	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/examples/is_asm_lgs_lgs.e"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
-	date: "8/6/2018"
 
 deferred class
 	LGS_ADT [L]

@@ -4,7 +4,6 @@ note
 	EIS: "protocol=URI", "src=https://www.amazon.com/Requirements-Engineering-System-Software-Specifications/dp/0470012706"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
-	date: "8/7/2018"
 
 deferred class
 	LIBRARY_ADT [L, B]
@@ -14,10 +13,9 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit
+inherit {NONE}
 
 	EQUALITY_ADT [L]
-	--	Libraries feature an equality relation.
 
 feature
 	--	Deferred definitions.

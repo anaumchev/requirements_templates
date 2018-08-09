@@ -4,7 +4,6 @@ note
 	EIS: "protocol=URI", "src=https://link.springer.com/article/10.1007/BF00260922"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
-	date: "8/7/2018"
 
 deferred class
 	BAG_ADT [B, E]
@@ -14,7 +13,7 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit
+inherit {NONE}
 
 	EQUALITY_ADT [B]
 
