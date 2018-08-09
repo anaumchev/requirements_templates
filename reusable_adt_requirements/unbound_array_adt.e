@@ -1,9 +1,12 @@
 note
-	description: "Reusable abstract data type specification of array without explicit lower and upper bounds."
+	description: "Reusable abstract data type specification of stack."
 	description: "Found in the ``Abstract Data Types and Software Validation '' article by Guttag, Horowitz and Musser, p. 17."
 	EIS: "protocol=URI", "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
+	description: "Follow the EIS link below for an example."
+	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/examples/is_linked_stack_stack.e"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
+
 
 deferred class
 	UNBOUND_ARRAY_ADT [A, D, R]
