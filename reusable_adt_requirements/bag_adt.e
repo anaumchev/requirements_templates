@@ -20,7 +20,6 @@ inherit {NONE}
 feature
 	-- Deferred definitions.
 
-
 	empty_bag: B
 		deferred
 		end
@@ -60,11 +59,11 @@ feature
 	a_2_2 (bag: B; element_1, element_2: E; old_member_of: BOOLEAN)
 		require
 			element_1 /~ element_2
-			member_of (bag, element_2) = old_member_of
+			member_of (bag, element_2) ~ old_member_of
 		do
 			insert (bag, element_1)
 		ensure
-			member_of (bag, element_2) = old_member_of
+			member_of (bag, element_2) ~ old_member_of
 		end
 
 	a_3 (element: E)
@@ -105,6 +104,7 @@ feature
 		end
 
 feature
+	-- Well-definedness axioms.
 
 	empty_bag_well_defined
 		local
