@@ -1,8 +1,7 @@
 note
 	description: "Reusable abstract data type specification of queue."
-	description: "The signature is taken from the article by the EIS link below, page 4."
+	description: "The signature is taken from ``Implementing Algebraically Specified Abstract Data Types in an imperative Programming Language '' article by Muffy Thomas, page 4."
 	EIS: "protocol=URI", "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
-	description: "The operations' names are changed to the more traditional ones: push -> enqueue, pop -> dequeue, top -> front."
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 
@@ -27,7 +26,7 @@ feature
 		end
 
 	add (q: Q; t: T)
-			-- Define what it means to enqueue a queue in terms of your concept.
+			-- Define what it means to add a queue in terms of your concept.
 		deferred
 		end
 
@@ -119,7 +118,7 @@ feature
 		end
 
 	a_5 (q: Q; n: INTEGER; t: T)
-			--	Suppose a queue's size is n and the next element to enqueue is t;
+			--	Suppose a queue's size is n and the next element to add is t;
 			--	then, after n elements have been dequeued, t will become the queue's front.
 		note
 			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
@@ -142,7 +141,7 @@ feature
 		end
 
 	a_6 (q: Q; t: T; old_size: INTEGER)
-			--	Enqueueing a queue increases its size by 1.
+			--	Adding to a queue increases its size by 1.
 		note
 			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		require
@@ -167,7 +166,7 @@ feature
 		end
 
 	a_9 (q: Q; t: T)
-			--	Enqueueing a queue makes it non-empty.
+			--	Adding to a queue makes it non-empty.
 		note
 			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 			EIS: "protocol=URI", "src=www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
@@ -354,7 +353,7 @@ feature
 			end
 		end
 
-	enqueue_well_defined (q_1, q_2: Q; t: T)
+	add_well_defined (q_1, q_2: Q; t: T)
 		require
 			q_1 ~ q_2
 		do

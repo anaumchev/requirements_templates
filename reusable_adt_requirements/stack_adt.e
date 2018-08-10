@@ -6,6 +6,8 @@ note
 	EIS: "protocol=URI", "src=http://cecs.wright.edu/people/faculty/tkprasad/courses/cs784/guttag-cacm77.pdf"
 	description: "Also found in the ``Abstract Data Types and Software Validation '' article by Guttag, Horowitz and Musser, p. 17."
 	EIS: "protocol=URI", "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
+	description: "Also found in ``THE DESIGN OF DATA TYPE SPECIFICATIONS'' article by Guttag, Horowitz and Musser, p. 17."
+	EIS: "protocol=URI", "src=http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.4685&rep=rep1&type=pdf"
 	description: "Follow the EIS link below for an example."
 	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/examples/is_linked_stack_stack.e"
 	author: "Alexandr Naumchev"
