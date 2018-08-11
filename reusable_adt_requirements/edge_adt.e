@@ -1,0 +1,41 @@
+note
+	description: "Reusable abstract data type specification of graph edge."
+	description: "The signature is taken from ``The design of data type specifications'' article by Guttag, Horowitz and Musser, page 5."
+	EIS: "protocol=URI", "src=http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.4685&rep=rep1&type=pdf"
+	author: "Alexandr Naumchev"
+	email: "anaumchev@gmail.com"
+
+deferred class
+	EDGE_ADT [E, N]
+	--	Edges ``E'' consist of nodes ``N''.
+	--	To apply this template to your concept,
+	--	inherit from this class with your concepts for ``E'' and ``N''.
+	--	The resulting class has to be effective (non-deferred).
+	--	Test or model check the resulting class.
+
+inherit {NONE}
+
+	EQUALITY_ADT [E]
+
+feature
+	--	Deferred definitions.
+
+	rel (node_1, node_2: N): E
+		deferred
+		end
+
+feature
+	-- Well-definedness axioms.
+
+	rel_will_defined (node_1, node_2: N)
+		local
+			edge_1, edge_2: E
+		do
+			edge_1 := rel (node_1, node_2)
+			edge_2 := rel (node_1, node_2)
+			check
+				edge_1 ~ edge_2
+			end
+		end
+
+end
