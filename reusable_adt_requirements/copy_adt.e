@@ -8,7 +8,7 @@ note
 deferred class
 	COPY_ADT [G]
 
-inherit {NONE}
+inherit
 
 	EQUALITY_ADT [G]
 
@@ -23,7 +23,7 @@ feature
 feature
 	-- Abstract data type axioms.
 
-	a_0 (object, old_other, other: G)
+	frozen a_0 (object, old_other, other: G)
 		require
 			other ~ old_other
 		do
@@ -33,9 +33,9 @@ feature
 		end
 
 feature
-	--	Well-definedness axioms.
+	-- Well-definedness axioms.
 
-	copy_well_defined (object_1, object_2, other: G)
+	frozen copy_well_defined (object_1, object_2, other: G)
 			-- Copying from one and the same object
 			-- must not affect the equality relation.
 		note

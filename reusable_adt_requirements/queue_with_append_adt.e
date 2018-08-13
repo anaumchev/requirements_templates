@@ -6,14 +6,14 @@ note
 	email: "anaumchev@gmail.com"
 
 deferred class
-	QUEUE_WITH_APPEND [Q, T]
+	QUEUE_WITH_APPEND_ADT [Q, T]
 	--	Queues ``Q'' contain ``T'' objects.
 	--	To apply this template to your concept,
 	--	inherit from this class with your concepts for ``Q'' and ``T''.
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit {NONE}
+inherit
 
 	QUEUE_ADT [Q, T]
 		rename
@@ -26,16 +26,16 @@ inherit {NONE}
 	-- The above article uses its own names for some of the operations.
 
 feature
-	--	Deferred definitions.
+	-- Deferred definitions.
 
 	appendq (queue, other: Q)
 		deferred
 		end
 
 feature
-	--	Abstract data type axioms.
+	-- Abstract data type axioms.
 
-	a_18 (queue_1, queue_2: Q)
+	frozen a_18 (queue_1, queue_2: Q)
 		require
 			queue_1 ~ queue_2
 		local
@@ -47,7 +47,7 @@ feature
 			queue_1 ~ queue_2
 		end
 
-	a_19 (queue_1, queue_2, other_1, other_2: Q; element: T)
+	frozen a_19 (queue_1, queue_2, other_1, other_2: Q; element: T)
 		require
 			queue_1 ~ queue_2
 			other_1 ~ other_2
@@ -63,7 +63,7 @@ feature
 feature
 	-- Well-definedness axioms.
 
-	appendq_well_defined (queue_1, queue_2, other: Q)
+	frozen appendq_well_defined (queue_1, queue_2, other: Q)
 		require
 			queue_1 ~ queue_2
 		do

@@ -13,12 +13,12 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit {NONE}
+inherit
 
 	EQUALITY_ADT [G]
 
 feature
-	--	Deferred definitions.
+	-- Deferred definitions.
 
 	empty_graph: G
 		deferred
@@ -53,9 +53,9 @@ feature
 		end
 
 feature
-	--	Abstract data type axioms.
+	-- Abstract data type axioms.
 
-	a_1
+	frozen a_1
 		local
 			graph: G
 			nodes_set: SN
@@ -67,7 +67,7 @@ feature
 			end
 		end
 
-	a_2 (graph: G; node: N; nodes_set: SN)
+	frozen a_2 (graph: G; node: N; nodes_set: SN)
 		require
 			nodes (graph) ~ nodes_set
 		do
@@ -77,7 +77,7 @@ feature
 			nodes (graph) ~ nodes_set
 		end
 
-	a_3 (graph: G; node_1, node_2: N; edge: E; nodes_set: SN)
+	frozen a_3 (graph: G; node_1, node_2: N; edge: E; nodes_set: SN)
 		require
 			({ES}).default.rel (node_1, node_2) ~ edge
 			nodes (graph) ~ nodes_set
@@ -89,7 +89,7 @@ feature
 			nodes (graph) ~ nodes_set
 		end
 
-	a_4
+	frozen a_4
 		local
 			graph: G
 			edges_set: SE
@@ -101,7 +101,7 @@ feature
 			end
 		end
 
-	a_5 (graph: G; node: N; old_edges: SE)
+	frozen a_5 (graph: G; node: N; old_edges: SE)
 		require
 			edges (graph) ~ old_edges
 		do
@@ -110,7 +110,7 @@ feature
 			edges (graph) ~ old_edges
 		end
 
-	a_6 (graph: G; node_1, node_2: N; edge: E; old_edges: SE)
+	frozen a_6 (graph: G; node_1, node_2: N; edge: E; old_edges: SE)
 		require
 			({ES}).default.rel (node_1, node_2) ~ edge
 			edges (graph) ~ old_edges
@@ -121,7 +121,7 @@ feature
 			edges (graph) ~ old_edges
 		end
 
-	a_7 (node: N)
+	frozen a_7 (node: N)
 		local
 			graph: G
 			nodes_set: SN
@@ -133,7 +133,7 @@ feature
 			end
 		end
 
-	a_8 (graph: G; node_1, node_2: N; old_adjac: SN)
+	frozen a_8 (graph: G; node_1, node_2: N; old_adjac: SN)
 		require
 			adjac (graph, node_2) ~ old_adjac
 		do
@@ -142,7 +142,7 @@ feature
 			adjac (graph, node_2) ~ old_adjac
 		end
 
-	a_9 (graph: G; node_1, node_2: N; edge: E; old_adjac: SN)
+	frozen a_9 (graph: G; node_1, node_2: N; edge: E; old_adjac: SN)
 		require
 			({ES}).default.rel (node_1, node_2) ~ edge
 			adjac (graph, node_1) ~ old_adjac
@@ -153,7 +153,7 @@ feature
 			adjac (graph, node_1) ~ old_adjac
 		end
 
-	a_10 (graph: G; node_1, node_2: N; edge: E; old_adjac: SN)
+	frozen a_10 (graph: G; node_1, node_2: N; edge: E; old_adjac: SN)
 		require
 			({ES}).default.rel (node_1, node_2) ~ edge
 			adjac (graph, node_2) ~ old_adjac
@@ -164,7 +164,7 @@ feature
 			adjac (graph, node_2) ~ old_adjac
 		end
 
-	a_11 (graph: G; node_1, node_2: N; edge: E; old_adjac: SN)
+	frozen a_11 (graph: G; node_1, node_2: N; edge: E; old_adjac: SN)
 		require
 			({ES}).default.rel (node_1, node_2) ~ edge
 			adjac (graph, node_2) ~ old_adjac
@@ -175,7 +175,7 @@ feature
 			adjac (graph, node_2) ~ old_adjac
 		end
 
-	a_12 (graph: G; node_1, node_2, node_3: N; edge: E; old_adjac: SN)
+	frozen a_12 (graph: G; node_1, node_2, node_3: N; edge: E; old_adjac: SN)
 		require
 			node_3 /~ node_1
 			node_3 /~ node_2;
@@ -188,7 +188,7 @@ feature
 			adjac (graph, node_3) ~ old_adjac
 		end
 
-	a_13 (node: N)
+	frozen a_13 (node: N)
 		local
 			graph_1, graph_2: G
 		do
@@ -200,7 +200,7 @@ feature
 			end
 		end
 
-	a_14 (graph_1, graph_2: G; node: N)
+	frozen a_14 (graph_1, graph_2: G; node: N)
 		require
 			graph_1 ~ graph_2
 		do
@@ -211,7 +211,7 @@ feature
 			graph_1 ~ graph_2
 		end
 
-	a_15 (graph_1, graph_2: G; node_1, node_2: N)
+	frozen a_15 (graph_1, graph_2: G; node_1, node_2: N)
 		require
 			node_1 /~ node_2
 			graph_1 ~ graph_2
@@ -224,7 +224,7 @@ feature
 			graph_1 ~ graph_2
 		end
 
-	a_16 (graph_1, graph_2: G; node_1, node_2: N; edge: E)
+	frozen a_16 (graph_1, graph_2: G; node_1, node_2: N; edge: E)
 		require
 			({ES}).default.rel (node_1, node_2) ~ edge
 			graph_1 ~ graph_2
@@ -236,7 +236,7 @@ feature
 			graph_1 ~ graph_2
 		end
 
-	a_17 (graph_1, graph_2: G; node_1, node_2: N; edge: E)
+	frozen a_17 (graph_1, graph_2: G; node_1, node_2: N; edge: E)
 		require
 			({ES}).default.rel (node_1, node_2) ~ edge
 			graph_1 ~ graph_2
@@ -248,7 +248,7 @@ feature
 			graph_1 ~ graph_2
 		end
 
-	a_18 (graph_1, graph_2: G; node_1, node_2, node_3: N; edge: E)
+	frozen a_18 (graph_1, graph_2: G; node_1, node_2, node_3: N; edge: E)
 		require
 			node_3 /~ node_1
 			node_3 /~ node_2;
@@ -263,7 +263,7 @@ feature
 			graph_1 ~ graph_2
 		end
 
-	a_19 (edge: E)
+	frozen a_19 (edge: E)
 		local
 			graph_1, graph_2: G
 		do
@@ -275,7 +275,7 @@ feature
 			end
 		end
 
-	a_20 (graph_1, graph_2: G; node: N; edge: E)
+	frozen a_20 (graph_1, graph_2: G; node: N; edge: E)
 		require
 			graph_1 ~ graph_2
 		do
@@ -287,7 +287,7 @@ feature
 			graph_1 ~ graph_2
 		end
 
-	a_21 (graph_1, graph_2: G; edge: E)
+	frozen a_21 (graph_1, graph_2: G; edge: E)
 		require
 			graph_1 ~ graph_2
 		do
@@ -297,7 +297,7 @@ feature
 			graph_1 ~ graph_2
 		end
 
-	a_22 (graph_1, graph_2: G; edge_1, edge_2: E)
+	frozen a_22 (graph_1, graph_2: G; edge_1, edge_2: E)
 		require
 			edge_1 /~ edge_2
 			graph_1 ~ graph_2
@@ -313,7 +313,7 @@ feature
 feature
 	-- Well-definedness axioms.
 
-	empty_graph_well_defined
+	frozen empty_graph_well_defined
 		local
 			graph_1, graph_2: G
 		do
@@ -327,7 +327,7 @@ feature
 			end
 		end
 
-	add_node_well_defined (graph_1, graph_2: G; node: N)
+	frozen add_node_well_defined (graph_1, graph_2: G; node: N)
 		require
 			graph_1 ~ graph_2
 		do
@@ -337,7 +337,7 @@ feature
 			graph_1 ~ graph_2
 		end
 
-	add_edge_well_defined (graph_1, graph_2: G; edge: E)
+	frozen add_edge_well_defined (graph_1, graph_2: G; edge: E)
 		require
 			graph_1 ~ graph_2
 		do
@@ -347,7 +347,7 @@ feature
 			graph_1 ~ graph_2
 		end
 
-	nodes_well_defined (graph_1, graph_2: G)
+	frozen nodes_well_defined (graph_1, graph_2: G)
 		require
 			graph_1 ~ graph_2
 		do
@@ -355,7 +355,7 @@ feature
 			nodes (graph_1) ~ nodes (graph_2)
 		end
 
-	edges_well_defined (graph_1, graph_2: G)
+	frozen edges_well_defined (graph_1, graph_2: G)
 		require
 			graph_1 ~ graph_2
 		do
@@ -363,7 +363,7 @@ feature
 			edges (graph_1) ~ edges (graph_2)
 		end
 
-	adjac_well_defined (graph_1, graph_2: G; node: N)
+	frozen adjac_well_defined (graph_1, graph_2: G; node: N)
 		require
 			graph_1 ~ graph_2
 		do
@@ -371,7 +371,7 @@ feature
 			adjac (graph_1, node) ~ adjac (graph_2, node)
 		end
 
-	nod_out_well_defined (graph_1, graph_2: G; node: N)
+	frozen nod_out_well_defined (graph_1, graph_2: G; node: N)
 		require
 			graph_1 ~ graph_2
 		do
@@ -381,7 +381,7 @@ feature
 			graph_1 ~ graph_2
 		end
 
-	edge_out_well_defined (graph_1, graph_2: G; edge: E)
+	frozen edge_out_well_defined (graph_1, graph_2: G; edge: E)
 		require
 			graph_1 ~ graph_2
 		do

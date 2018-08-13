@@ -21,12 +21,12 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit {NONE}
+inherit
 
 	EQUALITY_ADT [S]
 
 feature
-	--	Deferred definitions.
+	-- Deferred definitions.
 
 	new: S
 			-- Define a new stack in terms of your concept.
@@ -59,9 +59,9 @@ feature
 		end
 
 feature
-	--	Abstract data type axioms.
+	-- Abstract data type axioms.
 
-	a_2 (t: T)
+	frozen a_2 (t: T)
 		note
 			EIS: "protocol=URI", "src=http://cecs.wright.edu/people/faculty/tkprasad/courses/cs784/guttag-cacm77.pdf"
 		local
@@ -73,7 +73,7 @@ feature
 			end
 		end
 
-	a_3_empty (s_1, s_2: S)
+	frozen a_3_empty (s_1, s_2: S)
 			-- Querying a stack for emptyness does not change its equivalence class.
 		require
 			s_1 ~ s_2
@@ -85,7 +85,7 @@ feature
 			s_1 ~ s_2
 		end
 
-	a_3_size (s_1, s_2: S)
+	frozen a_3_size (s_1, s_2: S)
 			--	Querying a stack for size does not change its equivalence class.
 		require
 			s_1 ~ s_2
@@ -97,7 +97,7 @@ feature
 			s_1 ~ s_2
 		end
 
-	a_3_top (s_1, s_2: S)
+	frozen a_3_top (s_1, s_2: S)
 			--	Querying a stack for top does not change its equivalence class.
 		require
 			s_1 ~ s_2
@@ -109,7 +109,7 @@ feature
 			s_1 ~ s_2
 		end
 
-	a_4_if (s: S)
+	frozen a_4_if (s: S)
 			--	A stack is empty if its' size is zero.
 		require
 			size (s) ~ 0
@@ -118,7 +118,7 @@ feature
 			empty (s)
 		end
 
-	a_4_only_if (s: S)
+	frozen a_4_only_if (s: S)
 			--	A stack is empty only if its' size is zero.
 		require
 			empty (s)
@@ -127,7 +127,7 @@ feature
 			size (s) ~ 0
 		end
 
-	a_5 (s_1, s_2: S; t: T)
+	frozen a_5 (s_1, s_2: S; t: T)
 			--	Pushing and then popping a stack does not change its' equivalence class.
 		require
 			s_1 ~ s_2
@@ -138,7 +138,7 @@ feature
 			s_1 ~ s_2
 		end
 
-	a_6 (s: S; t: T)
+	frozen a_6 (s: S; t: T)
 			--	Pushing an element on a stack makes it the top element.
 		do
 			push (s, t)
@@ -146,7 +146,7 @@ feature
 			top (s) ~ t
 		end
 
-	a_7 (s: S; t: T; old_size: INTEGER)
+	frozen a_7 (s: S; t: T; old_size: INTEGER)
 			--	Pushing a stack increases its size by 1.
 		require
 			size (s) ~ old_size
@@ -156,7 +156,7 @@ feature
 			size (s) ~ old_size + 1
 		end
 
-	a_8 (s: S; t: T; old_size: INTEGER)
+	frozen a_8 (s: S; t: T; old_size: INTEGER)
 			--	Popping a non-empty stack decreases its size by 1.
 		require
 			size (s) ~ old_size
@@ -167,7 +167,7 @@ feature
 			size (s) ~ old_size - 1
 		end
 
-	a_9 (s: S; t: T)
+	frozen a_9 (s: S; t: T)
 			--	Pushing a stack makes it non-empty.
 		do
 			push (s, t)
@@ -175,7 +175,7 @@ feature
 			not empty (s)
 		end
 
-	a_10
+	frozen a_10
 			--	A newly created stack is empty.
 		local
 			s: S
@@ -186,7 +186,7 @@ feature
 			end
 		end
 
-	a_11
+	frozen a_11
 			--	A newly created stack has zero size.
 		local
 			s: S
@@ -198,9 +198,9 @@ feature
 		end
 
 feature
-	--	Theorems.
+	-- Theorems.
 
-	theorem_1 (s: S; t: T; k, n: INTEGER)
+	frozen theorem_1 (s: S; t: T; k, n: INTEGER)
 			--	Pushing a stack k times increases its size by k.
 			--	Follow the EIS link below for details.
 		note
@@ -223,7 +223,7 @@ feature
 			size (s) ~ n + k
 		end
 
-	theorem_2 (s: S; k, n: INTEGER)
+	frozen theorem_2 (s: S; k, n: INTEGER)
 			--	Popping a stack k times decreases its size by k.
 			--	Follow the EIS link below for details.
 		note
@@ -251,7 +251,7 @@ feature
 feature
 	-- Well-definedness axioms.
 
-	new_well_defined
+	frozen new_well_defined
 		local
 			s_1, s_2: S
 		do
@@ -262,7 +262,7 @@ feature
 			end
 		end
 
-	push_well_defined (s_1, s_2: S; t: T)
+	frozen push_well_defined (s_1, s_2: S; t: T)
 		require
 			s_1 ~ s_2
 		do
@@ -272,7 +272,7 @@ feature
 			s_1 ~ s_2
 		end
 
-	pop_well_defined (s_1, s_2: S)
+	frozen pop_well_defined (s_1, s_2: S)
 		require
 			s_1 ~ s_2
 			s_1 /= s_2
@@ -285,7 +285,7 @@ feature
 			s_1 ~ s_2
 		end
 
-	top_well_defined (s_1, s_2: S)
+	frozen top_well_defined (s_1, s_2: S)
 		require
 			s_1 ~ s_2
 		do
@@ -293,7 +293,7 @@ feature
 			top (s_1) ~ top (s_2)
 		end
 
-	empty_well_defined (s_1, s_2: S)
+	frozen empty_well_defined (s_1, s_2: S)
 		require
 			s_1 ~ s_2
 		do
@@ -301,7 +301,7 @@ feature
 			empty (s_1) ~ empty (s_2)
 		end
 
-	size_well_defined (s_1, s_2: S)
+	frozen size_well_defined (s_1, s_2: S)
 		require
 			s_1 ~ s_2
 		do

@@ -15,7 +15,7 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit {NONE}
+inherit
 
 	EQUALITY_ADT [A]
 
@@ -50,7 +50,7 @@ feature
 feature
 	-- Abstract data type axioms.
 
-	a_1 (new_first, new_last: INTEGER)
+	frozen a_1 (new_first, new_last: INTEGER)
 			--	The index of the first element of a newly created array equals the
 			--	value of the first argument supplied to the creation routine.
 		local
@@ -62,7 +62,7 @@ feature
 			end
 		end
 
-	a_2 (array: A; index: INTEGER; element: E; old_first: INTEGER)
+	frozen a_2 (array: A; index: INTEGER; element: E; old_first: INTEGER)
 			--	Putting an element by index to an array does not affect
 			--	the index of the first element of the array.
 		require
@@ -73,7 +73,7 @@ feature
 			first (array) ~ old_first
 		end
 
-	a_3 (new_first, new_last: INTEGER)
+	frozen a_3 (new_first, new_last: INTEGER)
 			--	The index of the last element of a newly created array equals the
 			--	value of the second argument supplied to the creation routine.
 		local
@@ -85,7 +85,7 @@ feature
 			end
 		end
 
-	a_4 (array: A; index: INTEGER; element: E; old_last: INTEGER)
+	frozen a_4 (array: A; index: INTEGER; element: E; old_last: INTEGER)
 			--	Putting an element by index to an array does not affect
 			--	the index of the last element of the array.
 		require
@@ -96,7 +96,7 @@ feature
 			last (array) ~ old_last
 		end
 
-	a_5 (new_first, new_last: INTEGER; index: INTEGER; element: E)
+	frozen a_5 (new_first, new_last: INTEGER; index: INTEGER; element: E)
 		local
 			array: A
 		do
@@ -106,7 +106,7 @@ feature
 			end
 		end
 
-	a_6 (array: A; index_put, index_eval: INTEGER; element_1, element_2: E)
+	frozen a_6 (array: A; index_put, index_eval: INTEGER; element_1, element_2: E)
 		require
 			index_eval < first (array)
 		do
@@ -115,7 +115,7 @@ feature
 			eval (array, index_eval) /~ element_2
 		end
 
-	a_7 (array: A; index_put, index_eval: INTEGER; element_1, element_2: E)
+	frozen a_7 (array: A; index_put, index_eval: INTEGER; element_1, element_2: E)
 		require
 			index_eval > last (array)
 		do
@@ -124,7 +124,7 @@ feature
 			eval (array, index_eval) /~ element_2
 		end
 
-	a_8 (array: A; index: INTEGER; element: E)
+	frozen a_8 (array: A; index: INTEGER; element: E)
 			--	For an index from the interval between the indexes of the first and the last elements of an array,
 			--	putting an element by the index to the array makes the element available for retrieval by the index.
 		require
@@ -136,7 +136,7 @@ feature
 			eval (array, index) ~ element
 		end
 
-	a_9 (array: A; index_put: INTEGER; element: E; index_eval: INTEGER; old_element: E)
+	frozen a_9 (array: A; index_put: INTEGER; element: E; index_eval: INTEGER; old_element: E)
 			--	For an index from the interval between the indexes of the first and the last elements of an array,
 			--	putting an element by the index to the array does not affect the elements available by other indexes.
 		require
@@ -153,7 +153,7 @@ feature
 feature
 	-- Well-definedness axioms.
 
-	make_well_defined (new_first, new_last: INTEGER)
+	frozen make_well_defined (new_first, new_last: INTEGER)
 		local
 			array_1, array_2: A
 		do
@@ -167,7 +167,7 @@ feature
 			end
 		end
 
-	put_well_defined (array_1, array_2: A; index: INTEGER; element: E)
+	frozen put_well_defined (array_1, array_2: A; index: INTEGER; element: E)
 		require
 			array_1 ~ array_2
 		do
@@ -177,7 +177,7 @@ feature
 			array_1 ~ array_2
 		end
 
-	first_well_defined (array_1, array_2: A)
+	frozen first_well_defined (array_1, array_2: A)
 		require
 			array_1 ~ array_2
 		do
@@ -185,7 +185,7 @@ feature
 			first (array_1) ~ first (array_2)
 		end
 
-	last_well_defined (array_1, array_2: A)
+	frozen last_well_defined (array_1, array_2: A)
 		require
 			array_1 ~ array_2
 		do
@@ -193,7 +193,7 @@ feature
 			last (array_1) ~ last (array_2)
 		end
 
-	eval_well_defined (array_1, array_2: A; index: INTEGER)
+	frozen eval_well_defined (array_1, array_2: A; index: INTEGER)
 		require
 			array_1 ~ array_2
 		do

@@ -13,12 +13,12 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit {NONE}
+inherit
 
 	EQUALITY_ADT [S]
 
 feature
-	--	Deferred definitions.
+	-- Deferred definitions.
 
 	null: S
 		deferred
@@ -49,9 +49,9 @@ feature
 		end
 
 feature
-	--	Abstract data type axioms.
+	-- Abstract data type axioms.
 
-	a_1
+	frozen a_1
 		local
 			string: S
 		do
@@ -61,7 +61,7 @@ feature
 			end
 		end
 
-	a_2 (string: S; character: C)
+	frozen a_2 (string: S; character: C)
 		do
 			add_char (string, character)
 			check
@@ -69,7 +69,7 @@ feature
 			end
 		end
 
-	a_3
+	frozen a_3
 		local
 			string: S
 		do
@@ -79,7 +79,7 @@ feature
 			end
 		end
 
-	a_4 (string: S; character: C; old_len: INTEGER)
+	frozen a_4 (string: S; character: C; old_len: INTEGER)
 		require
 			len (string) ~ old_len
 		do
@@ -88,7 +88,7 @@ feature
 			len (string) ~ old_len + 1
 		end
 
-	a_5 (string_1, string_2: S)
+	frozen a_5 (string_1, string_2: S)
 		require
 			string_1 ~ string_2
 		local
@@ -100,7 +100,7 @@ feature
 			string_1 ~ string_2
 		end
 
-	a_6 (string_1, string_2, string_3, string_4: S; character: C)
+	frozen a_6 (string_1, string_2, string_3, string_4: S; character: C)
 		require
 			string_1 ~ string_4
 			string_2 ~ string_3
@@ -113,7 +113,7 @@ feature
 			string_2 ~ string_3
 		end
 
-	a_7 (start, finish: INTEGER)
+	frozen a_7 (start, finish: INTEGER)
 		local
 			string_1, string_2: S
 		do
@@ -124,7 +124,7 @@ feature
 			end
 		end
 
-	a_8 (string: S; start, finish: INTEGER; character: C)
+	frozen a_8 (string: S; start, finish: INTEGER; character: C)
 		require
 			finish ~ 0
 		local
@@ -137,7 +137,7 @@ feature
 			end
 		end
 
-	a_9 (string_1, string_2: S; start, finish: INTEGER; character: C)
+	frozen a_9 (string_1, string_2: S; start, finish: INTEGER; character: C)
 		require
 			finish /~ 0
 			finish ~ len (string_1) - start + 2
@@ -149,7 +149,7 @@ feature
 			string_2 ~ substr (string_1, start, finish)
 		end
 
-	a_10 (string_1, string_2: S; start, finish: INTEGER; character: C)
+	frozen a_10 (string_1, string_2: S; start, finish: INTEGER; character: C)
 		require
 			finish /~ 0
 			finish /~ len (string_1) - start + 2
@@ -160,7 +160,7 @@ feature
 			substr (string_1, start, finish) ~ substr (string_2, start, finish)
 		end
 
-	a_11 (string: S)
+	frozen a_11 (string: S)
 		local
 			null_string: S
 		do
@@ -170,7 +170,7 @@ feature
 			end
 		end
 
-	a_12 (string: S; character: C)
+	frozen a_12 (string: S; character: C)
 		local
 			null_string: S
 		do
@@ -181,7 +181,7 @@ feature
 			end
 		end
 
-	a_13 (string_1, string_2, string_3: S; character_1, character_2: C)
+	frozen a_13 (string_1, string_2, string_3: S; character_1, character_2: C)
 		require
 			string_1 ~ string_3
 		do
@@ -194,7 +194,7 @@ feature
 			index (string_1, string_2) ~ index (string_3, string_2)
 		end
 
-	a_14 (string_1, string_2, string_3, string_4: S; character_1, character_2: C)
+	frozen a_14 (string_1, string_2, string_3, string_4: S; character_1, character_2: C)
 		require
 			string_1 ~ string_3
 			string_2 ~ string_4
@@ -210,7 +210,7 @@ feature
 			index (string_1, string_2) ~ index (string_3, string_4)
 		end
 
-	a_15 (string_1, string_2, string_3: S; character_1, character_2: C)
+	frozen a_15 (string_1, string_2, string_3: S; character_1, character_2: C)
 		require
 			string_1 ~ string_3
 			character_1 /~ character_2
@@ -224,7 +224,7 @@ feature
 			index (string_1, string_2) ~ 0
 		end
 
-	a_16 (string_1, string_2, string_3: S; character_1, character_2: C)
+	frozen a_16 (string_1, string_2, string_3: S; character_1, character_2: C)
 		require
 			string_1 ~ string_3
 			index (string_1, string_2) /~ len (string_1) - len (string_2) + 1
@@ -241,7 +241,7 @@ feature
 feature
 	-- Well-definedness axioms.
 
-	null_well_defined
+	frozen null_well_defined
 		local
 			string_1, string_2: S
 		do
@@ -255,7 +255,7 @@ feature
 			end
 		end
 
-	is_null_well_defined (string_1, string_2: S)
+	frozen is_null_well_defined (string_1, string_2: S)
 		require
 			string_1 ~ string_2
 		do
@@ -263,7 +263,7 @@ feature
 			is_null (string_1) ~ is_null (string_2)
 		end
 
-	len_well_defined (string_1, string_2: S)
+	frozen len_well_defined (string_1, string_2: S)
 		require
 			string_1 ~ string_2
 		do
@@ -271,7 +271,7 @@ feature
 			len (string_1) ~ len (string_2)
 		end
 
-	add_char_well_defined (string_1, string_2: S; character: C)
+	frozen add_char_well_defined (string_1, string_2: S; character: C)
 		require
 			string_1 ~ string_2
 		do
@@ -281,7 +281,7 @@ feature
 			string_1 ~ string_2
 		end
 
-	concat_well_defined (string_1, string_2, string: S)
+	frozen concat_well_defined (string_1, string_2, string: S)
 		require
 			string_1 ~ string_2
 		do
@@ -291,7 +291,7 @@ feature
 			string_1 ~ string_2
 		end
 
-	substr_well_defined (string_1, string_2: S; start, finish: INTEGER)
+	frozen substr_well_defined (string_1, string_2: S; start, finish: INTEGER)
 		require
 			string_1 ~ string_2
 		do
@@ -299,7 +299,7 @@ feature
 			substr (string_1, start, finish) ~ substr (string_2, start, finish)
 		end
 
-	index_well_defined (string_1, string_2, string: S)
+	frozen index_well_defined (string_1, string_2, string: S)
 		require
 			string_1 ~ string_2
 		do

@@ -13,7 +13,7 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit {NONE}
+inherit
 
 	EQUALITY_ADT [B]
 
@@ -39,7 +39,7 @@ feature
 feature
 	-- Abstract data type axioms.
 
-	a_1 (element: E)
+	frozen a_1 (element: E)
 		local
 			bag: B
 		do
@@ -49,14 +49,14 @@ feature
 			end
 		end
 
-	a_2_1 (bag: B; element: E)
+	frozen a_2_1 (bag: B; element: E)
 		do
 			insert (bag, element)
 		ensure
 			member_of (bag, element)
 		end
 
-	a_2_2 (bag: B; element_1, element_2: E; old_member_of: BOOLEAN)
+	frozen a_2_2 (bag: B; element_1, element_2: E; old_member_of: BOOLEAN)
 		require
 			element_1 /~ element_2
 			member_of (bag, element_2) ~ old_member_of
@@ -66,7 +66,7 @@ feature
 			member_of (bag, element_2) ~ old_member_of
 		end
 
-	a_3 (element: E)
+	frozen a_3 (element: E)
 		local
 			bag_1, bag_2: B
 		do
@@ -78,7 +78,7 @@ feature
 			end
 		end
 
-	a_4_1 (bag_1, bag_2: B; element: E)
+	frozen a_4_1 (bag_1, bag_2: B; element: E)
 		do
 			check
 				assume: bag_1 ~ bag_2
@@ -90,7 +90,7 @@ feature
 			end
 		end
 
-	a_4_2 (bag_1, bag_2: B; element_1, element_2: E)
+	frozen a_4_2 (bag_1, bag_2: B; element_1, element_2: E)
 		require
 			bag_1 ~ bag_2
 			element_1 /~ element_2
@@ -106,7 +106,7 @@ feature
 feature
 	-- Well-definedness axioms.
 
-	empty_bag_well_defined
+	frozen empty_bag_well_defined
 		local
 			bag_1, bag_2: B
 		do
@@ -120,7 +120,7 @@ feature
 			end
 		end
 
-	insert_well_defined (bag_1, bag_2: B; element: E)
+	frozen insert_well_defined (bag_1, bag_2: B; element: E)
 		require
 			bag_1 ~ bag_2
 		do
@@ -130,7 +130,7 @@ feature
 			bag_1 ~ bag_2
 		end
 
-	delete_well_defined (bag_1, bag_2: B; element: E)
+	frozen delete_well_defined (bag_1, bag_2: B; element: E)
 		require
 			bag_1 ~ bag_2
 		do
@@ -140,7 +140,7 @@ feature
 			bag_1 ~ bag_2
 		end
 
-	member_of_well_defined (bag_1, bag_2: B; element: E)
+	frozen member_of_well_defined (bag_1, bag_2: B; element: E)
 		require
 			bag_1 ~ bag_2
 		do

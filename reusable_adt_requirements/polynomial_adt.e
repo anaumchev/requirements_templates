@@ -13,7 +13,7 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit {NONE}
+inherit
 
 	COMMUTATIVE_RING_ADT [P]
 		rename
@@ -23,7 +23,7 @@ inherit {NONE}
 	--	Polynomials form a commutative ring up to some renaming.
 
 feature
-	--	Deferred definitions.
+	-- Deferred definitions.
 
 	add_term (polynomial: P; coefficient: C; exponent: INTEGER)
 			--	ADDTERM(Polynomial,Coef,Exp) --> Polynomial
@@ -66,9 +66,9 @@ feature
 		end
 
 feature
-	--	Abstract data type axioms.
+	-- Abstract data type axioms.
 
-	a_11 (exponent: INTEGER)
+	frozen a_11 (exponent: INTEGER)
 			--	REMTERM(ZERO,f) = ZERO
 		local
 			polynomial_1, polynomial_2: P
@@ -81,7 +81,7 @@ feature
 			end
 		end
 
-	a_12 (polynomial_1, polynomial_2: P; coefficient: C; exponent: INTEGER)
+	frozen a_12 (polynomial_1, polynomial_2: P; coefficient: C; exponent: INTEGER)
 			--	REMTERM(ADDTERM(p,c,e),f) = if e=f then REMTERM(p,f) >>
 		require
 			polynomial_1 ~ polynomial_2
@@ -93,7 +93,7 @@ feature
 			polynomial_1 ~ polynomial_2
 		end
 
-	a_13 (polynomial_1, polynomial_2: P; coefficient: C; exponent_1, exponent_2: INTEGER)
+	frozen a_13 (polynomial_1, polynomial_2: P; coefficient: C; exponent_1, exponent_2: INTEGER)
 			--	>> else ADDTERM(REMTERM(p,f),c,e)
 		require
 			exponent_1 /~ exponent_2
@@ -107,7 +107,7 @@ feature
 			polynomial_1 ~ polynomial_2
 		end
 
-	a_14 (coefficient: C; exponent: INTEGER)
+	frozen a_14 (coefficient: C; exponent: INTEGER)
 			--	MULTTERM(ZERO,d,f) = ZERO
 		local
 			polynomial_1, polynomial_2: P
@@ -120,7 +120,7 @@ feature
 			end
 		end
 
-	a_15 (polynomial_1, polynomial_2: P; coefficient_1, coefficient_2: C; exponent_1, exponent_2: INTEGER)
+	frozen a_15 (polynomial_1, polynomial_2: P; coefficient_1, coefficient_2: C; exponent_1, exponent_2: INTEGER)
 			--	MULTTERM(ADDTERM(p,c,e),d,f) = ADDTERM(MULTTERM(p,d,f),c*d,e+f)
 		require
 			polynomial_1 ~ polynomial_2
@@ -133,7 +133,7 @@ feature
 			polynomial_1 ~ polynomial_2
 		end
 
-	a_16 (polynomial: P)
+	frozen a_16 (polynomial: P)
 			--	ADD(p,ZERO) = p
 		local
 			zero_p: P
@@ -144,7 +144,7 @@ feature
 			end
 		end
 
-	a_17 (p, q, s: P; d: C; f: INTEGER)
+	frozen a_17 (p, q, s: P; d: C; f: INTEGER)
 			--	ADD(p,ADDTERM(q,d,f)) = ADDTERM(ADD(p,q),d,f)
 		require
 			add (p, q) ~ s
@@ -155,7 +155,7 @@ feature
 			add (p, q) ~ s
 		end
 
-	a_18 (polynomial: P)
+	frozen a_18 (polynomial: P)
 			--	MULT(p,ZERO) = ZERO
 		local
 			zero_p: P
@@ -166,7 +166,7 @@ feature
 			end
 		end
 
-	a_19 (p_1, p_2, p_3, q_1, q_2: P; d: C; f: INTEGER)
+	frozen a_19 (p_1, p_2, p_3, q_1, q_2: P; d: C; f: INTEGER)
 			--	MULT(p,ADDTERM(q,d,f)) = ADD(MULT(p,q),MULTTERM(p,d,f))
 		require
 			p_1 ~ p_2
@@ -178,7 +178,7 @@ feature
 			mult (p_1, q_1) ~ add (mult (p_1, q_2), p_2)
 		end
 
-	a_20 (polynomial_1, polynomial_2: P)
+	frozen a_20 (polynomial_1, polynomial_2: P)
 			--	REDUCTUM(p) = REMTERM(p,DEGREE(p))
 		require
 			polynomial_1 ~ polynomial_2
@@ -189,7 +189,7 @@ feature
 			polynomial_1 ~ polynomial_2
 		end
 
-	a_21
+	frozen a_21
 			--	ISZERO(ZERO) = true
 		local
 			polynomial: P
@@ -200,7 +200,7 @@ feature
 			end
 		end
 
-	a_22 (polynomial_1, polynomial_2: P; coefficient: C; exponent: INTEGER)
+	frozen a_22 (polynomial_1, polynomial_2: P; coefficient: C; exponent: INTEGER)
 			--	ISZERO(ADDTERM(p,c,e)) = if COEF(p,e)=-c then ISZERO(REMTERM(p,e)) >>
 		require
 			coef (polynomial_1, exponent) ~ ({CS}).default.additive_inverse (coefficient)
@@ -212,7 +212,7 @@ feature
 			is_zero (polynomial_1) ~ is_zero (polynomial_2)
 		end
 
-	a_23 (polynomial: P; coefficient: C; exponent: INTEGER)
+	frozen a_23 (polynomial: P; coefficient: C; exponent: INTEGER)
 			--	>> else false
 		require
 			coef (polynomial, exponent) /~ ({CS}).default.additive_inverse (coefficient)
@@ -222,7 +222,7 @@ feature
 			not is_zero (polynomial)
 		end
 
-	a_24 (exponent: INTEGER)
+	frozen a_24 (exponent: INTEGER)
 			--	COEF(ZERO,e) = 0
 		local
 			polynomial: P
@@ -233,7 +233,7 @@ feature
 			end
 		end
 
-	a_25 (polynomial: P; coefficient: C; exponent: INTEGER; old_coefficient: C)
+	frozen a_25 (polynomial: P; coefficient: C; exponent: INTEGER; old_coefficient: C)
 			--	COEF(ADDTERM(p,c,e),f ) = if e=f then c+COEF(p,f) >>
 		require
 			coef (polynomial, exponent) ~ old_coefficient
@@ -243,7 +243,7 @@ feature
 			coef (polynomial, exponent) ~ ({CS}).default.sum (coefficient, old_coefficient)
 		end
 
-	a_26 (polynomial: P; coefficient: C; exponent_1, exponent_2: INTEGER; old_coefficient: C)
+	frozen a_26 (polynomial: P; coefficient: C; exponent_1, exponent_2: INTEGER; old_coefficient: C)
 			--	>> else COEF(p,f)
 		require
 			coef (polynomial, exponent_2) ~ old_coefficient
@@ -253,7 +253,7 @@ feature
 			coef (polynomial, exponent_2) ~ old_coefficient
 		end
 
-	a_27
+	frozen a_27
 			--	DEGREE(ZERO) = 0
 		local
 			polynomial: P
@@ -264,7 +264,7 @@ feature
 			end
 		end
 
-	a_28 (polynomial: P; coefficient: C; exponent: INTEGER)
+	frozen a_28 (polynomial: P; coefficient: C; exponent: INTEGER)
 			--	DEGREE(ADDTERM(p,c,e)) = if e > DEGREE(p) then e >>
 		require
 			exponent > degree (polynomial)
@@ -274,7 +274,7 @@ feature
 			degree (polynomial) ~ exponent
 		end
 
-	a_29 (polynomial: P; coefficient: C; exponent: INTEGER; old_degree: INTEGER)
+	frozen a_29 (polynomial: P; coefficient: C; exponent: INTEGER; old_degree: INTEGER)
 			--	>> else if e < DEGREE(p) then DEGREE(p) >>
 		require
 			exponent < degree (polynomial)
@@ -285,7 +285,7 @@ feature
 			degree (polynomial) ~ old_degree
 		end
 
-	a_30 (polynomial_1, polynomial_2: P; coefficient: C; exponent: INTEGER; old_degree: INTEGER)
+	frozen a_30 (polynomial_1, polynomial_2: P; coefficient: C; exponent: INTEGER; old_degree: INTEGER)
 			--	>> else if COEF(p,e) = -c then DEGREE(REDUCTUM(p))  >>
 		require
 			exponent = degree (polynomial_1)
@@ -298,7 +298,7 @@ feature
 			degree (polynomial_1) ~ degree (polynomial_2)
 		end
 
-	a_31 (polynomial: P; coefficient: C; exponent: INTEGER; old_degree: INTEGER)
+	frozen a_31 (polynomial: P; coefficient: C; exponent: INTEGER; old_degree: INTEGER)
 			--	>> else DEGREE(p)
 		require
 			exponent = degree (polynomial)
@@ -310,7 +310,7 @@ feature
 			degree (polynomial) ~ old_degree
 		end
 
-	a_32 (polynomial: P)
+	frozen a_32 (polynomial: P)
 			--	LDCF(p) = COEF(p,DEGREE(p))
 		do
 		ensure
@@ -320,7 +320,7 @@ feature
 feature
 	-- Well-definedness axioms.
 
-	add_term_well_defined (polynomial_1, polynomial_2: P; coefficient: C; exponent: INTEGER)
+	frozen add_term_well_defined (polynomial_1, polynomial_2: P; coefficient: C; exponent: INTEGER)
 		require
 			polynomial_1 ~ polynomial_2
 		do
@@ -330,7 +330,7 @@ feature
 			polynomial_1 ~ polynomial_2
 		end
 
-	rem_term_well_defined (polynomial_1, polynomial_2: P; exponent: INTEGER)
+	frozen rem_term_well_defined (polynomial_1, polynomial_2: P; exponent: INTEGER)
 		require
 			polynomial_1 ~ polynomial_2
 		do
@@ -340,7 +340,7 @@ feature
 			polynomial_1 ~ polynomial_2
 		end
 
-	mult_term_well_defined (polynomial_1, polynomial_2: P; coefficient: C; exponent: INTEGER)
+	frozen mult_term_well_defined (polynomial_1, polynomial_2: P; coefficient: C; exponent: INTEGER)
 		require
 			polynomial_1 ~ polynomial_2
 		do
@@ -350,7 +350,7 @@ feature
 			polynomial_1 ~ polynomial_2
 		end
 
-	reductum_well_defined (polynomial_1, polynomial_2: P)
+	frozen reductum_well_defined (polynomial_1, polynomial_2: P)
 		require
 			polynomial_1 ~ polynomial_2
 		do
@@ -360,7 +360,7 @@ feature
 			polynomial_1 ~ polynomial_2
 		end
 
-	is_zero_well_defined (polynomial_1, polynomial_2: P)
+	frozen is_zero_well_defined (polynomial_1, polynomial_2: P)
 		require
 			polynomial_1 ~ polynomial_2
 		do
@@ -368,7 +368,7 @@ feature
 			is_zero (polynomial_1) ~ is_zero (polynomial_2)
 		end
 
-	coef_well_defined (polynomial_1, polynomial_2: P; exponent: INTEGER)
+	frozen coef_well_defined (polynomial_1, polynomial_2: P; exponent: INTEGER)
 		require
 			polynomial_1 ~ polynomial_2
 		do
@@ -376,7 +376,7 @@ feature
 			coef (polynomial_1, exponent) ~ coef (polynomial_2, exponent)
 		end
 
-	degree_well_defined (polynomial_1, polynomial_2: P)
+	frozen degree_well_defined (polynomial_1, polynomial_2: P)
 		require
 			polynomial_1 ~ polynomial_2
 		do
@@ -384,7 +384,7 @@ feature
 			degree (polynomial_1) ~ degree (polynomial_2)
 		end
 
-	ldcf_well_defined (polynomial_1, polynomial_2: P)
+	frozen ldcf_well_defined (polynomial_1, polynomial_2: P)
 		require
 			polynomial_1 ~ polynomial_2
 		do

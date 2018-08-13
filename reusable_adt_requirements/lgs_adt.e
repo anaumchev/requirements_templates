@@ -15,7 +15,7 @@ deferred class
 	--	Test or model check the resulting class.
 
 feature
-	--	Deferred definitions: handle state range.
+	-- Deferred definitions: handle state range.
 
 	up_position (lgs: L): INTEGER
 		deferred
@@ -26,7 +26,7 @@ feature
 		end
 
 feature
-	--	Deferred definitions: door state range.
+	-- Deferred definitions: door state range.
 
 	closed_position (lgs: L): INTEGER
 		deferred
@@ -45,7 +45,7 @@ feature
 		end
 
 feature
-	--	Deferred definitions: gear state range.
+	-- Deferred definitions: gear state range.
 
 	retracting_state (lgs: L): INTEGER
 		deferred
@@ -64,7 +64,7 @@ feature
 		end
 
 feature
-	--	Deferred definitions: state space.
+	-- Deferred definitions: state space.
 
 	handle_status (lgs: L): INTEGER
 		deferred
@@ -79,7 +79,7 @@ feature
 		end
 
 feature
-	--	Deferred definitions: constants for timing constraints.
+	-- Deferred definitions: constants for timing constraints.
 
 	door_open_to_closed (lgs: L): INTEGER
 		deferred
@@ -106,7 +106,7 @@ feature
 		end
 
 feature
-	--	Deferred definitions: control procedure
+	-- Deferred definitions: control procedure
 
 	main (lgs: L)
 		deferred
@@ -115,7 +115,7 @@ feature
 feature {NONE}
 	-- Temporal assumptions.
 
-	run_with_handle_down (lgs: L)
+	frozen run_with_handle_down (lgs: L)
 		do
 			check
 				assume: handle_status (lgs) = down_position (lgs)
@@ -123,7 +123,7 @@ feature {NONE}
 			from_retracted_to_extended (lgs)
 		end
 
-	run_with_handle_up (lgs: L)
+	frozen run_with_handle_up (lgs: L)
 		do
 			check
 				assume: handle_status (lgs) = up_position (lgs)
@@ -131,7 +131,7 @@ feature {NONE}
 			from_retracted_to_extended (lgs)
 		end
 
-	run_in_normal_mode (lgs: L)
+	frozen run_in_normal_mode (lgs: L)
 		do
 				-- the handle status range:
 			check
@@ -167,7 +167,7 @@ feature {NONE}
 		-- Assume it takes ``door_open_to_closed'' time units
 		-- to take the door
 
-	from_open_to_closed (lgs: L)
+	frozen from_open_to_closed (lgs: L)
 			-- position:
 			-- consider
 		local
@@ -188,7 +188,7 @@ feature {NONE}
 		-- Assume it takes ``door_closed_to_open'' time units
 		-- to take the door
 
-	from_closed_to_open (lgs: L)
+	frozen from_closed_to_open (lgs: L)
 			-- position:
 			-- consider
 		local
@@ -208,7 +208,7 @@ feature {NONE}
 		-- Assume it takes ``gear_extended_to_retracted'' time units
 		-- to take the gear
 
-	from_extended_to_retracted (lgs: L)
+	frozen from_extended_to_retracted (lgs: L)
 			-- position:
 			-- consider
 		local
@@ -229,7 +229,7 @@ feature {NONE}
 		-- Assume it takes ``gear_retracted_to_extended'' time units
 		-- to take the gear
 
-	from_retracted_to_extended (lgs: L)
+	frozen from_retracted_to_extended (lgs: L)
 			-- position:
 			-- consider
 		local
@@ -252,7 +252,7 @@ feature
 
 		-- Require the system to
 
-	never_retract_with_handle_down (lgs: L)
+	frozen never_retract_with_handle_down (lgs: L)
 		do
 			run_with_handle_down (lgs)
 			check
@@ -262,7 +262,7 @@ feature
 
 		-- Require the system to
 
-	never_extend_with_handle_up (lgs: L)
+	frozen never_extend_with_handle_up (lgs: L)
 		do
 			run_with_handle_up (lgs)
 			check
@@ -272,7 +272,7 @@ feature
 
 		-- Require the system to have the following
 
-	stable_state_with_handle_down (lgs: L)
+	frozen stable_state_with_handle_down (lgs: L)
 		do
 			check
 				assume: gear_status (lgs) = extended_position (lgs)
@@ -291,7 +291,7 @@ feature
 
 		-- Require the system to have the following
 
-	stable_state_with_handle_up (lgs: L)
+	frozen stable_state_with_handle_up (lgs: L)
 		do
 			check
 				assume: gear_status (lgs) = retracted_position (lgs)
@@ -313,7 +313,7 @@ feature
 
 		-- Require that
 
-	extension_duration (lgs: L)
+	frozen extension_duration (lgs: L)
 			-- never takes more than
 			-- ``max_extension_time'' time units:
 		local
@@ -337,7 +337,7 @@ feature
 
 		-- Require that
 
-	retraction_duration (lgs: L)
+	frozen retraction_duration (lgs: L)
 			-- never takes more than
 			-- ``max_retraction_time'' time units:
 		local

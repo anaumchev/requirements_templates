@@ -16,7 +16,7 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit {NONE}
+inherit
 
 	EQUALITY_ADT [A]
 
@@ -38,7 +38,7 @@ feature
 feature
 	-- Abstract data type axioms.
 
-	a_1 (domain: D; range: R)
+	frozen a_1 (domain: D; range: R)
 		local
 			array: A
 		do
@@ -48,14 +48,14 @@ feature
 			end
 		end
 
-	a_2 (array: A; domain: D; range: R)
+	frozen a_2 (array: A; domain: D; range: R)
 		do
 			set (array, domain, range)
 		ensure
 			access (array, domain) ~ range
 		end
 
-	a_3 (array: A; domain_1, domain_2: D; range, old_access: R)
+	frozen a_3 (array: A; domain_1, domain_2: D; range, old_access: R)
 		require
 			domain_1 /~ domain_2
 			access (array, domain_2) ~ old_access
@@ -68,7 +68,7 @@ feature
 feature
 	-- Well-definedness axioms.
 
-	new_array_well_defined
+	frozen new_array_well_defined
 		local
 			array_1, array_2: A
 		do
@@ -82,7 +82,7 @@ feature
 			end
 		end
 
-	set_well_defined (array_1, array_2: A; domain: D; range: R)
+	frozen set_well_defined (array_1, array_2: A; domain: D; range: R)
 		require
 			array_1 ~ array_2
 		do
@@ -92,7 +92,7 @@ feature
 			array_1 ~ array_2
 		end
 
-	access_well_defined (array_1, array_2: A; domain: D)
+	frozen access_well_defined (array_1, array_2: A; domain: D)
 		require
 			array_1 ~ array_2
 		do

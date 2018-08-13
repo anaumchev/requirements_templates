@@ -6,28 +6,28 @@ note
 	email: "anaumchev@gmail.com"
 
 deferred class
-	B_TREE_WITH_INORD [B, I, Q, QS -> QUEUE_WITH_APPEND [Q, I]]
+	BINARY_TREE_WITH_INORD_ADT [B, I, Q, QS -> QUEUE_WITH_APPEND_ADT [Q, I]]
 	--	Binary trees ``B'' contain ``I'' objects and may be represented as queues conforming to the ``QUEUE_WITH_APPEND'' specification.
 	--	To apply this template to your concept,
 	--	inherit from this class with your concepts for ``B'', ``I'', ``Q'', and ``QS''.
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit {NONE}
+inherit
 
-	B_TREE [B, I]
+	BINARY_TREE_ADT [B, I]
 
 feature
-	--	Deferred definitions.
+	-- Deferred definitions.
 
 	in_ord (b_tree: B): Q
 		deferred
 		end
 
 feature
-	--	Abstract data type axioms.
+	-- Abstract data type axioms.
 
-	a_11
+	frozen a_11
 		local
 			b_tree: B
 		do
@@ -37,7 +37,7 @@ feature
 			end
 		end
 
-	a_12 (b_tree_left: B; item: I; b_tree_right: B; q_left, q_right: Q)
+	frozen a_12 (b_tree_left: B; item: I; b_tree_right: B; q_left, q_right: Q)
 		require
 			in_ord (b_tree_left) ~ q_left
 			in_ord (b_tree_right) ~ q_right
@@ -55,7 +55,7 @@ feature
 feature
 	-- Well-definedness axioms.
 
-	in_ord_well_defined (b_tree_1, b_tree_2: B)
+	frozen in_ord_well_defined (b_tree_1, b_tree_2: B)
 		require
 			b_tree_1 ~ b_tree_2
 		do

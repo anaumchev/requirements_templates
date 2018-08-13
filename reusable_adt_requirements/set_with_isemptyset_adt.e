@@ -13,7 +13,7 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit {NONE}
+inherit
 
 	EQUALITY_ADT [S]
 
@@ -43,7 +43,7 @@ feature
 feature
 	-- Abstract data type axioms.
 
-	a_1
+	frozen a_1
 		local
 			set: S
 		do
@@ -53,14 +53,14 @@ feature
 			end
 		end
 
-	a_2 (set: S; item: I)
+	frozen a_2 (set: S; item: I)
 		do
 			insert (set, item)
 		ensure
 			not is_empty_set (set)
 		end
 
-	a_3 (item: I)
+	frozen a_3 (item: I)
 		local
 			set: S
 		do
@@ -70,14 +70,14 @@ feature
 			end
 		end
 
-	a_4 (set: S; item: I)
+	frozen a_4 (set: S; item: I)
 		do
 			insert (set, item)
 		ensure
 			has (set, item)
 		end
 
-	a_5 (set: S; item_1, item_2: I; old_has: BOOLEAN)
+	frozen a_5 (set: S; item_1, item_2: I; old_has: BOOLEAN)
 		require
 			item_1 /~ item_2
 			has (set, item_2) ~ old_has
@@ -87,7 +87,7 @@ feature
 			has (set, item_2) ~ old_has
 		end
 
-	a_6 (set: S; item: I)
+	frozen a_6 (set: S; item: I)
 		local
 			e_set: S
 		do
@@ -98,7 +98,7 @@ feature
 			end
 		end
 
-	a_7 (set_1, set_2: S; item: I)
+	frozen a_7 (set_1, set_2: S; item: I)
 		require
 			set_1 ~ set_2
 		do
@@ -109,7 +109,7 @@ feature
 			set_1 ~ set_2
 		end
 
-	a_8 (set_1, set_2: S; item_1, item_2: I)
+	frozen a_8 (set_1, set_2: S; item_1, item_2: I)
 		require
 			item_1 /~ item_2
 			set_1 ~ set_2
@@ -125,7 +125,7 @@ feature
 feature
 	-- Well-definedness axioms.
 
-	empty_set_well_defined
+	frozen empty_set_well_defined
 		local
 			set_1, set_2: S
 		do
@@ -139,7 +139,7 @@ feature
 			end
 		end
 
-	is_empty_set_well_defined (set_1, set_2: S)
+	frozen is_empty_set_well_defined (set_1, set_2: S)
 		require
 			set_1 ~ set_2
 		do
@@ -147,7 +147,7 @@ feature
 			is_empty_set (set_1) ~ is_empty_set (set_2)
 		end
 
-	insert_well_defined (set_1, set_2: S; item: I)
+	frozen insert_well_defined (set_1, set_2: S; item: I)
 		require
 			set_1 ~ set_2
 		do
@@ -157,7 +157,7 @@ feature
 			set_1 ~ set_2
 		end
 
-	del_set_well_defined (set_1, set_2: S; item: I)
+	frozen del_set_well_defined (set_1, set_2: S; item: I)
 		require
 			set_1 ~ set_2
 		do
@@ -167,7 +167,7 @@ feature
 			set_1 ~ set_2
 		end
 
-	has_well_defined (set_1, set_2: S; item: I)
+	frozen has_well_defined (set_1, set_2: S; item: I)
 		require
 			set_1 ~ set_2
 		do

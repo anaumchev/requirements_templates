@@ -13,13 +13,12 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit {NONE}
+inherit
 
 	EQUALITY_ADT [L]
 
 feature
-	--	Deferred definitions.
-
+	-- Deferred definitions.
 
 	nil: L
 		deferred
@@ -38,17 +37,16 @@ feature
 		end
 
 feature
-	--	Abstract data type axioms.
+	-- Abstract data type axioms.
 
-
-	a_1 (l: L; e: E)
+	frozen a_1 (l: L; e: E)
 		do
 			cons (l, e)
 		ensure
 			first (l) ~ e
 		end
 
-	a_2 (l: L; e: E; old_l: L)
+	frozen a_2 (l: L; e: E; old_l: L)
 		require
 			l ~ old_l
 		do
@@ -58,8 +56,9 @@ feature
 		end
 
 feature
+	-- Well-definedness axioms.
 
-	nil_well_defined
+	frozen nil_well_defined
 		local
 			list_1, list_2: L
 		do
@@ -73,7 +72,7 @@ feature
 			end
 		end
 
-	cons_well_defined (list_1, list_2: L; element: E)
+	frozen cons_well_defined (list_1, list_2: L; element: E)
 		require
 			list_1 ~ list_2
 		do
@@ -83,7 +82,7 @@ feature
 			list_1 ~ list_2
 		end
 
-	first_well_defined (list_1, list_2: L)
+	frozen first_well_defined (list_1, list_2: L)
 		require
 			list_1 ~ list_2
 		do
@@ -91,7 +90,7 @@ feature
 			first (list_1) ~ first (list_2)
 		end
 
-	rest_well_defined (list_1, list_2: L)
+	frozen rest_well_defined (list_1, list_2: L)
 		require
 			list_1 ~ list_2
 		do

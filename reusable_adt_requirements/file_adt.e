@@ -13,12 +13,12 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit {NONE}
+inherit
 
 	EQUALITY_ADT [F]
 
 feature
-	--	Deferred definitions.
+	-- Deferred definitions.
 
 	empty_file: F
 		deferred
@@ -45,9 +45,9 @@ feature
 		end
 
 feature
-	--	Abstract data type axioms.
+	-- Abstract data type axioms.
 
-	a_1 (gap: INTEGER)
+	frozen a_1 (gap: INTEGER)
 		local
 			file_1, file_2: F
 		do
@@ -59,7 +59,7 @@ feature
 			end
 		end
 
-	a_2 (file_1, file_2: F; gap_1, gap_2: INTEGER)
+	frozen a_2 (file_1, file_2: F; gap_1, gap_2: INTEGER)
 		require
 			file_1 ~ file_2
 		do
@@ -70,7 +70,7 @@ feature
 			file_1 ~ file_2
 		end
 
-	a_3
+	frozen a_3
 		local
 			file_1, file_2: F
 		do
@@ -82,7 +82,7 @@ feature
 			end
 		end
 
-	a_4 (file_1, file_2: F; record: R)
+	frozen a_4 (file_1, file_2: F; record: R)
 		require
 			file_1 ~ file_2
 		do
@@ -94,7 +94,7 @@ feature
 			file_1 ~ file_2
 		end
 
-	a_5 (file_1, file_2: F; record: R; gap: INTEGER)
+	frozen a_5 (file_1, file_2: F; record: R; gap: INTEGER)
 		require
 			file_1 ~ file_2
 		do
@@ -107,7 +107,7 @@ feature
 			file_1 ~ file_2
 		end
 
-	a_6
+	frozen a_6
 		local
 			file: F
 		do
@@ -117,14 +117,14 @@ feature
 			end
 		end
 
-	a_7 (file: F; record: R)
+	frozen a_7 (file: F; record: R)
 		do
 			write (file, record)
 		ensure
 			is_eof (file)
 		end
 
-	a_8 (file: F; record: R)
+	frozen a_8 (file: F; record: R)
 		do
 			write (file, record)
 			skip (file, 0)
@@ -132,7 +132,7 @@ feature
 			not is_eof (file)
 		end
 
-	a_9 (file_1, file_2: F; record: R; gap: INTEGER)
+	frozen a_9 (file_1, file_2: F; record: R; gap: INTEGER)
 		require
 			gap /~ 0
 			file_1 ~ file_2
@@ -144,7 +144,7 @@ feature
 			file_1 ~ file_2
 		end
 
-	a_10 (file_1, file_2: F; record: R; gap: INTEGER)
+	frozen a_10 (file_1, file_2: F; record: R; gap: INTEGER)
 		require
 			file_1 ~ file_2
 		do
@@ -158,7 +158,7 @@ feature
 			read (file_1) ~ record
 		end
 
-	a_11 (file_1, file_2: F; record: R; gap: INTEGER)
+	frozen a_11 (file_1, file_2: F; record: R; gap: INTEGER)
 		require
 			file_1 ~ file_2
 		do
@@ -172,7 +172,7 @@ feature
 			read (file_1) ~ read (file_2)
 		end
 
-	a_12 (file_1, file_2, file_3: F; record_1, record_2: R; gap: INTEGER)
+	frozen a_12 (file_1, file_2, file_3: F; record_1, record_2: R; gap: INTEGER)
 		require
 			file_1 ~ file_2
 			file_2 ~ file_3
@@ -189,7 +189,7 @@ feature
 			file_1 ~ file_3
 		end
 
-	a_13 (file_1, file_2: F; record_1, record_2: R; gap: INTEGER)
+	frozen a_13 (file_1, file_2: F; record_1, record_2: R; gap: INTEGER)
 		require
 			file_1 ~ file_2
 		do
@@ -208,7 +208,7 @@ feature
 feature
 	-- Well-definedness axioms.
 
-	empty_file_well_defined
+	frozen empty_file_well_defined
 		local
 			file_1, file_2: F
 		do
@@ -222,7 +222,7 @@ feature
 			end
 		end
 
-	write_well_defined (file_1, file_2: F; record: R)
+	frozen write_well_defined (file_1, file_2: F; record: R)
 		require
 			file_1 ~ file_2
 		do
@@ -232,7 +232,7 @@ feature
 			file_1 ~ file_2
 		end
 
-	skip_well_defined (file_1, file_2: F; gap: INTEGER)
+	frozen skip_well_defined (file_1, file_2: F; gap: INTEGER)
 		require
 			file_1 ~ file_2
 		do
@@ -242,7 +242,7 @@ feature
 			file_1 ~ file_2
 		end
 
-	reset_well_defined (file_1, file_2: F)
+	frozen reset_well_defined (file_1, file_2: F)
 		require
 			file_1 ~ file_2
 		do
@@ -252,7 +252,7 @@ feature
 			file_1 ~ file_2
 		end
 
-	is_eof_well_defined (file_1, file_2: F): BOOLEAN
+	frozen is_eof_well_defined (file_1, file_2: F): BOOLEAN
 		require
 			file_1 ~ file_2
 		do
@@ -260,7 +260,7 @@ feature
 			is_eof (file_1) ~ is_eof (file_2)
 		end
 
-	read_well_defined (file_1, file_2: F)
+	frozen read_well_defined (file_1, file_2: F)
 		require
 			file_1 ~ file_2
 		do

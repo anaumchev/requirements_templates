@@ -15,7 +15,7 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit {NONE}
+inherit
 
 	EQUALITY_ADT [E]
 
@@ -53,7 +53,7 @@ feature
 feature
 	-- Abstract data type axioms.
 
-	a_1 (id: I; key: D)
+	frozen a_1 (id: I; key: D)
 		local
 			env: E
 		do
@@ -63,21 +63,21 @@ feature
 			end
 		end
 
-	a_2 (env: E; id: I; key: D)
+	frozen a_2 (env: E; id: I; key: D)
 		do
 			new_scope (env)
 		ensure
 			key_in_scope (env, id) /~ key
 		end
 
-	a_3_1 (env: E; id: I; key: D)
+	frozen a_3_1 (env: E; id: I; key: D)
 		do
 			add (env, id, key)
 		ensure
 			key_in_scope (env, id) ~ key
 		end
 
-	a_3_2 (env: E; id_1, id_2: I; key, old_key_in_scope: D)
+	frozen a_3_2 (env: E; id_1, id_2: I; key, old_key_in_scope: D)
 		require
 			id_1 /~ id_2
 			key_in_scope (env, id_2) ~ old_key_in_scope
@@ -87,7 +87,7 @@ feature
 			key_in_scope (env, id_2) ~ old_key_in_scope
 		end
 
-	a_4 (id: I; key: D)
+	frozen a_4 (id: I; key: D)
 		local
 			env: E
 		do
@@ -97,7 +97,7 @@ feature
 			end
 		end
 
-	a_5 (env: E; id: I; old_key_in_env: D)
+	frozen a_5 (env: E; id: I; old_key_in_env: D)
 		require
 			key_in_env (env, id) ~ old_key_in_env
 		do
@@ -106,14 +106,14 @@ feature
 			key_in_env (env, id) ~ old_key_in_env
 		end
 
-	a_6_1 (env: E; id: I; key: D)
+	frozen a_6_1 (env: E; id: I; key: D)
 		do
 			add (env, id, key)
 		ensure
 			key_in_env (env, id) ~ key
 		end
 
-	a_6_2 (env: E; id_1, id_2: I; key, old_key_in_env: D)
+	frozen a_6_2 (env: E; id_1, id_2: I; key, old_key_in_env: D)
 		require
 			id_1 /~ id_2
 			key_in_env (env, id_2) ~ old_key_in_env
@@ -126,7 +126,7 @@ feature
 feature
 	-- Well-definedness axioms.
 
-	new_env_well_defined
+	frozen new_env_well_defined
 		local
 			env_1, env_2: E
 		do
@@ -140,7 +140,7 @@ feature
 			end
 		end
 
-	new_scope_well_defined (env_1, env_2: E)
+	frozen new_scope_well_defined (env_1, env_2: E)
 		require
 			env_1 ~ env_2
 		do
@@ -150,7 +150,7 @@ feature
 			env_1 ~ env_2
 		end
 
-	add_well_defined (env_1, env_2: E; id: I; key: D)
+	frozen add_well_defined (env_1, env_2: E; id: I; key: D)
 		require
 			env_1 ~ env_2
 		do
@@ -160,7 +160,7 @@ feature
 			env_1 ~ env_2
 		end
 
-	key_in_scope_well_defined (env_1, env_2: E; id: I)
+	frozen key_in_scope_well_defined (env_1, env_2: E; id: I)
 		require
 			env_1 ~ env_2
 		do
@@ -168,7 +168,7 @@ feature
 			key_in_scope (env_1, id) ~ key_in_scope (env_2, id)
 		end
 
-	key_in_env_well_defined (env_1, env_2: E; id: I)
+	frozen key_in_env_well_defined (env_1, env_2: E; id: I)
 		require
 			env_1 ~ env_2
 		do

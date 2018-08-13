@@ -50,7 +50,7 @@ feature
 feature
 	-- Abstract data type axioms.
 
-	a_1 (d: D)
+	frozen a_1 (d: D)
 		require
 			is_open (d)
 			is_unlocked (d)
@@ -61,7 +61,7 @@ feature
 			is_unlocked (d)
 		end
 
-	a_2 (d: D)
+	frozen a_2 (d: D)
 		require
 			is_open (d)
 			is_unlocked (d)
@@ -72,7 +72,7 @@ feature
 			is_locked (d)
 		end
 
-	a_3 (d: D)
+	frozen a_3 (d: D)
 		require
 			is_open (d)
 			is_unlocked (d)
@@ -83,7 +83,7 @@ feature
 			is_unlocked (d)
 		end
 
-	a_4 (d: D)
+	frozen a_4 (d: D)
 		require
 			is_open (d)
 			is_locked (d)
@@ -94,7 +94,7 @@ feature
 			is_unlocked (d)
 		end
 
-	a_5 (d: D)
+	frozen a_5 (d: D)
 		require
 			is_open (d)
 			is_locked (d)
@@ -105,7 +105,7 @@ feature
 			is_locked (d)
 		end
 
-	a_6 (d: D)
+	frozen a_6 (d: D)
 		require
 			is_open (d)
 			is_locked (d)
@@ -116,7 +116,7 @@ feature
 			is_locked (d)
 		end
 
-	a_7 (d: D)
+	frozen a_7 (d: D)
 		require
 			is_closed (d)
 			is_locked (d)
@@ -127,7 +127,7 @@ feature
 			is_locked (d)
 		end
 
-	a_8 (d: D)
+	frozen a_8 (d: D)
 		require
 			is_closed (d)
 			is_locked (d)
@@ -138,7 +138,7 @@ feature
 			is_unlocked (d)
 		end
 
-	a_9 (d: D)
+	frozen a_9 (d: D)
 		require
 			is_closed (d)
 			is_unlocked (d)
@@ -149,7 +149,7 @@ feature
 			is_unlocked (d)
 		end
 
-	a_10 (d: D)
+	frozen a_10 (d: D)
 		require
 			is_closed (d)
 			is_unlocked (d)
@@ -160,7 +160,7 @@ feature
 			is_locked (d)
 		end
 
-	a_11 (d: D)
+	frozen a_11 (d: D)
 		require
 			is_closed (d)
 			is_unlocked (d)

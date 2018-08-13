@@ -6,19 +6,19 @@ note
 	email: "anaumchev@gmail.com"
 
 deferred class
-	B_TREE [B, I]
+	BINARY_TREE_ADT [B, I]
 	--	Binary trees ``B'' contain ``I'' objects.
 	--	To apply this template to your concept,
 	--	inherit from this class with your concepts for ``B'' and ``I''.
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit {NONE}
+inherit
 
 	EQUALITY_ADT [B]
 
 feature
-	--	Deferred definitions.
+	-- Deferred definitions.
 
 	empty_tree: B
 		deferred
@@ -49,9 +49,9 @@ feature
 		end
 
 feature
-	--	Abstract data type axioms.
+	-- Abstract data type axioms.
 
-	a_1
+	frozen a_1
 		local
 			b_tree: B
 		do
@@ -61,7 +61,7 @@ feature
 			end
 		end
 
-	a_2 (b_tree_left: B; item: I; b_tree_right: B)
+	frozen a_2 (b_tree_left: B; item: I; b_tree_right: B)
 		local
 			b_tree: B
 		do
@@ -71,7 +71,7 @@ feature
 			end
 		end
 
-	a_3
+	frozen a_3
 		local
 			b_tree_1, b_tree_2: B
 		do
@@ -82,7 +82,7 @@ feature
 			end
 		end
 
-	a_4 (b_tree_left: B; item: I; b_tree_right: B)
+	frozen a_4 (b_tree_left: B; item: I; b_tree_right: B)
 		local
 			b_tree: B
 		do
@@ -92,7 +92,7 @@ feature
 			end
 		end
 
-	a_5 (item: I)
+	frozen a_5 (item: I)
 		local
 			b_tree: B
 		do
@@ -102,7 +102,7 @@ feature
 			end
 		end
 
-	a_6 (b_tree_left: B; item: I; b_tree_right: B)
+	frozen a_6 (b_tree_left: B; item: I; b_tree_right: B)
 		local
 			b_tree: B
 		do
@@ -112,7 +112,7 @@ feature
 			end
 		end
 
-	a_7
+	frozen a_7
 		local
 			b_tree_1, b_tree_2: B
 		do
@@ -123,7 +123,7 @@ feature
 			end
 		end
 
-	a_8 (b_tree_left: B; item: I; b_tree_right: B)
+	frozen a_8 (b_tree_left: B; item: I; b_tree_right: B)
 		local
 			b_tree: B
 		do
@@ -133,7 +133,7 @@ feature
 			end
 		end
 
-	a_9 (item: I)
+	frozen a_9 (item: I)
 		local
 			b_tree: B
 		do
@@ -143,7 +143,7 @@ feature
 			end
 		end
 
-	a_10 (b_tree_left: B; item_1, item_2: I; b_tree_right: B)
+	frozen a_10 (b_tree_left: B; item_1, item_2: I; b_tree_right: B)
 		local
 			b_tree: B
 		do
@@ -156,7 +156,7 @@ feature
 feature
 	-- Well-definedness axioms.
 
-	empty_tree_well_defined
+	frozen empty_tree_well_defined
 		local
 			b_tree_1, b_tree_2: B
 		do
@@ -170,7 +170,7 @@ feature
 			end
 		end
 
-	make_well_defined (b_tree_left: B; item: I; b_tree_right: B)
+	frozen make_well_defined (b_tree_left: B; item: I; b_tree_right: B)
 		local
 			b_tree_1, b_tree_2: B
 		do
@@ -184,7 +184,7 @@ feature
 			end
 		end
 
-	is_empty_tree_well_defined (b_tree_1, b_tree_2: B)
+	frozen is_empty_tree_well_defined (b_tree_1, b_tree_2: B)
 		require
 			b_tree_1 ~ b_tree_2
 		do
@@ -192,7 +192,7 @@ feature
 			is_empty_tree (b_tree_1) ~ is_empty_tree (b_tree_2)
 		end
 
-	left_well_defined (b_tree_1, b_tree_2: B)
+	frozen left_well_defined (b_tree_1, b_tree_2: B)
 		require
 			b_tree_1 ~ b_tree_2
 		do
@@ -200,7 +200,7 @@ feature
 			left (b_tree_1) ~ left (b_tree_2)
 		end
 
-	data_well_defined (b_tree_1, b_tree_2: B)
+	frozen data_well_defined (b_tree_1, b_tree_2: B)
 		require
 			b_tree_1 ~ b_tree_2
 		do
@@ -208,7 +208,7 @@ feature
 			data (b_tree_1) ~ data (b_tree_2)
 		end
 
-	right_well_defined (b_tree_1, b_tree_2: B)
+	frozen right_well_defined (b_tree_1, b_tree_2: B)
 		require
 			b_tree_1 ~ b_tree_2
 		do
@@ -216,7 +216,7 @@ feature
 			right (b_tree_1) ~ right (b_tree_2)
 		end
 
-	is_in_well_defined (b_tree_1, b_tree_2: B; item: I)
+	frozen is_in_well_defined (b_tree_1, b_tree_2: B; item: I)
 		require
 			b_tree_1 ~ b_tree_2
 		do

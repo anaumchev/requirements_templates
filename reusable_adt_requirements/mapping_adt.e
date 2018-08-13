@@ -14,12 +14,12 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit {NONE}
+inherit
 
 	EQUALITY_ADT [M]
 
 feature
-	--	Deferred definitions.
+	-- Deferred definitions.
 
 	new_map: M
 		deferred
@@ -38,9 +38,9 @@ feature
 		end
 
 feature
-	--	Abstract data type axioms.
+	-- Abstract data type axioms.
 
-	a_1 (dval: D; rval: R)
+	frozen a_1 (dval: D; rval: R)
 		local
 			map: M
 		do
@@ -50,14 +50,14 @@ feature
 			end
 		end
 
-	a_2 (map: M; dval: D; rval: R)
+	frozen a_2 (map: M; dval: D; rval: R)
 		do
 			def_map (map, dval, rval)
 		ensure
 			ev_map (map, dval) ~ rval
 		end
 
-	a_3 (map: M; dval_1, dval_2: D; rval, old_ev_map: R)
+	frozen a_3 (map: M; dval_1, dval_2: D; rval, old_ev_map: R)
 		require
 			ev_map (map, dval_2) ~ old_ev_map
 			dval_1 /~ dval_2
@@ -67,7 +67,7 @@ feature
 			ev_map (map, dval_2) ~ old_ev_map
 		end
 
-	a_4 (dval: D)
+	frozen a_4 (dval: D)
 		local
 			map: M
 		do
@@ -77,14 +77,14 @@ feature
 			end
 		end
 
-	a_5 (map: M; dval: D; rval: R)
+	frozen a_5 (map: M; dval: D; rval: R)
 		do
 			def_map (map, dval, rval)
 		ensure
 			is_defined (map, dval)
 		end
 
-	a_6 (map: M; dval_1, dval_2: D; rval: R; old_is_defined: BOOLEAN)
+	frozen a_6 (map: M; dval_1, dval_2: D; rval: R; old_is_defined: BOOLEAN)
 		require
 			is_defined (map, dval_2) ~ old_is_defined
 			dval_1 /~ dval_2
@@ -95,9 +95,9 @@ feature
 		end
 
 feature
-	--	Well-definedness definitions.
+	-- Well-definedness definitions.
 
-	new_map_well_defined
+	frozen new_map_well_defined
 		local
 			map_1, map_2: M
 		do
@@ -111,7 +111,7 @@ feature
 			end
 		end
 
-	def_map_well_defined (map_1, map_2: M; dval: D; rval: R)
+	frozen def_map_well_defined (map_1, map_2: M; dval: D; rval: R)
 		require
 			map_1 ~ map_2
 		do
@@ -121,7 +121,7 @@ feature
 			map_1 ~ map_2
 		end
 
-	ev_map_well_defined (map_1, map_2: M; dval: D)
+	frozen ev_map_well_defined (map_1, map_2: M; dval: D)
 		require
 			map_1 ~ map_2
 		do
@@ -129,7 +129,7 @@ feature
 			ev_map (map_1, dval) ~ ev_map (map_2, dval)
 		end
 
-	is_defined_well_defined (map_1, map_2: M; dval: D)
+	frozen is_defined_well_defined (map_1, map_2: M; dval: D)
 		require
 			map_1 ~ map_2
 		do

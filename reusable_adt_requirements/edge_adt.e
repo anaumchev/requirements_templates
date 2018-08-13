@@ -13,12 +13,12 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit {NONE}
+inherit
 
 	EQUALITY_ADT [E]
 
 feature
-	--	Deferred definitions.
+	-- Deferred definitions.
 
 	rel (node_1, node_2: N): E
 		deferred
@@ -27,7 +27,7 @@ feature
 feature
 	-- Well-definedness axioms.
 
-	rel_will_defined (node_1, node_2: N)
+	frozen rel_well_defined (node_1, node_2: N)
 		local
 			edge_1, edge_2: E
 		do

@@ -8,14 +8,14 @@ note
 	email: "anaumchev@gmail.com"
 
 deferred class
-	SYMBOL_TABLE [S, I, A]
+	SYMBOL_TABLE_ADT [S, I, A]
 
-inherit {NONE}
+inherit
 
 	EQUALITY_ADT [S]
 
 feature
-	--	Deferred definitions.
+	-- Deferred definitions.
 
 	init: S
 			--	Allocate and initialize the symbol table.
@@ -51,9 +51,9 @@ feature
 		end
 
 feature
-	--	Abstract data type axioms.
+	-- Abstract data type axioms.
 
-	a_2 (s_t_1, s_t_2: S)
+	frozen a_2 (s_t_1, s_t_2: S)
 		require
 			s_t_1 ~ s_t_2
 		do
@@ -63,7 +63,7 @@ feature
 			s_t_1 ~ s_t_2
 		end
 
-	a_3 (s_t_1, s_t_2: S; id: I; attr: A)
+	frozen a_3 (s_t_1, s_t_2: S; id: I; attr: A)
 		require
 			s_t_1 ~ s_t_2
 			s_t_1 /= s_t_2
@@ -75,7 +75,7 @@ feature
 			s_t_1 ~ s_t_2
 		end
 
-	a_4 (id: I)
+	frozen a_4 (id: I)
 		local
 			s_t: S
 		do
@@ -85,21 +85,21 @@ feature
 			end
 		end
 
-	a_5 (symtab: S; id: I)
+	frozen a_5 (symtab: S; id: I)
 		do
 			enter_block (symtab)
 		ensure
 			not is_in_block (symtab, id)
 		end
 
-	a_6_1 (symtab: S; id: I; attrs: A)
+	frozen a_6_1 (symtab: S; id: I; attrs: A)
 		do
 			add (symtab, id, attrs)
 		ensure
 			is_in_block (symtab, id)
 		end
 
-	a_6_2 (symtab: S; id_1, id_2: I; attrs: A; old_is_in_block: BOOLEAN)
+	frozen a_6_2 (symtab: S; id_1, id_2: I; attrs: A; old_is_in_block: BOOLEAN)
 		require
 			id_1 /~ id_2
 			is_in_block (symtab, id_1) ~ old_is_in_block
@@ -109,7 +109,7 @@ feature
 			is_in_block (symtab, id_2) ~ old_is_in_block
 		end
 
-	a_8 (symtab: S; id: I; attrs: A)
+	frozen a_8 (symtab: S; id: I; attrs: A)
 		require
 			retrieve (symtab, id) ~ attrs
 		do
@@ -118,14 +118,14 @@ feature
 			retrieve (symtab, id) ~ attrs
 		end
 
-	a_9_1 (symtab: S; id: I; attrs: A)
+	frozen a_9_1 (symtab: S; id: I; attrs: A)
 		do
 			add (symtab, id, attrs)
 		ensure
 			retrieve (symtab, id) ~ attrs
 		end
 
-	a_9_2 (symtab: S; id_1, id_2: I; attrs, old_retrieve: A)
+	frozen a_9_2 (symtab: S; id_1, id_2: I; attrs, old_retrieve: A)
 		require
 			id_1 /~ id_2
 			retrieve (symtab, id_2) ~ old_retrieve
@@ -136,8 +136,9 @@ feature
 		end
 
 feature
+	-- Well-definedness axioms.
 
-	init_well_defined
+	frozen init_well_defined
 		local
 			symtab_1, symtab_2: S
 		do
@@ -148,7 +149,7 @@ feature
 			end
 		end
 
-	enter_block_well_defined (symtab_1, symtab_2: S)
+	frozen enter_block_well_defined (symtab_1, symtab_2: S)
 		require
 			symtab_1 ~ symtab_2
 		do
@@ -158,7 +159,7 @@ feature
 			symtab_1 ~ symtab_2
 		end
 
-	leave_block_well_defined (symtab_1, symtab_2: S)
+	frozen leave_block_well_defined (symtab_1, symtab_2: S)
 		require
 			symtab_1 ~ symtab_2
 		do
@@ -168,7 +169,7 @@ feature
 			symtab_1 ~ symtab_2
 		end
 
-	is_in_block_well_defined (symtab_1, symtab_2: S; id: I)
+	frozen is_in_block_well_defined (symtab_1, symtab_2: S; id: I)
 		require
 			symtab_1 ~ symtab_2
 		do
@@ -176,7 +177,7 @@ feature
 			is_in_block (symtab_1, id) ~ is_in_block (symtab_2, id)
 		end
 
-	add_well_defined (symtab_1, symtab_2: S; id: I; attr: A)
+	frozen add_well_defined (symtab_1, symtab_2: S; id: I; attr: A)
 		require
 			symtab_1 ~ symtab_2
 		do
@@ -186,7 +187,7 @@ feature
 			symtab_1 ~ symtab_2
 		end
 
-	retrieve_well_defined (symtab_1, symtab_2: S; id: I)
+	frozen retrieve_well_defined (symtab_1, symtab_2: S; id: I)
 		require
 			symtab_1 ~ symtab_2
 		do

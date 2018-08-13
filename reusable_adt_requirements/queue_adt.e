@@ -13,12 +13,12 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit {NONE}
+inherit
 
 	EQUALITY_ADT [Q]
 
 feature
-	--	Deferred definitions.
+	-- Deferred definitions.
 
 	eq: Q
 			-- Define a new queue in terms of your concept.
@@ -51,9 +51,9 @@ feature
 		end
 
 feature
-	--	Abstract data type axioms.
+	-- Abstract data type axioms.
 
-	a_3_empty (q_1, q_2: Q)
+	frozen a_3_empty (q_1, q_2: Q)
 			-- Querying a queue for emptyness does not change its equivalence class.
 		note
 			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
@@ -67,7 +67,7 @@ feature
 			q_1 ~ q_2
 		end
 
-	a_3_size (q_1, q_2: Q)
+	frozen a_3_size (q_1, q_2: Q)
 			--	Querying a queue for size does not change its equivalence class.
 		note
 			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
@@ -81,7 +81,7 @@ feature
 			q_1 ~ q_2
 		end
 
-	a_3_front (q_1, q_2: Q)
+	frozen a_3_front (q_1, q_2: Q)
 			--	Querying a queue for front does not change its equivalence class.
 		note
 			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
@@ -95,7 +95,7 @@ feature
 			q_1 ~ q_2
 		end
 
-	a_4_if (q: Q)
+	frozen a_4_if (q: Q)
 			--	A queue is empty if its' size is zero.
 		note
 			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
@@ -106,7 +106,7 @@ feature
 			isempty (q)
 		end
 
-	a_4_only_if (q: Q)
+	frozen a_4_only_if (q: Q)
 			--	A queue is empty only if its' size is zero.
 		note
 			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
@@ -117,7 +117,7 @@ feature
 			size (q) ~ 0
 		end
 
-	a_5 (q: Q; n: INTEGER; t: T)
+	frozen a_5 (q: Q; n: INTEGER; t: T)
 			--	Suppose a queue's size is n and the next element to add is t;
 			--	then, after n elements have been dequeued, t will become the queue's front.
 		note
@@ -140,7 +140,7 @@ feature
 			front (q) ~ t
 		end
 
-	a_6 (q: Q; t: T; old_size: INTEGER)
+	frozen a_6 (q: Q; t: T; old_size: INTEGER)
 			--	Adding to a queue increases its size by 1.
 		note
 			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
@@ -152,7 +152,7 @@ feature
 			size (q) ~ old_size + 1
 		end
 
-	a_7 (q: Q; t: T; old_size: INTEGER)
+	frozen a_7 (q: Q; t: T; old_size: INTEGER)
 			--	Dequeueing a non-empty queue decreases its size by 1.
 		note
 			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
@@ -165,7 +165,7 @@ feature
 			size (q) ~ old_size - 1
 		end
 
-	a_9 (q: Q; t: T)
+	frozen a_9 (q: Q; t: T)
 			--	Adding to a queue makes it non-empty.
 		note
 			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
@@ -176,7 +176,7 @@ feature
 			not isempty (q)
 		end
 
-	a_10
+	frozen a_10
 			--	A newly created queue is empty.
 		note
 			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
@@ -190,7 +190,7 @@ feature
 			end
 		end
 
-	a_11
+	frozen a_11
 			--	A newly created queue has zero size.
 		note
 			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
@@ -203,7 +203,7 @@ feature
 			end
 		end
 
-	a_12
+	frozen a_12
 		note
 			EIS: "protocol=URI", "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		local
@@ -217,7 +217,7 @@ feature
 			end
 		end
 
-	a_13 (t: T)
+	frozen a_13 (t: T)
 		note
 			EIS: "protocol=URI", "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		local
@@ -232,7 +232,7 @@ feature
 			end
 		end
 
-	a_14 (q_1, q_2: Q; t_1, t_2: T)
+	frozen a_14 (q_1, q_2: Q; t_1, t_2: T)
 		note
 			EIS: "protocol=URI", "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		require
@@ -249,7 +249,7 @@ feature
 			q_1 ~ q_2
 		end
 
-	a_15 (t: T)
+	frozen a_15 (t: T)
 		note
 			EIS: "protocol=URI", "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		local
@@ -262,7 +262,7 @@ feature
 			end
 		end
 
-	a_16 (q_1, q_2: Q; t_1, t_2: T)
+	frozen a_16 (q_1, q_2: Q; t_1, t_2: T)
 		note
 			EIS: "protocol=URI", "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		require
@@ -276,7 +276,7 @@ feature
 			front (q_1) ~ front (q_2)
 		end
 
-	a_17 (t: T)
+	frozen a_17 (t: T)
 		note
 			EIS: "protocol=URI", "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		local
@@ -289,9 +289,9 @@ feature
 		end
 
 feature
-	--	Theorems.
+	-- Theorems.
 
-	theorem_1 (q: Q; t: T; k, n: INTEGER)
+	frozen theorem_1 (q: Q; t: T; k, n: INTEGER)
 			--	Pushing a stack k times increases its size by k.
 			--	Follow the EIS link below for details.
 		note
@@ -314,7 +314,7 @@ feature
 			size (q) ~ n + k
 		end
 
-	theorem_2 (q: Q; k, n: INTEGER)
+	frozen theorem_2 (q: Q; k, n: INTEGER)
 			--	Popping a stack k times decreases its size by k.
 			--	Follow the EIS link below for details.
 		note
@@ -342,7 +342,7 @@ feature
 feature
 	-- Well-definedness axioms.
 
-	new_well_defined
+	frozen new_well_defined
 		local
 			q_1, q_2: Q
 		do
@@ -353,7 +353,7 @@ feature
 			end
 		end
 
-	add_well_defined (q_1, q_2: Q; t: T)
+	frozen add_well_defined (q_1, q_2: Q; t: T)
 		require
 			q_1 ~ q_2
 		do
@@ -363,7 +363,7 @@ feature
 			q_1 ~ q_2
 		end
 
-	dequeue_well_defined (q_1, q_2: Q)
+	frozen dequeue_well_defined (q_1, q_2: Q)
 		require
 			q_1 ~ q_2
 			q_1 /= q_2
@@ -376,7 +376,7 @@ feature
 			q_1 ~ q_2
 		end
 
-	front_well_defined (q_1, q_2: Q)
+	frozen front_well_defined (q_1, q_2: Q)
 		require
 			q_1 ~ q_2
 		do
@@ -384,7 +384,7 @@ feature
 			front (q_1) ~ front (q_2)
 		end
 
-	empty_well_defined (q_1, q_2: Q)
+	frozen empty_well_defined (q_1, q_2: Q)
 		require
 			q_1 ~ q_2
 		do
@@ -392,7 +392,7 @@ feature
 			isempty (q_1) ~ isempty (q_2)
 		end
 
-	size_well_defined (q_1, q_2: Q)
+	frozen size_well_defined (q_1, q_2: Q)
 		require
 			q_1 ~ q_2
 		do

@@ -15,7 +15,7 @@ inherit
 	EQUALITY_ADT [R]
 
 feature
-	--	Deferred definitions.
+	-- Deferred definitions.
 
 	one: R
 			--	Multiplicative identity.
@@ -40,58 +40,58 @@ feature
 		end
 
 feature
-	--	Abstract data type axioms.
+	-- Abstract data type axioms.
 
-	a_1 (a, b, c: R)
+	frozen a_1 (a, b, c: R)
 		do
 		ensure
 			sum (sum (a, b), c) ~ sum (a, sum (b, c))
 		end
 
-	a_2 (a, b: R)
+	frozen a_2 (a, b: R)
 		do
 		ensure
 			sum (a, b) ~ sum (b, a)
 		end
 
-	a_3 (a: R)
+	frozen a_3 (a: R)
 		do
 		ensure
 			sum (a, zero) ~ a
 		end
 
-	a_4 (a: R)
+	frozen a_4 (a: R)
 		do
 		ensure
 			sum (a, additive_inverse (a)) ~ zero
 		end
 
-	a_5 (a, b, c: R)
+	frozen a_5 (a, b, c: R)
 		do
 		ensure
 			product (product (a, b), c) ~ product (a, product (b, c))
 		end
 
-	a_6 (a: R)
+	frozen a_6 (a: R)
 		do
 		ensure
 			product (a, one) ~ a
 			product (one, a) ~ a
 		end
 
-	a_7 (a, b, c: R)
+	frozen a_7 (a, b, c: R)
 		do
 		ensure
 			product (a, sum (b, c)) ~ sum (product (a, b), product (a, c))
 		end
 
-	a_8 (a, b, c: R)
+	frozen a_8 (a, b, c: R)
 		do
 		ensure
 			product (sum (b, c), a) ~ sum (product (b, a), product (c, a))
 		end
 
-	a_9 (a, b: R)
+	frozen a_9 (a, b: R)
 		do
 		ensure
 			product (a, b) ~ product (b, a)
@@ -100,7 +100,7 @@ feature
 feature
 	-- Well-definedness axioms.
 
-	one_well_defined
+	frozen one_well_defined
 		local
 			r_1, r_2: R
 		do
@@ -111,7 +111,7 @@ feature
 			end
 		end
 
-	zero_well_defined
+	frozen zero_well_defined
 		local
 			r_1, r_2: R
 		do
@@ -122,7 +122,7 @@ feature
 			end
 		end
 
-	sum_well_defined (summand_1, summand_2, other: R)
+	frozen sum_well_defined (summand_1, summand_2, other: R)
 		require
 			summand_1 ~ summand_2
 		do
@@ -130,7 +130,7 @@ feature
 			sum (summand_1, other) ~ sum (summand_2, other)
 		end
 
-	product_well_defined (multiplier_1, multiplier_2, other: R)
+	frozen product_well_defined (multiplier_1, multiplier_2, other: R)
 		require
 			multiplier_1 ~ multiplier_2
 		do
@@ -138,7 +138,7 @@ feature
 			product (multiplier_1, other) ~ product (multiplier_2, other)
 		end
 
-	additive_inverse_well_defined (r_1, r_2: R)
+	frozen additive_inverse_well_defined (r_1, r_2: R)
 		require
 			r_1 ~ r_2
 		do

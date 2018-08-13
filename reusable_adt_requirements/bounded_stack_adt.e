@@ -19,7 +19,7 @@ inherit
 	EQUALITY_ADT [B]
 
 feature
-	--	Deferred definitions.
+	-- Deferred definitions.
 
 	new_stack (lim: INTEGER): B
 		deferred
@@ -46,9 +46,9 @@ feature
 		end
 
 feature
-	--	Abstract data type axioms.
+	-- Abstract data type axioms.
 
-	a_1 (lim: INTEGER)
+	frozen a_1 (lim: INTEGER)
 		local
 			stack_1, stack_2: B
 		do
@@ -60,7 +60,7 @@ feature
 			end
 		end
 
-	a_2 (stack_1, stack_2: B; element: E)
+	frozen a_2 (stack_1, stack_2: B; element: E)
 		require
 			stack_1 ~ stack_2
 			size (stack_1) < limit (stack_1)
@@ -71,7 +71,7 @@ feature
 			stack_1 ~ stack_2
 		end
 
-	a_3 (stack_1, stack_2: B; element: E)
+	frozen a_3 (stack_1, stack_2: B; element: E)
 		require
 			stack_1 ~ stack_2
 			size (stack_1) ~ limit (stack_1)
@@ -81,7 +81,7 @@ feature
 			stack_1 ~ stack_2
 		end
 
-	a_4 (lim: INTEGER; element: E)
+	frozen a_4 (lim: INTEGER; element: E)
 		local
 			stack: B
 		do
@@ -91,7 +91,7 @@ feature
 			end
 		end
 
-	a_5 (stack: B; element: E)
+	frozen a_5 (stack: B; element: E)
 		require
 			size (stack) < limit (stack)
 		do
@@ -100,7 +100,7 @@ feature
 			top (stack) ~ element
 		end
 
-	a_6 (stack: B; element_1, element_2: E)
+	frozen a_6 (stack: B; element_1, element_2: E)
 		require
 			top (stack) ~ element_2
 			size (stack) ~ limit (stack)
@@ -110,7 +110,7 @@ feature
 			top (stack) ~ element_2
 		end
 
-	a_7 (lim: INTEGER)
+	frozen a_7 (lim: INTEGER)
 		local
 			stack: B
 		do
@@ -120,7 +120,7 @@ feature
 			end
 		end
 
-	a_8 (stack: B; element: E; old_limit: INTEGER)
+	frozen a_8 (stack: B; element: E; old_limit: INTEGER)
 		require
 			limit (stack) ~ old_limit
 			size (stack) ~ limit (stack)
@@ -130,7 +130,7 @@ feature
 			limit (stack) ~ old_limit
 		end
 
-	a_9 (lim: INTEGER)
+	frozen a_9 (lim: INTEGER)
 		local
 			stack: B
 		do
@@ -140,7 +140,7 @@ feature
 			end
 		end
 
-	a_10 (stack: B; element: E; old_size: INTEGER)
+	frozen a_10 (stack: B; element: E; old_size: INTEGER)
 		require
 			size (stack) ~ old_size
 			size (stack) < limit (stack)
@@ -150,7 +150,7 @@ feature
 			size (stack) ~ old_size + 1
 		end
 
-	a_11 (stack: B; element: E; old_size: INTEGER)
+	frozen a_11 (stack: B; element: E; old_size: INTEGER)
 		require
 			size (stack) ~ old_size
 			size (stack) ~ limit (stack)
@@ -163,7 +163,7 @@ feature
 feature
 	-- Well-definedness axioms.
 
-	new_stack_well_defined (lim: INTEGER)
+	frozen new_stack_well_defined (lim: INTEGER)
 		local
 			stack_1, stack_2: B
 		do
@@ -177,7 +177,7 @@ feature
 			end
 		end
 
-	push_well_defined (stack_1, stack_2: B; element: E)
+	frozen push_well_defined (stack_1, stack_2: B; element: E)
 		require
 			stack_1 ~ stack_2
 		do
@@ -187,7 +187,7 @@ feature
 			stack_1 ~ stack_2
 		end
 
-	pop_well_defined (stack_1, stack_2: B)
+	frozen pop_well_defined (stack_1, stack_2: B)
 		require
 			stack_1 ~ stack_2
 			stack_1 /= stack_2
@@ -198,7 +198,7 @@ feature
 			stack_1 ~ stack_2
 		end
 
-	top_well_defined (stack_1, stack_2: B)
+	frozen top_well_defined (stack_1, stack_2: B)
 		require
 			stack_1 ~ stack_2
 		do
@@ -206,7 +206,7 @@ feature
 			top (stack_1) ~ top (stack_2)
 		end
 
-	size_well_defined (stack_1, stack_2: B)
+	frozen size_well_defined (stack_1, stack_2: B)
 		require
 			stack_1 ~ stack_2
 		do
@@ -214,7 +214,7 @@ feature
 			size (stack_1) ~ size (stack_2)
 		end
 
-	limit_well_defined (stack_1, stack_2: B)
+	frozen limit_well_defined (stack_1, stack_2: B)
 		require
 			stack_1 ~ stack_2
 		do

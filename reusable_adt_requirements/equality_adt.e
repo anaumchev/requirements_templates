@@ -13,7 +13,7 @@ deferred class
 feature
 	-- Abstract data type axioms.
 
-	equality_reflexivity (v: G)
+	frozen equality_reflexivity (v: G)
 			--	Equality is reflexive.
 		note
 			EIS: "protocol=URI", "src=http://www.mathwords.com/r/reflexive_property.htm"
@@ -22,7 +22,7 @@ feature
 			v ~ v
 		end
 
-	equality_commutativity (v_1, v_2: G)
+	frozen equality_commutativity (v_1, v_2: G)
 			--	Equality is symmetric.
 		note
 			EIS: "protocol=URI", "src=http://www.mathwords.com/s/symmetric_property.htm"
@@ -33,7 +33,7 @@ feature
 			v_2 ~ v_1
 		end
 
-	equality_transitivity (v_1, v_2, v_3: G)
+	frozen equality_transitivity (v_1, v_2, v_3: G)
 			--	Equality is transitive.
 		note
 			EIS: "protocol=URI", "src=http://www.mathwords.com/t/transitive_property.htm"

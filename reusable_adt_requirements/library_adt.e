@@ -13,12 +13,12 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-inherit {NONE}
+inherit
 
 	EQUALITY_ADT [L]
 
 feature
-	--	Deferred definitions.
+	-- Deferred definitions.
 
 	empty_lib: L
 		deferred
@@ -49,9 +49,9 @@ feature
 		end
 
 feature
-	--	Abstract data type axioms.
+	-- Abstract data type axioms.
 
-	a_1 (lib: L; bc: B)
+	frozen a_1 (lib: L; bc: B)
 		local
 			new_lib: L
 		do
@@ -61,14 +61,14 @@ feature
 			end
 		end
 
-	a_2 (lib: L; bc: B)
+	frozen a_2 (lib: L; bc: B)
 		do
 			add_copy (lib, bc)
 		ensure
 			copy_exists (lib, bc)
 		end
 
-	a_3 (lib: L; bc_1, bc_2: B; bc_2_exists: BOOLEAN)
+	frozen a_3 (lib: L; bc_1, bc_2: B; bc_2_exists: BOOLEAN)
 		require
 			bc_1 /~ bc_2
 			copy_exists (lib, bc_2) ~ bc_2_exists
@@ -78,7 +78,7 @@ feature
 			copy_exists (lib, bc_2) ~ bc_2_exists
 		end
 
-	a_4 (lib: L; bc_1, bc_2: B; bc_2_exists: BOOLEAN)
+	frozen a_4 (lib: L; bc_1, bc_2: B; bc_2_exists: BOOLEAN)
 		require
 			copy_exists (lib, bc_2) ~ bc_2_exists
 			not copy_borrowed (lib, bc_1)
@@ -88,7 +88,7 @@ feature
 			copy_exists (lib, bc_2) ~ bc_2_exists
 		end
 
-	a_5 (lib: L; bc: B)
+	frozen a_5 (lib: L; bc: B)
 		local
 			new_lib: L
 		do
@@ -98,7 +98,7 @@ feature
 			end
 		end
 
-	a_6 (lib: L; bc_1, bc_2: B; bc_2_borrowed: BOOLEAN)
+	frozen a_6 (lib: L; bc_1, bc_2: B; bc_2_borrowed: BOOLEAN)
 		require
 			copy_borrowed (lib, bc_2) ~ bc_2_borrowed
 		do
@@ -107,7 +107,7 @@ feature
 			copy_borrowed (lib, bc_2) ~ bc_2_borrowed
 		end
 
-	a_7 (lib: L; bc: B)
+	frozen a_7 (lib: L; bc: B)
 		require
 			not copy_borrowed (lib, bc)
 		do
@@ -116,7 +116,7 @@ feature
 			copy_borrowed (lib, bc)
 		end
 
-	a_8 (lib: L; bc_1, bc_2: B; bc_2_borrowed: BOOLEAN)
+	frozen a_8 (lib: L; bc_1, bc_2: B; bc_2_borrowed: BOOLEAN)
 		require
 			bc_1 /~ bc_2
 			copy_borrowed (lib, bc_2) ~ bc_2_borrowed
@@ -127,7 +127,7 @@ feature
 			copy_borrowed (lib, bc_2) ~ bc_2_borrowed
 		end
 
-	a_9 (lib_1, lib_2: L; bc: B)
+	frozen a_9 (lib_1, lib_2: L; bc: B)
 		require
 			lib_1 ~ lib_2
 		do
@@ -137,7 +137,7 @@ feature
 			lib_1 ~ lib_2
 		end
 
-	a_10 (lib_1, lib_2: L; bc_1, bc_2: B)
+	frozen a_10 (lib_1, lib_2: L; bc_1, bc_2: B)
 		require
 			lib_1 /= lib_2
 			lib_1 ~ lib_2
@@ -153,7 +153,7 @@ feature
 			lib_1 ~ lib_2
 		end
 
-	a_11 (lib_1, lib_2: L; bc: B)
+	frozen a_11 (lib_1, lib_2: L; bc: B)
 		require
 			lib_1 /= lib_2
 			lib_1 ~ lib_2
@@ -168,7 +168,7 @@ feature
 			lib_1 ~ lib_2
 		end
 
-	a_12 (lib_1, lib_2: L; bc_1, bc_2: B)
+	frozen a_12 (lib_1, lib_2: L; bc_1, bc_2: B)
 		require
 			lib_1 /= lib_2
 			lib_1 ~ lib_2
@@ -186,7 +186,7 @@ feature
 			lib_1 ~ lib_2
 		end
 
-	a_13 (lib_1, lib_2: L; bc: B)
+	frozen a_13 (lib_1, lib_2: L; bc: B)
 		require
 			lib_1 ~ lib_2
 			not copy_borrowed (lib_1, bc)
@@ -197,7 +197,7 @@ feature
 			lib_1 ~ lib_2
 		end
 
-	a_14 (lib_1, lib_2: L; bc_1, bc_2: B)
+	frozen a_14 (lib_1, lib_2: L; bc_1, bc_2: B)
 		require
 			lib_1 /= lib_2
 			lib_1 ~ lib_2
@@ -215,7 +215,7 @@ feature
 			lib_1 ~ lib_2
 		end
 
-	a_15 (lib_1, lib_2: L; bc_1, bc_2: B)
+	frozen a_15 (lib_1, lib_2: L; bc_1, bc_2: B)
 		require
 			lib_1 /= lib_2
 			lib_1 ~ lib_2
@@ -232,9 +232,9 @@ feature
 		end
 
 feature
-	--	Well-definedness axioms.
+	-- Well-definedness axioms.
 
-	empty_lib_well_defined
+	frozen empty_lib_well_defined
 		local
 			lib_1, lib_2: L
 		do
@@ -248,7 +248,7 @@ feature
 			end
 		end
 
-	add_copy_well_defined (lib_1, lib_2: L; bc: B)
+	frozen add_copy_well_defined (lib_1, lib_2: L; bc: B)
 		require
 			lib_1 ~ lib_2
 		do
@@ -258,7 +258,7 @@ feature
 			lib_1 ~ lib_2
 		end
 
-	remove_copy_well_defined (lib_1, lib_2: L; bc: B)
+	frozen remove_copy_well_defined (lib_1, lib_2: L; bc: B)
 		require
 			lib_1 ~ lib_2
 			lib_1 /= lib_2
@@ -271,7 +271,7 @@ feature
 			lib_1 ~ lib_2
 		end
 
-	check_out_well_defined (lib_1, lib_2: L; bc: B)
+	frozen check_out_well_defined (lib_1, lib_2: L; bc: B)
 		require
 			lib_1 ~ lib_2
 			lib_1 /= lib_2
@@ -284,7 +284,7 @@ feature
 			lib_1 ~ lib_2
 		end
 
-	return_well_defined (lib_1, lib_2: L; bc: B)
+	frozen return_well_defined (lib_1, lib_2: L; bc: B)
 		require
 			lib_1 ~ lib_2
 			lib_1 /= lib_2
@@ -297,7 +297,7 @@ feature
 			lib_1 ~ lib_2
 		end
 
-	copy_exists_well_defined (lib_1, lib_2: L; bc: B)
+	frozen copy_exists_well_defined (lib_1, lib_2: L; bc: B)
 		require
 			lib_1 ~ lib_2
 		do
@@ -305,7 +305,7 @@ feature
 			copy_exists (lib_1, bc) ~ copy_exists (lib_2, bc)
 		end
 
-	copy_borrowed_well_defined (lib_1, lib_2: L; bc: B)
+	frozen copy_borrowed_well_defined (lib_1, lib_2: L; bc: B)
 		require
 			lib_1 ~ lib_2
 		do

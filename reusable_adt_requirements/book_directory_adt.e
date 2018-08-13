@@ -14,14 +14,12 @@ deferred class
 	--	The resulting class has to be effective (non-deferred).
 	--	Test or model check the resulting class.
 
-
-inherit {NONE}
+inherit
 
 	EQUALITY_ADT [D]
 
 feature
 	-- Deferred definitions.
-
 
 	empty_dir: D
 		deferred
@@ -38,7 +36,7 @@ feature
 feature
 	-- Abstract data type axioms.
 
-	a_1 (tp: T)
+	frozen a_1 (tp: T)
 		local
 			dir: D
 		do
@@ -48,7 +46,7 @@ feature
 			end
 		end
 
-	a_2 (dir: D; b: B; bc: BC; tp: T; bs: L)
+	frozen a_2 (dir: D; b: B; bc: BC; tp: T; bs: L)
 		require
 			biblio_search (dir, tp) ~ bs
 		do
@@ -58,7 +56,7 @@ feature
 			biblio_search (dir, tp) ~ bs
 		end
 
-	a_3 (dir: D; b: B; bc: BC; tp_1, tp_2: T; bs: L)
+	frozen a_3 (dir: D; b: B; bc: BC; tp_1, tp_2: T; bs: L)
 		require
 			biblio_search (dir, tp_1) ~ bs
 		do
@@ -68,8 +66,9 @@ feature
 		end
 
 feature
+	-- Well-definedness axioms
 
-	empty_dir_well_defined
+	frozen empty_dir_well_defined
 		local
 			d_1, d_2: D
 		do
@@ -83,7 +82,7 @@ feature
 			end
 		end
 
-	add_entry_well_defined (dir_1, dir_2: D; b: B; bc: BC; tp: T)
+	frozen add_entry_well_defined (dir_1, dir_2: D; b: B; bc: BC; tp: T)
 		require
 			dir_1 ~ dir_2
 		do
@@ -93,7 +92,7 @@ feature
 			dir_1 ~ dir_2
 		end
 
-	biblio_search_well_defined (dir_1, dir_2: D; tp: T)
+	frozen biblio_search_well_defined (dir_1, dir_2: D; tp: T)
 		require
 			dir_1 ~ dir_2
 		do
