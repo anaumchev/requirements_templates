@@ -33,7 +33,7 @@ feature
 feature
 	-- Abstract data type axioms.
 
-	frozen a_1
+	frozen a_12
 		local
 			stk_1, stk_2: S
 		do
@@ -45,7 +45,7 @@ feature
 			end
 		end
 
-	frozen a_3 (elm: E)
+	frozen a_13 (elm: E)
 		local
 			stk: S
 		do
@@ -55,7 +55,7 @@ feature
 			end
 		end
 
-	frozen a_12 (stk_1, stk_2: S; elm: E)
+	frozen a_14 (stk_1, stk_2: S; elm: E)
 		require
 			stk_1 ~ stk_2
 		do

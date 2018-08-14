@@ -3,7 +3,7 @@ note
 	description: "Find a detailed description by the EIS link below."
 	EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide02.html"
 	description: "Also found in the ``Abstract Data Types and the Development of Data Structures'' article by John Guttag, page 2."
-	EIS: "protocol=URI", "src=http://cecs.wright.edu/people/faculty/tkprasad/courses/cs784/guttag-cacm77.pdf"
+	EIS: "protocol=URI", "src=http://www.unc.edu/~stotts/comp723/guttagADT77.pdf"
 	description: "Also found in the ``Abstract Data Types and Software Validation '' article by Guttag, Horowitz and Musser, p. 17."
 	EIS: "protocol=URI", "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
 	description: "Also found in ``THE DESIGN OF DATA TYPE SPECIFICATIONS'' article by Guttag, Horowitz and Musser, p. 17."
@@ -61,9 +61,22 @@ feature
 feature
 	-- Abstract data type axioms.
 
+	frozen a_1 (t: T; other: S)
+		note
+			EIS: "protocol=URI", "src=http://www.unc.edu/~stotts/comp723/guttagADT77.pdf"
+		local
+			s: S
+		do
+			s := new
+			pop (s)
+			check
+				s /~ other
+			end
+		end
+
 	frozen a_2 (t: T)
 		note
-			EIS: "protocol=URI", "src=http://cecs.wright.edu/people/faculty/tkprasad/courses/cs784/guttag-cacm77.pdf"
+			EIS: "protocol=URI", "src=http://www.unc.edu/~stotts/comp723/guttagADT77.pdf"
 		local
 			s: S
 		do
