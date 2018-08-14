@@ -124,7 +124,7 @@ feature
 		end
 
 	frozen a_6 (capacity: INTEGER; item: I)
-			--	FRONT(NEWQ(in)) = UNDEFINED[underflow]
+			--	FRONTQ(NEWQ(in)) = UNDEFINED[underflow]
 		local
 			bounded_queue: B
 		do
@@ -135,7 +135,7 @@ feature
 		end
 
 	frozen a_7 (bounded_queue: B; item: I)
-			--	FRONT(ADDQ(q,i)) = if ISNEWQ(q) then i >>
+			--	FRONTQ(ADDQ(q,i)) = if ISNEWQ(q) then i >>
 		require
 			isnewq (bounded_queue)
 		do
