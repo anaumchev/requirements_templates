@@ -15,6 +15,13 @@ deferred class
 	--	Test or model check the resulting class.
 
 feature
+	-- Deferred definitions: initialization.
+
+	init: L
+		deferred
+		end
+
+feature
 	-- Deferred definitions: handle state range.
 
 	up_position (lgs: L): INTEGER
@@ -106,10 +113,51 @@ feature
 		end
 
 feature
-	-- Deferred definitions: control procedure
+	-- Deferred definitions: control
+
+	handle_up (lgs: L)
+		deferred
+		end
+
+	handle_down (lgs: L)
+		deferred
+		end
 
 	main (lgs: L)
 		deferred
+		end
+
+feature
+	-- Basic axioms.
+
+	frozen a_1 (lgs: L)
+		do
+			handle_down (lgs)
+		ensure
+			handle_status (lgs) ~ down_position (lgs)
+		end
+
+	frozen a_2 (lgs: L)
+		do
+			handle_up (lgs)
+		ensure
+			handle_status (lgs) ~ up_position (lgs)
+		end
+
+	frozen a_3
+		local
+			lgs: L
+		do
+			lgs := init
+			check
+				handle_status (lgs) ~ down_position (lgs)
+			end
+			check
+				gear_status (lgs) ~ extended_position (lgs)
+			end
+			check
+				door_status (lgs) ~ closed_position (lgs)
+			end
 		end
 
 feature {NONE}
@@ -118,7 +166,7 @@ feature {NONE}
 	frozen run_with_handle_down (lgs: L)
 		do
 			check
-				assume: handle_status (lgs) = down_position (lgs)
+				assume: handle_status (lgs) ~ down_position (lgs)
 			end
 			from_retracted_to_extended (lgs)
 		end
@@ -126,7 +174,7 @@ feature {NONE}
 	frozen run_with_handle_up (lgs: L)
 		do
 			check
-				assume: handle_status (lgs) = up_position (lgs)
+				assume: handle_status (lgs) ~ up_position (lgs)
 			end
 			from_retracted_to_extended (lgs)
 		end
@@ -135,25 +183,25 @@ feature {NONE}
 		do
 				-- the handle status range:
 			check
-				assume: handle_status (lgs) = up_position (lgs) or handle_status (lgs) = down_position (lgs)
+				assume: handle_status (lgs) ~ up_position (lgs) or handle_status (lgs) ~ down_position (lgs)
 			end
 				-- the door status range:
 			check
-				assume: door_status (lgs) = closed_position (lgs) or door_status (lgs) = opening_state (lgs) or door_status (lgs) = open_position (lgs) or door_status (lgs) = closing_state (lgs)
+				assume: door_status (lgs) ~ closed_position (lgs) or door_status (lgs) ~ opening_state (lgs) or door_status (lgs) ~ open_position (lgs) or door_status (lgs) ~ closing_state (lgs)
 			end
 				-- the gear status range:
 			check
-				assume: gear_status (lgs) = extended_position (lgs) or gear_status (lgs) = extending_state (lgs) or gear_status (lgs) = retracted_position (lgs) or gear_status (lgs) = retracting_state (lgs)
+				assume: gear_status (lgs) ~ extended_position (lgs) or gear_status (lgs) ~ extending_state (lgs) or gear_status (lgs) ~ retracted_position (lgs) or gear_status (lgs) ~ retracting_state (lgs)
 			end
 				-- the gear may extend or retract
 				-- only with the door open:
 			check
-				assume: (gear_status (lgs) = extending_state (lgs) or gear_status (lgs) = retracting_state (lgs)) implies door_status (lgs) = open_position (lgs)
+				assume: (gear_status (lgs) ~ extending_state (lgs) or gear_status (lgs) ~ retracting_state (lgs)) implies door_status (lgs) ~ open_position (lgs)
 			end
 				-- closed door assumes
 				-- retracted or extended gear:
 			check
-				assume: door_status (lgs) = closed_position (lgs) implies (gear_status (lgs) = extended_position (lgs) or gear_status (lgs) = retracted_position (lgs))
+				assume: door_status (lgs) ~ closed_position (lgs) implies (gear_status (lgs) ~ extended_position (lgs) or gear_status (lgs) ~ retracted_position (lgs))
 			end
 				-- after all the assumptions are made, run:
 			main (lgs)
@@ -179,7 +227,7 @@ feature {NONE}
 				-- run the system in the normal mode:
 			run_in_normal_mode (lgs)
 				-- changing the door status to 'closed_position':
-			if (old_door_status /= closed_position (lgs) and door_status (lgs) = closed_position (lgs)) then
+			if (old_door_status /~ closed_position (lgs) and door_status (lgs) ~ closed_position (lgs)) then
 					-- takes up to ``door_open_to_closed'' time units:
 				distance := distance + door_open_to_closed (lgs)
 			end
@@ -199,7 +247,7 @@ feature {NONE}
 			old_door_status := door_status (lgs)
 			from_open_to_closed (lgs)
 				-- changing the door status to 'open_position':
-			if (old_door_status /= open_position (lgs) and door_status (lgs) = open_position (lgs)) then
+			if (old_door_status /~ open_position (lgs) and door_status (lgs) ~ open_position (lgs)) then
 					-- takes up to ``door_closed_to_open'' time units:
 				distance := distance + door_closed_to_open (lgs)
 			end
@@ -220,7 +268,7 @@ feature {NONE}
 			from_closed_to_open (lgs)
 				-- changing the gear status
 				-- to 'retracted_position':
-			if (old_gear_status /= retracted_position (lgs) and gear_status (lgs) = retracted_position (lgs)) then
+			if (old_gear_status /~ retracted_position (lgs) and gear_status (lgs) ~ retracted_position (lgs)) then
 					-- takes up to ``gear_extended_to_retracted'' time units:
 				distance := distance + gear_extended_to_retracted (lgs)
 			end
@@ -241,7 +289,7 @@ feature {NONE}
 			from_extended_to_retracted (lgs)
 				-- changing the gear status
 				-- to 'extended_position':
-			if (old_gear_status /= extended_position (lgs) and gear_status (lgs) = extended_position (lgs)) then
+			if (old_gear_status /~ extended_position (lgs) and gear_status (lgs) ~ extended_position (lgs)) then
 					-- takes up to ``gear_retracted_to_extended'' time units:
 				distance := distance + gear_retracted_to_extended (lgs)
 			end
@@ -256,7 +304,7 @@ feature
 		do
 			run_with_handle_down (lgs)
 			check
-				assert: gear_status (lgs) /= retracting_state (lgs)
+				assert: gear_status (lgs) /~ retracting_state (lgs)
 			end
 		end
 
@@ -266,7 +314,7 @@ feature
 		do
 			run_with_handle_up (lgs)
 			check
-				assert: gear_status (lgs) /= extending_state (lgs)
+				assert: gear_status (lgs) /~ extending_state (lgs)
 			end
 		end
 
@@ -275,17 +323,17 @@ feature
 	frozen stable_state_with_handle_down (lgs: L)
 		do
 			check
-				assume: gear_status (lgs) = extended_position (lgs)
+				assume: gear_status (lgs) ~ extended_position (lgs)
 			end
 			check
-				assume: door_status (lgs) = closed_position (lgs)
+				assume: door_status (lgs) ~ closed_position (lgs)
 			end
 			run_with_handle_down (lgs)
 			check
-				assert: gear_status (lgs) = extended_position (lgs)
+				assert: gear_status (lgs) ~ extended_position (lgs)
 			end
 			check
-				assert: door_status (lgs) = closed_position (lgs)
+				assert: door_status (lgs) ~ closed_position (lgs)
 			end
 		end
 
@@ -294,17 +342,17 @@ feature
 	frozen stable_state_with_handle_up (lgs: L)
 		do
 			check
-				assume: gear_status (lgs) = retracted_position (lgs)
+				assume: gear_status (lgs) ~ retracted_position (lgs)
 			end
 			check
-				assume: door_status (lgs) = closed_position (lgs)
+				assume: door_status (lgs) ~ closed_position (lgs)
 			end
 			run_with_handle_up (lgs)
 			check
-				assert: gear_status (lgs) = retracted_position (lgs)
+				assert: gear_status (lgs) ~ retracted_position (lgs)
 			end
 			check
-				assert: door_status (lgs) = closed_position (lgs)
+				assert: door_status (lgs) ~ closed_position (lgs)
 			end
 		end
 
@@ -323,15 +371,15 @@ feature
 				old_distance := distance
 				never_retract_with_handle_down (lgs)
 			until
-				gear_status (lgs) = extended_position (lgs) and door_status (lgs) = closed_position (lgs) or (distance - old_distance) = max_extension_time (lgs)
+				gear_status (lgs) ~ extended_position (lgs) and door_status (lgs) ~ closed_position (lgs) or (distance - old_distance) ~ max_extension_time (lgs)
 			loop
 				run_with_handle_down (lgs)
 			end
 			check
-				assert: gear_status (lgs) = extended_position (lgs)
+				assert: gear_status (lgs) ~ extended_position (lgs)
 			end
 			check
-				assert: door_status (lgs) = closed_position (lgs)
+				assert: door_status (lgs) ~ closed_position (lgs)
 			end
 		end
 
@@ -347,15 +395,15 @@ feature
 				old_distance := distance
 				never_extend_with_handle_up (lgs)
 			until
-				gear_status (lgs) = retracted_position (lgs) and door_status (lgs) = closed_position (lgs) or (distance - old_distance) = max_retraction_time (lgs)
+				gear_status (lgs) ~ retracted_position (lgs) and door_status (lgs) ~ closed_position (lgs) or (distance - old_distance) ~ max_retraction_time (lgs)
 			loop
 				run_with_handle_up (lgs)
 			end
 			check
-				assert: gear_status (lgs) = retracted_position (lgs)
+				assert: gear_status (lgs) ~ retracted_position (lgs)
 			end
 			check
-				assert: door_status (lgs) = closed_position (lgs)
+				assert: door_status (lgs) ~ closed_position (lgs)
 			end
 		end
 
