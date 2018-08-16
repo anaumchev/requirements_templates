@@ -23,8 +23,9 @@ If you want to apply a template, say, STACK_ADT.e:
 3. The routines marked as "frozen" (https://www.eiffel.org/doc/eiffel/Eiffel_programming_language_reserved_words#frozen) are the abstract data type (ADT) axioms describing the behavior. You will need to verify them.
 4. If you use testing, call each of the "frozen" routines with arguments that meet the routine's precondition.
 5. A precondition failure denotes an error in the test, while a postcondition failure denotes an error in the implementation of your type.
+6. If you use Hoare logic-based program proving, just apply your prover (such as AutoProof for Eiffel: http://se.inf.ethz.ch/research/autoproof/) to the new class.
 
-The following project contains examples of applying the templates: https://github.com/anaumchev/testing_reusable_requirements.
+The following project contains some examples of applying the templates: https://github.com/anaumchev/testing_reusable_requirements.
 
 
 To get help with the project, contact Alexandr Naumchev by: anaumchev@gmail.com.
