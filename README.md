@@ -18,9 +18,9 @@ Having done that, connect it to your Eiffel project as an external library.
 
 If you want to apply a template, say, STACK_ADT.e:
 
-1. Inherit from STACK_ADT in a new class marked as "expanded", providing the types you want to verify as generic arguments.
-2. Implement all the STACK_ADT features marked as "deferred".
-3. The routines marked as "frozen" are the abstract data type (ADT) axioms describing the behavior. You will need to verify them.
+1. Inherit from STACK_ADT in a new class marked as "expanded" (https://www.eiffel.org/doc/eiffel/ET-_The_Dynamic_Structure-_Execution_Model#Type_categories), providing the types you want to verify as generic arguments.
+2. Implement all the STACK_ADT features marked as "deferred" (https://www.eiffel.org/doc/eiffel/ET-_Inheritance#Deferred_features_and_classes).
+3. The routines marked as "frozen" (https://www.eiffel.org/doc/eiffel/Eiffel_programming_language_reserved_words#frozen) are the abstract data type (ADT) axioms describing the behavior. You will need to verify them.
 4. If you use testing, call each of the "frozen" routines with arguments that meet the routine's precondition.
 5. A precondition failure denotes an error in the test, while a postcondition failure denotes an error in the implementation of your type.
 
