@@ -11,8 +11,8 @@ The templates include natural-language explanations in the form of code comments
 
 To get started with the project, clone the project inside your $ISE_LIBRARY/library directory:
 
-cd $ISE_LIBRARY/library
-git clone https://github.com/anaumchev/requirements_templates.git
+1. cd $ISE_LIBRARY/library
+2. git clone https://github.com/anaumchev/requirements_templates.git
 
 Having done that, connect it to your Eiffel project as an external library.
 
