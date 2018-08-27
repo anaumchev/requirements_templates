@@ -2,16 +2,19 @@ note
 	description: "Reusable abstract data type specification of queue with the ``append'' operation."
 	description: "The signature is taken from ``The design of data type specifications'' article by Guttag, Horowitz and Musser, page 3."
 	EIS: "protocol=URI", "src=http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.4685&rep=rep1&type=pdf"
+	purpose: "[
+									Queues ``Q'' contain ``T'' objects.
+									To apply this template to your concept,
+									inherit from this class with your concepts for ``Q'' and ``T''.
+									The resulting class has to be effective (non-deferred).
+									Test or model check the resulting class.
+						]"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 
 deferred class
 	QUEUE_WITH_APPEND_ADT [Q, T]
-	--	Queues ``Q'' contain ``T'' objects.
-	--	To apply this template to your concept,
-	--	inherit from this class with your concepts for ``Q'' and ``T''.
-	--	The resulting class has to be effective (non-deferred).
-	--	Test or model check the resulting class.
+
 
 inherit
 
