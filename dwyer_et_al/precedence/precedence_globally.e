@@ -1,6 +1,6 @@
 note
 	description: "[
-		Globally S precedes P;
+		S precedes P globally;
 		in LTL: ``!P W S''
 	]"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Precedence"
@@ -14,6 +14,10 @@ note
 deferred class
 	PRECEDENCE_GLOBALLY [S]
 
+inherit
+
+	CONTROL_SYSTEM [S]
+
 feature
 
 	p (system: S): BOOLEAN
@@ -24,37 +28,23 @@ feature
 		deferred
 		end
 
-	init: S
-		deferred
-		end
-
-	main (system: S)
-		deferred
-		end
-
 feature
 
-	if_not_s_then_not_p_after_initialization
+	s_precedes_p_initially
 		local
 			system: S
 		do
 			system := init
 			check
-				assume: not s (system)
-			end
-			check
-				not p (system)
+				p (system) implies s (system)
 			end
 		end
 
-	s_precedes_p_throughout_execution (system: S)
+	s_precedes_p_globally (system: S)
 		do
 			main (system)
-			check
-				assume: not s (system)
-			end
 		ensure
-			not p (system)
+			p (system) implies s (system)
 		end
 
 end

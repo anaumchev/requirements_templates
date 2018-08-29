@@ -1,6 +1,6 @@
 note
 	description: "[
-		S always eventually responds to P after Q;
+		S responds to P after Q;
 		in LTL: ``[](Q -> [](P -> <>S))''
 	]"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Response"
@@ -13,6 +13,10 @@ note
 
 deferred class
 	RESPONSE_AFTER_Q [S]
+
+inherit
+
+	CONTROL_SYSTEM [S]
 
 feature
 
@@ -28,32 +32,24 @@ feature
 		deferred
 		end
 
-	main (system: S)
-		deferred
-		end
-
 feature
 
-	frozen s_always_eventually_responds_to_p_after_q (system: S)
+	frozen s_responds_to_p_after_q (system: S)
 		require
 			q (system)
-		local
-			i: INTEGER
 		do
 			from
-				i := i.min_value
 			until
-				i = i.max_value or else p (system)
+				p (system) or else verification_boundary_reached (system)
 			loop
 				main (system)
-				i := i + 1
 			end
 			check
 				assume: p (system)
 			end
 			from
 			until
-				s (system)
+				s (system) or else verification_boundary_reached (system)
 			loop
 				main (system)
 			end

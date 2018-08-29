@@ -1,6 +1,6 @@
 note
 	description: "[
-		P is always absent after Q and at least until R;
+		P is false after Q until R;
 		in LTL: ``[](Q & !R -> (!P W R))''
 	]"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Absence"
@@ -13,6 +13,10 @@ note
 
 deferred class
 	ABSENCE_AFTER_Q_UNTIL_R [S]
+
+inherit
+
+	CONTROL_SYSTEM [S]
 
 feature
 
@@ -28,26 +32,18 @@ feature
 		deferred
 		end
 
-	main (system: S)
-		deferred
-		end
-
 feature
 
-	p_does_not_hold_after_q_weak_until_r (system: S)
+	p_is_false_after_q_until_r (system: S)
 		require
 			q (system)
 			not r (system)
-		local
-			i: INTEGER
 		do
 			from
-				i := i.min_value
 			until
-				r (system) or else p (system) or else i = i.max_value
+				r (system) or else p (system) or else verification_boundary_reached (system)
 			loop
 				main (system)
-				i := i + 1
 			end
 		ensure
 			p (system) implies r (system)

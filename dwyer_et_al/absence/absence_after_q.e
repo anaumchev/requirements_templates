@@ -1,6 +1,6 @@
 note
 	description: "[
-		P is always absent after Q;
+		P is false after Q;
 		in LTL: ``[](Q -> [](!P))''
 	]"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Absence"
@@ -14,6 +14,10 @@ note
 deferred class
 	ABSENCE_AFTER_Q [S]
 
+inherit
+
+	CONTROL_SYSTEM [S]
+
 feature
 
 	q (system: S): BOOLEAN
@@ -24,25 +28,17 @@ feature
 		deferred
 		end
 
-	main (system: S)
-		deferred
-		end
-
 feature
 
-	frozen p_never_holds_after_q (system: S)
+	frozen p_is_false_after_q (system: S)
 		require
 			q (system)
-		local
-			i: INTEGER
 		do
 			from
-				i := i.min_value
 			until
-				i = i.max_value or else p (system)
+				p (system) or else verification_boundary_reached (system)
 			loop
 				main (system)
-				i := i + 1
 			end
 		ensure
 			not p (system)

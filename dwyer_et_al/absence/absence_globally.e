@@ -1,6 +1,6 @@
 note
 	description: "[
-		Globally P does not hold;
+		P is false globally;
 		in LTL: ``[](!P)''
 	]"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Absence"
@@ -14,23 +14,19 @@ note
 deferred class
 	ABSENCE_GLOBALLY [S]
 
+inherit
+
+	CONTROL_SYSTEM [S]
+
 feature
 
 	p (system: S): BOOLEAN
 		deferred
 		end
 
-	init: S
-		deferred
-		end
-
-	main (system: S)
-		deferred
-		end
-
 feature
 
-	frozen init_not_p
+	frozen p_is_false_initially
 		local
 			system: S
 		do
@@ -40,7 +36,7 @@ feature
 			end
 		end
 
-	frozen maintain_not_p (system: S)
+	frozen p_is_false_globally (system: S)
 		do
 			main (system)
 		ensure

@@ -16,6 +16,7 @@
 			<void_safety support="none" use="none"/>
 		</capability>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
+		<library name="time" location="$ISE_LIBRARY\library\time\time.ecf"/>
 		<cluster name="requirements_templates" location=".\" recursive="true"/>
 	</target>
 </system>

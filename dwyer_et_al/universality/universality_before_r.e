@@ -14,6 +14,10 @@ note
 deferred class
 	UNIVERSALITY_BEFORE_R [S]
 
+inherit
+
+	CONTROL_SYSTEM [S]
+
 feature
 
 	p (system: S): BOOLEAN
@@ -24,17 +28,13 @@ feature
 		deferred
 		end
 
-	main (system: S)
-		deferred
-		end
-
 feature
 
 	p_is_true_before_r (system: S)
 		do
 			from
 			until
-				r (system) or else not p (system)
+				r (system) or else not p (system) or else verification_boundary_reached (system)
 			loop
 				main (system)
 			end

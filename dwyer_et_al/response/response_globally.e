@@ -1,6 +1,6 @@
 note
 	description: "[
-		Globally S eventually responds to P;
+		S responds to P globally;
 		in LTL: ``[](P -> <>S)''
 	]"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Response"
@@ -14,6 +14,10 @@ note
 deferred class
 	RESPONSE_GLOBALLY [S]
 
+inherit
+
+	CONTROL_SYSTEM [S]
+
 feature
 
 	p (system: S): BOOLEAN
@@ -24,19 +28,15 @@ feature
 		deferred
 		end
 
-	main (system: S)
-		deferred
-		end
-
 feature
 
-	frozen globally_s_eventually_responds_to_p (system: S)
+	frozen s_responds_to_p_globally (system: S)
 		require
 			p (system)
 		do
 			from
 			until
-				s (system)
+				s (system) or else verification_boundary_reached (system)
 			loop
 				main (system)
 			end

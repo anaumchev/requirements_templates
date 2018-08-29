@@ -1,6 +1,6 @@
 note
 	description: "[
-		Globally P unversally holds;
+		P is true globally;
 		in LTL: ``[](P)''
 	]"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Universality"
@@ -14,23 +14,19 @@ note
 deferred class
 	UNIVERSALITY_GLOBALLY [S]
 
+inherit
+
+	CONTROL_SYSTEM [S]
+
 feature
 
 	p (system: S): BOOLEAN
 		deferred
 		end
 
-	init: S
-		deferred
-		end
-
-	main (system: S)
-		deferred
-		end
-
 feature
 
-	frozen p_holds_after_initialization
+	frozen p_is_true_initially
 		local
 			system: S
 		do
@@ -40,7 +36,7 @@ feature
 			end
 		end
 
-	frozen p_holds_throughout_execution (system: S)
+	frozen p_is_true_globally (system: S)
 		do
 			main (system)
 		ensure

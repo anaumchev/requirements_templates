@@ -14,6 +14,10 @@ note
 deferred class
 	RESPONSE_BEFORE_R [S]
 
+inherit
+
+	CONTROL_SYSTEM [S]
+
 feature
 
 	p (system: S): BOOLEAN
@@ -28,10 +32,6 @@ feature
 		deferred
 		end
 
-	main (system: S)
-		deferred
-		end
-
 feature
 
 	s_responds_to_p_before_r (system: S)
@@ -40,16 +40,19 @@ feature
 		do
 			from
 			until
-				s (system)
+				s (system) or else verification_boundary_reached (system)
 			loop
 				main (system)
+			end
+			check
+				s (system)
 			end
 			check
 				not r (system)
 			end
 			from
 			until
-				r (system)
+				r (system) or else verification_boundary_reached (system)
 			loop
 				main (system)
 			end

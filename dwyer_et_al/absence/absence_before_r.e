@@ -1,6 +1,6 @@
 note
 	description: "[
-		P is absent before R;
+		P is false before R;
 		in LTL: ``<>R -> (!P U R)''
 	]"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Absence"
@@ -14,6 +14,10 @@ note
 deferred class
 	ABSENCE_BEFORE_R [S]
 
+inherit
+
+	CONTROL_SYSTEM [S]
+
 feature
 
 	p (system: S): BOOLEAN
@@ -24,17 +28,13 @@ feature
 		deferred
 		end
 
-	main (system: S)
-		deferred
-		end
-
 feature
 
-	p_is_absent_before_r (system: S)
+	p_is_false_before_r (system: S)
 		do
 			from
 			until
-				r (system) or else p (system)
+				r (system) or else p (system) or else verification_boundary_reached (system)
 			loop
 				main (system)
 			end
@@ -43,4 +43,3 @@ feature
 		end
 
 end
-

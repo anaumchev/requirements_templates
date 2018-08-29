@@ -14,6 +14,10 @@ note
 deferred class
 	UNIVERSALITY_AFTER_Q [S]
 
+inherit
+
+	CONTROL_SYSTEM [S]
+
 feature
 
 	q (system: S): BOOLEAN
@@ -21,14 +25,6 @@ feature
 		end
 
 	p (system: S): BOOLEAN
-		deferred
-		end
-
-	verification_boundary_reached (system: S): BOOLEAN
-		deferred
-		end
-
-	main (system: S)
 		deferred
 		end
 
@@ -40,7 +36,7 @@ feature
 		do
 			from
 			until
-				verification_boundary_reached (system) or else not p (system)
+				not p (system) or else verification_boundary_reached (system)
 			loop
 				main (system)
 			end
