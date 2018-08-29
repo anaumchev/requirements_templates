@@ -39,19 +39,18 @@ feature
 			q (system)
 			not r (system)
 		local
-			p_accumulated: BOOLEAN
+			i: INTEGER
 		do
 			from
-				p_accumulated := False
+				i := i.min_value
 			until
-				r (system)
+				r (system) or else p (system) or else i = i.max_value
 			loop
-				p_accumulated := p_accumulated or p (system)
 				main (system)
+				i := i + 1
 			end
-			check
-				not p_accumulated
-			end
+		ensure
+			p (system) implies r (system)
 		end
 
 end

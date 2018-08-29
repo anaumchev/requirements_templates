@@ -38,20 +38,15 @@ feature
 		require
 			q (system)
 			not r (system)
-		local
-			p_accumulated: BOOLEAN
 		do
 			from
-				p_accumulated := False
 			until
-				r (system)
+				r (system) or else p (system)
 			loop
-				p_accumulated := p_accumulated or p (system)
 				main (system)
 			end
-			check
-				not p_accumulated
-			end
+		ensure
+			r (system)
 		end
 
 end
