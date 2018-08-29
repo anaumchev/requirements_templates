@@ -30,25 +30,22 @@ feature
 
 feature
 
-	frozen p_never_holds_after_q (system: S; steps: INTEGER)
+	frozen p_never_holds_after_q (system: S)
 		require
 			q (system)
 		local
 			i: INTEGER
 		do
 			from
-				i := 0
+				i := i.min_value
 			until
-				i = steps
+				i = i.max_value or else p (system)
 			loop
 				main (system)
 				i := i + 1
-			variant
-				steps - i
 			end
-			check
-				not p (system)
-			end
+		ensure
+			not p (system)
 		end
 
 end

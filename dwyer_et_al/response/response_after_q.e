@@ -34,21 +34,19 @@ feature
 
 feature
 
-	frozen s_always_eventually_responds_to_p_after_q (system: S; steps: INTEGER)
+	frozen s_always_eventually_responds_to_p_after_q (system: S)
 		require
 			q (system)
 		local
 			i: INTEGER
 		do
 			from
-				i := 0
+				i := i.min_value
 			until
-				i = steps or else p (system)
+				i = i.max_value or else p (system)
 			loop
 				main (system)
 				i := i + 1
-			variant
-				steps - i
 			end
 			check
 				assume: p (system)
