@@ -33,16 +33,12 @@ feature
 	frozen globally_s_eventually_responds_to_p (system: S)
 		require
 			p (system)
-		local
-			i: INTEGER
 		do
 			from
-				i := i.min_value
 			until
-				s (system) or else i = i.max_value
+				s (system)
 			loop
 				main (system)
-				i := i + 1
 			end
 		ensure
 			s (system)

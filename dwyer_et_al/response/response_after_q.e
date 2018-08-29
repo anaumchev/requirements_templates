@@ -52,12 +52,10 @@ feature
 				assume: p (system)
 			end
 			from
-				i := i.min_value
 			until
-				s (system) or else i = i.max_value
+				s (system)
 			loop
 				main (system)
-				i := i + 1
 			end
 		ensure
 			s (system)
