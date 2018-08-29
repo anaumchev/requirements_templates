@@ -34,26 +34,24 @@ feature
 
 feature
 
-	p_does_not_hold_after_q_weak_until_r (system: S; steps: INTEGER)
+	p_does_not_hold_after_q_weak_until_r (system: S)
 		require
 			q (system)
 			not r (system)
 		local
-			i: INTEGER
+			p_accumulated: BOOLEAN
 		do
 			from
-				i := 0
+				p_accumulated := False
 			until
-				i = steps or else p (system)
+				r (system)
 			loop
+				p_accumulated := p_accumulated or p (system)
 				main (system)
-				i := i + 1
 			end
 			check
-				assume: p (system)
+				not p_accumulated
 			end
-		ensure
-			r (system)
 		end
 
 end
