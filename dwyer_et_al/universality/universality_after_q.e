@@ -30,7 +30,7 @@ feature
 
 feature
 
-	p_is_true_after_q (system: S)
+	frozen p_is_true_after_q (system: S)
 		require
 			q (system)
 		do

@@ -34,7 +34,7 @@ feature
 
 feature
 
-	s_responds_to_p_before_r (system: S)
+	frozen s_responds_to_p_before_r (system: S)
 		require
 			p (system)
 		do

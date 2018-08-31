@@ -30,7 +30,7 @@ feature
 
 feature
 
-	s_precedes_p_initially
+	frozen s_precedes_p_initially
 		local
 			system: S
 		do
@@ -40,7 +40,7 @@ feature
 			end
 		end
 
-	s_precedes_p_globally (system: S)
+	frozen s_precedes_p_globally (system: S)
 		do
 			main (system)
 		ensure

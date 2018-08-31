@@ -34,7 +34,7 @@ feature
 
 feature
 
-	s_precedes_p_after_q (system: S)
+	frozen s_precedes_p_after_q (system: S)
 		require
 			q (system)
 		do

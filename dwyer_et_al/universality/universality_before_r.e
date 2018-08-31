@@ -30,7 +30,7 @@ feature
 
 feature
 
-	p_is_true_before_r (system: S)
+	frozen p_is_true_before_r (system: S)
 		do
 			from
 			until

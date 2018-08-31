@@ -34,7 +34,7 @@ feature
 
 feature
 
-	p_is_false_after_q_until_r (system: S)
+	frozen p_is_false_after_q_until_r (system: S)
 		require
 			q (system)
 			not r (system)
