@@ -40,16 +40,13 @@ feature
 		do
 			from
 			until
-				p (system) or else verification_boundary_reached (system)
+				p (system)
 			loop
 				main (system)
 			end
-			check
-				assume: p (system)
-			end
 			from
 			until
-				s (system) or else verification_boundary_reached (system)
+				s (system)
 			loop
 				main (system)
 			end

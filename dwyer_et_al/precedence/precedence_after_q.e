@@ -40,12 +40,12 @@ feature
 		do
 			from
 			until
-				s (system) or else p (system) or else verification_boundary_reached (system)
+				s (system) or else p (system)
 			loop
 				main (system)
 			end
 		ensure
-			p (system) implies s (system)
+			s (system)
 		end
 
 end

@@ -41,12 +41,12 @@ feature
 		do
 			from
 			until
-				r (system) or else not p (system) or else verification_boundary_reached (system)
+				r (system) or else not p (system)
 			loop
 				main (system)
 			end
 		ensure
-			not p (system) implies r (system)
+			r (system)
 		end
 
 end

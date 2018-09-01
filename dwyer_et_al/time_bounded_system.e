@@ -15,13 +15,4 @@ feature
 
 	time: INTEGER
 
-	bound (system: S): INTEGER
-		deferred
-		end
-
-	verification_boundary_reached (system: S): BOOLEAN
-		do
-			Result := time >= bound (system)
-		end
-
 end

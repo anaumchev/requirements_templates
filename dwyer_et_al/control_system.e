@@ -9,10 +9,6 @@ deferred class
 
 feature
 
-	verification_boundary_reached (system: S): BOOLEAN
-		deferred
-		end
-
 	init: S
 		deferred
 		end

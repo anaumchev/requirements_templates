@@ -34,7 +34,7 @@ feature
 		do
 			from
 			until
-				r (system) or else p (system) or else verification_boundary_reached (system)
+				r (system) or else p (system)
 			loop
 				main (system)
 			end

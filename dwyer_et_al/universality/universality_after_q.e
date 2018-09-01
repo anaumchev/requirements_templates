@@ -36,12 +36,12 @@ feature
 		do
 			from
 			until
-				not p (system) or else verification_boundary_reached (system)
+				not p (system)
 			loop
 				main (system)
 			end
 		ensure
-			p (system)
+			False
 		end
 
 end
