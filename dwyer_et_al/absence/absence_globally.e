@@ -26,21 +26,20 @@ feature
 
 feature
 
-	frozen p_is_false_initially
+	frozen p_is_false_globally
 		local
 			system: S
 		do
-			system := init
+			from
+				system := init
+			until
+				p (system)
+			loop
+				main (system)
+			end
 			check
 				not p (system)
 			end
-		end
-
-	frozen p_is_false_globally (system: S)
-		do
-			main (system)
-		ensure
-			not p (system)
 		end
 
 end

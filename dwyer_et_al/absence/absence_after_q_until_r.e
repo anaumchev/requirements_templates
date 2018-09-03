@@ -46,7 +46,7 @@ feature
 				main (system)
 			end
 		ensure
-			r (system)
+			not r (system) implies not p (system)
 		end
 
 end

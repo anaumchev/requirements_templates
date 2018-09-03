@@ -41,7 +41,7 @@ feature
 				main (system)
 			end
 		ensure
-			False
+			not p (system)
 		end
 
 end

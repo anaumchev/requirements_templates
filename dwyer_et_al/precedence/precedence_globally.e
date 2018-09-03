@@ -30,21 +30,20 @@ feature
 
 feature
 
-	frozen s_precedes_p_initially
+	frozen s_precedes_p_globally
 		local
 			system: S
 		do
-			system := init
-			check
-				p (system) implies s (system)
+			from
+				system := init
+			until
+				s (system) or else p (system)
+			loop
+				main (system)
 			end
-		end
-
-	frozen s_precedes_p_globally (system: S)
-		do
-			main (system)
-		ensure
-			p (system) implies s (system)
+			check
+				not s (system) implies not p (system)
+			end
 		end
 
 end
