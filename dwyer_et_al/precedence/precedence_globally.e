@@ -42,7 +42,7 @@ feature
 				main (system)
 			end
 			check
-				not s (system) implies not p (system)
+				p (system) implies s (system)
 			end
 		end
 

@@ -49,7 +49,7 @@ feature
 				main (system)
 			end
 		ensure
-			s (system)
+			p (system) implies s (system)
 		end
 
 end
