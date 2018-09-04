@@ -36,21 +36,21 @@ feature
 
 	frozen s_responds_to_p_before_r (system: S)
 		require
-			p (system)
+			p_holds: p (system)
 		do
 			from
 			invariant
-				not r (system)
+				r_does_not_hold: not r (system)
 			until
 				s (system) or else verification_boundary_crossed (system)
 			loop
 				main (system)
 			end
 			check
-				not verification_boundary_crossed (system)
+				verification_boundary_is_not_crossed: not verification_boundary_crossed (system)
 			end
 			check
-				s (system)
+				s_holds: s (system)
 			end
 			from
 			until
@@ -59,8 +59,8 @@ feature
 				main (system)
 			end
 		ensure
-			not verification_boundary_crossed (system)
-			r (system)
+			verification_boundary_is_not_crossed: not verification_boundary_crossed (system)
+			r_holds: r (system)
 		end
 
 end

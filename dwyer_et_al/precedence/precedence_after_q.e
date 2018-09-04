@@ -36,7 +36,7 @@ feature
 
 	frozen s_precedes_p_after_q (system: S)
 		require
-			q (system)
+			q_holds: q (system)
 		do
 			from
 			until
@@ -45,7 +45,7 @@ feature
 				main (system)
 			end
 		ensure
-			p (system) implies s (system)
+			if_p_holds_then_s_holds: p (system) implies s (system)
 		end
 
 end

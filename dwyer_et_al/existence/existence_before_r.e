@@ -34,7 +34,7 @@ feature
 		do
 			from
 			invariant
-				not r (system)
+				r_does_not_hold: not r (system)
 			until
 				p (system) or else verification_boundary_crossed (system)
 			loop

@@ -38,7 +38,7 @@ feature
 				main (system)
 			end
 			check
-				p (system)
+				p_holds: p (system)
 			end
 		end
 

@@ -39,8 +39,8 @@ feature
 				main (system)
 			end
 		ensure
-			not verification_boundary_crossed (system)
-			r (system)
+			verification_boundary_is_not_crossed: not verification_boundary_crossed (system)
+			r_holds: r (system)
 		end
 
 end

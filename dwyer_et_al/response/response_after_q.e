@@ -36,7 +36,7 @@ feature
 
 	frozen s_responds_to_p_after_q (system: S)
 		require
-			q (system)
+			q_holds: q (system)
 		do
 			from
 			until
@@ -45,10 +45,10 @@ feature
 				main (system)
 			end
 			check
-				assume: not verification_boundary_crossed (system)
+				verification_boundary_is_not_crossed: not verification_boundary_crossed (system)
 			end
 			check
-				assume: p (system)
+				p_holds: p (system)
 			end
 			from
 			until
@@ -57,8 +57,8 @@ feature
 				main (system)
 			end
 		ensure
-			not verification_boundary_crossed (system)
-			s (system)
+			verification_boundary_is_not_crossed: not verification_boundary_crossed (system)
+			s_holds: s (system)
 		end
 
 end

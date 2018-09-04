@@ -32,7 +32,7 @@ feature
 
 	frozen p_is_false_after_q (system: S)
 		require
-			q (system)
+			q_holds: q (system)
 		do
 			from
 			until
@@ -41,7 +41,7 @@ feature
 				main (system)
 			end
 		ensure
-			not p (system)
+			p_does_not_hold: not p (system)
 		end
 
 end

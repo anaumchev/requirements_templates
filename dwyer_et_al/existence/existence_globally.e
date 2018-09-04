@@ -38,10 +38,10 @@ feature
 				main (system)
 			end
 			check
-				not verification_boundary_crossed (system)
+				verification_boundary_is_not_crossed: not verification_boundary_crossed (system)
 			end
 			check
-				p (system)
+				p_holds: p (system)
 			end
 		end
 

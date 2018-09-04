@@ -42,10 +42,10 @@ feature
 				main (system)
 			end
 			check
-				q (system)
+				q_holds: q (system)
 			end
 			check
-				not verification_boundary_crossed (system)
+				verification_boundary_is_not_crossed: not verification_boundary_crossed (system)
 			end
 			from
 			until
@@ -54,10 +54,10 @@ feature
 				main (system)
 			end
 			check
-				p (system)
+				p_holds: p (system)
 			end
 			check
-				not verification_boundary_crossed (system)
+				verification_boundary_is_not_crossed: not verification_boundary_crossed (system)
 			end
 		end
 

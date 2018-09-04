@@ -35,21 +35,22 @@ feature
 feature
 
 	p_becomes_true_after_q_until_r (system: S)
-			--	Has to terminate.
 		require
-			q (system)
-			not r (system)
+			q_holds: q (system)
+			r_does_not_hold: not r (system)
 		do
 			from
+			invariant
+				r_does_not_hold: not r (system)
 			until
-				(p (system) and not r (system)) or else r (system) or else verification_boundary_crossed (system)
+				p (system) or else r (system) or else verification_boundary_crossed (system)
 			loop
 				main (system)
 			end
 		ensure
-			not verification_boundary_crossed (system)
-			p (system)
-			not r (system)
+			verification_boundary_is_not_crossed: not verification_boundary_crossed (system)
+			p_holds: p (system)
+			r_does_not_hold: not r (system)
 		end
 
 end

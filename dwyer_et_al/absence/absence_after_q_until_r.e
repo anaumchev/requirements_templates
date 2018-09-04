@@ -36,8 +36,8 @@ feature
 
 	frozen p_is_false_after_q_until_r (system: S)
 		require
-			q (system)
-			not r (system)
+			q_holds: q (system)
+			r_does_not_hold: not r (system)
 		do
 			from
 			until
@@ -46,7 +46,7 @@ feature
 				main (system)
 			end
 		ensure
-			p (system) implies r (system)
+			if_p_holds_then_r_holds: p (system) implies r (system)
 		end
 
 end

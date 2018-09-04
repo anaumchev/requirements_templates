@@ -42,7 +42,7 @@ feature
 				main (system)
 			end
 			check
-				p (system) implies s (system)
+				if_p_holds_then_s_holds: p (system) implies s (system)
 			end
 		end
 

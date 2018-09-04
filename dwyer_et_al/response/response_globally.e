@@ -32,7 +32,7 @@ feature
 
 	frozen s_responds_to_p_globally (system: S)
 		require
-			p (system)
+			p_holds: p (system)
 		do
 			from
 			until
@@ -41,8 +41,8 @@ feature
 				main (system)
 			end
 		ensure
-			not verification_boundary_crossed (system)
-			s (system)
+			verification_boundary_is_not_crossed: not verification_boundary_crossed (system)
+			s_holds: s (system)
 		end
 
 end

@@ -36,8 +36,8 @@ feature
 
 	frozen p_is_false_between_q_and_r (system: S)
 		require
-			q (system)
-			not r (system)
+			q_holds: q (system)
+			r_does_not_hold: not r (system)
 		do
 			from
 			until
@@ -46,8 +46,8 @@ feature
 				main (system)
 			end
 		ensure
-			not verification_boundary_crossed (system)
-			r (system)
+			verification_boundary_is_not_crossed: not verification_boundary_crossed (system)
+			r_holds: r (system)
 		end
 
 end

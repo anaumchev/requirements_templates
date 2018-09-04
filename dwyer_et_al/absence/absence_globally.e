@@ -38,7 +38,7 @@ feature
 				main (system)
 			end
 			check
-				not p (system)
+				p_does_not_hold: not p (system)
 			end
 		end
 
