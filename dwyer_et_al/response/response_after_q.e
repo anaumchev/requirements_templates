@@ -40,9 +40,15 @@ feature
 		do
 			from
 			until
-				p (system)
+				p (system) or else verification_boundary_crossed (system)
 			loop
 				main (system)
+			end
+			check
+				assume: not verification_boundary_crossed (system)
+			end
+			check
+				assume: p (system)
 			end
 			from
 			until
@@ -51,6 +57,7 @@ feature
 				main (system)
 			end
 		ensure
+			not verification_boundary_crossed (system)
 			s (system)
 		end
 

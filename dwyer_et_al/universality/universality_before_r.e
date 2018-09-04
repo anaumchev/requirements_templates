@@ -34,11 +34,12 @@ feature
 		do
 			from
 			until
-				r (system) or else not p (system)
+				r (system) or else not p (system) or else verification_boundary_crossed (system)
 			loop
 				main (system)
 			end
 		ensure
+			not verification_boundary_crossed (system)
 			r (system)
 		end
 

@@ -41,13 +41,13 @@ feature
 			not r (system)
 		do
 			from
+			invariant
+				not r (system)
 			until
-				(p (system) and not r (system)) or else r (system)
+				p (system) or else verification_boundary_crossed (system)
 			loop
 				main (system)
 			end
-		ensure
-			r (system) implies p (system)
 		end
 
 end

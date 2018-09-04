@@ -37,7 +37,7 @@ feature
 			from
 				system := init
 			until
-				s (system) or else p (system)
+				s (system) or else p (system) or else verification_boundary_crossed (system)
 			loop
 				main (system)
 			end

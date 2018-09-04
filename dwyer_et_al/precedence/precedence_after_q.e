@@ -35,16 +35,12 @@ feature
 feature
 
 	frozen s_precedes_p_after_q (system: S)
+		require
+			q (system)
 		do
 			from
 			until
-				q (system)
-			loop
-				main (system)
-			end
-			from
-			until
-				s (system) or else p (system)
+				s (system) or else p (system) or else verification_boundary_crossed (system)
 			loop
 				main (system)
 			end

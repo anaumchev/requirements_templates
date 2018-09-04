@@ -17,4 +17,8 @@ feature
 		deferred
 		end
 
+	verification_boundary_crossed (system: S): BOOLEAN
+		deferred
+		end
+
 end

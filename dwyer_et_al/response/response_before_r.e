@@ -39,21 +39,27 @@ feature
 			p (system)
 		do
 			from
+			invariant
+				not r (system)
 			until
-				s (system)
+				s (system) or else verification_boundary_crossed (system)
 			loop
 				main (system)
 			end
 			check
-				not r (system)
+				not verification_boundary_crossed (system)
+			end
+			check
+				s (system)
 			end
 			from
 			until
-				r (system)
+				r (system) or else verification_boundary_crossed (system)
 			loop
 				main (system)
 			end
 		ensure
+			not verification_boundary_crossed (system)
 			r (system)
 		end
 
