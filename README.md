@@ -1,8 +1,9 @@
-A library of reusable abstract data types templates for constructing verifiable specifications.
+A library of reusable templates for constructing verifiable and expressive requirements.
 
 
-The project maintains a library of verifiable specifications templates for idiomatic software behaviors. 
-
+The "adt" direcotry contains abstract data types specifications templates for idiomatic software behaviors.
+The "dwyer_et_al" directory contains requirements templates for control systems capturing the patterns reported by Dwyer et al in "Patterns in Property Specifications for Finite-State Verification" (https://dl.acm.org/citation.cfm?id=302672).
+The "koymans" directory contains quanitative real-time properties templates for real-time systems reported by Koymans in "Specifying Real-Time Properties with Metric Temporal Logic" (https://link.springer.com/article/10.1007/BF01995674).
 
 Instead of writing verifiable specifications for you components from scratch, you can apply the ready-to-use templates.
 The resulting specifications are verifiable either through parameterized unit testing or automated program proving.
