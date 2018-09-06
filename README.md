@@ -17,7 +17,7 @@ To get started with the project, clone the project inside your $ISE_LIBRARY/libr
 
 Having done that, connect it to your Eiffel project as an external library.
 
-If you want to apply a template, say, STACK_ADT.e:
+If you want to apply a requirement template, say, STACK_ADT.e:
 
 1. Inherit from STACK_ADT in a new class marked as "expanded" (https://www.eiffel.org/doc/eiffel/ET-_The_Dynamic_Structure-_Execution_Model#Type_categories), providing the types you want to verify as generic arguments.
 2. Implement all the STACK_ADT features marked as "deferred" (https://www.eiffel.org/doc/eiffel/ET-_Inheritance#Deferred_features_and_classes).
