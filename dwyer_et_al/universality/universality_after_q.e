@@ -35,8 +35,10 @@ feature
 			q_holds: q (system)
 		do
 			from
+			invariant
+				p_holds: p (system)
 			until
-				not p (system) or else verification_boundary_crossed (system)
+				verification_boundary_crossed (system)
 			loop
 				main (system)
 			end
