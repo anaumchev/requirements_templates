@@ -36,13 +36,14 @@ feature
 		do
 			from
 				system := init
+			invariant
+				p_does_not_hold_or_else_s_holds: not p (system) or else s (system)
 			until
-				s (system) or else p (system) or else verification_boundary_crossed (system)
+				s (system) or else time_remaining (system) = 0
 			loop
-				main (system)
-			end
-			check
-				if_p_holds_then_s_holds: p (system) implies s (system)
+				iterate (system)
+			variant
+				time_remaining (system)
 			end
 		end
 

@@ -36,13 +36,12 @@ feature
 		do
 			from
 			until
-				s (system) or else verification_boundary_crossed (system)
+				s (system)
 			loop
-				main (system)
+				iterate (system)
+			variant
+				time_remaining (system)
 			end
-		ensure
-			verification_boundary_is_not_crossed: not verification_boundary_crossed (system)
-			s_holds: s (system)
 		end
 
 end

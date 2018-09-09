@@ -40,25 +40,23 @@ feature
 		do
 			from
 			until
-				p (system) or else verification_boundary_crossed (system)
+				p (system) or else time_remaining (system) = 0
 			loop
-				main (system)
+				iterate (system)
+			variant
+				time_remaining (system)
 			end
 			check
-				verification_boundary_is_not_crossed: not verification_boundary_crossed (system)
-			end
-			check
-				p_holds: p (system)
+				assume: p (system)
 			end
 			from
 			until
 				s (system)
 			loop
-				main (system)
+				iterate (system)
+			variant
+				time_remaining (system)
 			end
-		ensure
-			verification_boundary_is_not_crossed: not verification_boundary_crossed (system)
-			s_holds: s (system)
 		end
 
 end

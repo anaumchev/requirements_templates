@@ -36,9 +36,11 @@ feature
 			invariant
 				r_does_not_hold: not r (system)
 			until
-				p (system) or else verification_boundary_crossed (system)
+				p (system) or else time_remaining (system) = 0
 			loop
-				main (system)
+				iterate (system)
+			variant
+				time_remaining (system)
 			end
 		end
 

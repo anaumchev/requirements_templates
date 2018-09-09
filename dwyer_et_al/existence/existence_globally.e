@@ -33,15 +33,11 @@ feature
 			from
 				system := init
 			until
-				p (system) or else verification_boundary_crossed (system)
+				p (system)
 			loop
-				main (system)
-			end
-			check
-				verification_boundary_is_not_crossed: not verification_boundary_crossed (system)
-			end
-			check
-				p_holds: p (system)
+				iterate (system)
+			variant
+				time_remaining (system)
 			end
 		end
 

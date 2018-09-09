@@ -32,13 +32,14 @@ feature
 		do
 			from
 				system := init
-			until
-				p (system) or else verification_boundary_crossed (system)
-			loop
-				main (system)
-			end
-			check
+			invariant
 				p_does_not_hold: not p (system)
+			until
+				time_remaining (system) = 0
+			loop
+				iterate (system)
+			variant
+				time_remaining (system)
 			end
 		end
 

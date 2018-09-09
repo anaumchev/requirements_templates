@@ -38,12 +38,12 @@ feature
 			invariant
 				p_holds: p (system)
 			until
-				verification_boundary_crossed (system)
+				time_remaining (system) = 0
 			loop
-				main (system)
+				iterate (system)
+			variant
+				time_remaining (system)
 			end
-		ensure
-			p_holds: p (system)
 		end
 
 end

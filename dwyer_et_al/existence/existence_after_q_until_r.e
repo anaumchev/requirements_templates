@@ -43,14 +43,12 @@ feature
 			invariant
 				r_does_not_hold: not r (system)
 			until
-				p (system) or else r (system) or else verification_boundary_crossed (system)
+				p (system)
 			loop
-				main (system)
+				iterate (system)
+			variant
+				time_remaining (system)
 			end
-		ensure
-			verification_boundary_is_not_crossed: not verification_boundary_crossed (system)
-			p_holds: p (system)
-			r_does_not_hold: not r (system)
 		end
 
 end

@@ -13,11 +13,11 @@ feature
 		deferred
 		end
 
-	main (system: S)
+	iterate (system: S)
 		deferred
 		end
 
-	verification_boundary_crossed (system: S): BOOLEAN
+	time_remaining (system: S): INTEGER
 		deferred
 		end
 

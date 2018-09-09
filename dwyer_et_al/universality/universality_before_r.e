@@ -33,14 +33,15 @@ feature
 	frozen p_is_true_before_r (system: S)
 		do
 			from
+			invariant
+				p (system) or else r (system)
 			until
-				r (system) or else not p (system) or else verification_boundary_crossed (system)
+				r (system)
 			loop
-				main (system)
+				iterate (system)
+			variant
+				time_remaining (system)
 			end
-		ensure
-			verification_boundary_is_not_crossed: not verification_boundary_crossed (system)
-			r_holds: r (system)
 		end
 
 end

@@ -40,13 +40,15 @@ feature
 			r_does_not_hold: not r (system)
 		do
 			from
+			invariant
+				p_does_not_hold_or_else_r_holds: not p (system) or else r (system)
 			until
-				r (system) or else p (system) or else verification_boundary_crossed (system)
+				r (system) or else time_remaining (system) = 0
 			loop
-				main (system)
+				iterate (system)
+			variant
+				time_remaining (system)
 			end
-		ensure
-			if_p_holds_then_r_holds: p (system) implies r (system)
 		end
 
 end

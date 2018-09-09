@@ -38,12 +38,12 @@ feature
 			invariant
 				p_does_not_hold: not p (system)
 			until
-				verification_boundary_crossed (system)
+				time_remaining (system) = 0
 			loop
-				main (system)
+				iterate (system)
+			variant
+				time_remaining (system)
 			end
-		ensure
-			p_does_not_hold: not p (system)
 		end
 
 end
