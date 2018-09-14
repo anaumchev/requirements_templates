@@ -30,12 +30,10 @@ feature
 
 feature
 
-	frozen s_precedes_p_globally
-		local
-			system: S
+	frozen s_precedes_p_globally (system: S)
 		do
 			from
-				system := init
+				init (system)
 			invariant
 				p_does_not_hold_or_else_s_holds: not p (system) or else s (system)
 			until

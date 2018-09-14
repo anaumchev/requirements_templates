@@ -26,12 +26,10 @@ feature
 
 feature
 
-	frozen p_is_true_globally
-		local
-			system: S
+	frozen p_is_true_globally (system: S)
 		do
 			from
-				system := init
+				init (system)
 			invariant
 				p_holds: p (system)
 			until

@@ -31,7 +31,7 @@ feature
 			system: S
 		do
 			from
-				system := init
+				init (system)
 			invariant
 				p_does_not_hold: not p (system)
 			until

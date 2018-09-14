@@ -26,12 +26,10 @@ feature
 
 feature
 
-	p_becomes_true_globally
-		local
-			system: S
+	p_becomes_true_globally (system: S)
 		do
 			from
-				system := init
+				init (system)
 			until
 				p (system)
 			loop

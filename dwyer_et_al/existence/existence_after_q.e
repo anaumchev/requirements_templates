@@ -30,12 +30,10 @@ feature
 
 feature
 
-	p_becomes_true_after_q
-		local
-			system: S
+	p_becomes_true_after_q (system: S)
 		do
 			from
-				system := init
+				init (system)
 			until
 				q (system)
 			loop

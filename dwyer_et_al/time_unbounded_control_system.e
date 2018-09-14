@@ -9,25 +9,18 @@ deferred class
 
 inherit
 
-	CONTROL_SYSTEM [S]
+	TIME_BOUNDED_CONTROL_SYSTEM [S]
 
 feature
 
-	main (system: S)
-		deferred
+	frozen time_boundary (system: S): INTEGER
+		do
+			Result := (0).max_value
 		end
 
-	frozen time: INTEGER
-
-	frozen iterate (system: S)
+	frozen time_growth (system: S): INTEGER
 		do
-			main (system)
-			time := time + 1
-		end
-
-	frozen time_remaining (system: S): INTEGER
-		do
-			Result := (0).max_value - time
+			Result := 1
 		end
 
 end

@@ -9,7 +9,7 @@ deferred class
 
 feature
 
-	init: S
+	init (system: S)
 		deferred
 		end
 

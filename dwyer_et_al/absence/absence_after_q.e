@@ -28,8 +28,6 @@ feature
 		deferred
 		end
 
-feature
-
 	frozen p_is_false_after_q (system: S)
 		require
 			q_holds: q (system)
