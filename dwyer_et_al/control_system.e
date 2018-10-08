@@ -1,8 +1,8 @@
 note
-	description: "Summary description for {CONTROL_SYSTEM}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "Structuring a control system."
+	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/control_system.e"
+	author: "Alexandr Naumchev"
+	email: "anaumchev@gmail.com"
 
 deferred class
 	CONTROL_SYSTEM [S]
