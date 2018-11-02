@@ -1,9 +1,8 @@
 note
 	description: "[
-		P is false globally;
-		in LTL: ``[](!P)''
+		P is false before R;
+		in LTL: ``<>R -> (!P U R)''
 	]"
-	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/absence/absence_globally.e"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Absence"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ltl.shtml#Absence"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/qre.shtml#Absence"
@@ -13,11 +12,11 @@ note
 	email: "anaumchev@gmail.com"
 
 deferred class
-	ABSENCE_GLOBALLY [S]
+	ABSENCE_BEFORE [S]
 
 inherit
 
-	CONTROL_SYSTEM [S]
+	REQUIREMENT [S]
 
 feature
 
@@ -25,22 +24,23 @@ feature
 		deferred
 		end
 
+	r (system: S): BOOLEAN
+		deferred
+		end
+
 feature
 
-	frozen p_is_false_globally
-		local
-			system: S
+	frozen p_is_false_before_r (system: S)
 		do
 			from
-				init (system)
 			invariant
-				p_does_not_hold: not p (system)
+				p_does_not_hold_or_else_r_holds: not p (system) or else r (system)
 			until
-				time_remaining (system) = 0
+				r (system)
 			loop
 				iterate (system)
 			variant
-				time_remaining (system)
+				timer
 			end
 		end
 

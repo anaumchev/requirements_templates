@@ -1,9 +1,8 @@
 note
 	description: "[
-		S precedes P globally;
-		in LTL: ``!P W S''
+		S precedes P after Q;
+		in LTL: ``[]!Q | <>(Q & (!P W S))''
 	]"
-	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/precedence/precedence_globally.e"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Precedence"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ltl.shtml#Precedence"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/qre.shtml#Precedence"
@@ -13,13 +12,17 @@ note
 	email: "anaumchev@gmail.com"
 
 deferred class
-	PRECEDENCE_GLOBALLY [S]
+	PRECEDENCE_AFTER [S]
 
 inherit
 
-	CONTROL_SYSTEM [S]
+	REQUIREMENT [S]
 
 feature
+
+	q (system: S): BOOLEAN
+		deferred
+		end
 
 	p (system: S): BOOLEAN
 		deferred
@@ -31,18 +34,19 @@ feature
 
 feature
 
-	frozen s_precedes_p_globally (system: S)
+	frozen s_precedes_p_after_q (system: S)
+		require
+			q_holds: q (system)
 		do
 			from
-				init (system)
 			invariant
-				p_does_not_hold_or_else_s_holds: not p (system) or else s (system)
+				p_does_not_hold_or_else_s: not p (system) or else s (system)
 			until
-				s (system) or else time_remaining (system) = 0
+				s (system) or else timer = 0
 			loop
 				iterate (system)
 			variant
-				time_remaining (system)
+				timer
 			end
 		end
 

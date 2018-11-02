@@ -1,9 +1,8 @@
 note
 	description: "[
-		P is true globally;
-		in LTL: ``[](P)''
+		P is true after Q until R;
+		in LTL: ``[](Q & !R -> (P W R))''
 	]"
-	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/universality/universality_globally.e"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Universality"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ltl.shtml#Universality"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/qre.shtml#Universality"
@@ -13,11 +12,11 @@ note
 	email: "anaumchev@gmail.com"
 
 deferred class
-	UNIVERSALITY_GLOBALLY [S]
+	UNIVERSALITY_UNTIL [S]
 
 inherit
 
-	CONTROL_SYSTEM [S]
+	REQUIREMENT [S]
 
 feature
 
@@ -25,20 +24,30 @@ feature
 		deferred
 		end
 
+	q (system: S): BOOLEAN
+		deferred
+		end
+
+	r (system: S): BOOLEAN
+		deferred
+		end
+
 feature
 
-	frozen p_is_true_globally (system: S)
+	frozen p_is_true_after_q_until_r (system: S)
+		require
+			q_holds: q (system)
+			r_does_not_hold: not r (system)
 		do
 			from
-				init (system)
 			invariant
-				p_holds: p (system)
+				p_holds_or_else_r_holds: p (system) or else r (system)
 			until
-				time_remaining (system) = 0
+				r (system) or else timer = 0
 			loop
 				iterate (system)
 			variant
-				time_remaining (system)
+				timer
 			end
 		end
 

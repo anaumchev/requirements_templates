@@ -12,11 +12,11 @@ note
 	email: "anaumchev@gmail.com"
 
 deferred class
-	EXISTENCE_AFTER_Q_UNTIL_R [S]
+	EXISTENCE_UNTIL [S]
 
 inherit
 
-	CONTROL_SYSTEM [S]
+	REQUIREMENT [S]
 
 feature
 
@@ -47,7 +47,7 @@ feature
 			loop
 				iterate (system)
 			variant
-				time_remaining (system)
+				timer
 			end
 		end
 

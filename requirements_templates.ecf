@@ -12,11 +12,19 @@
 			<assertions precondition="true" postcondition="true" check="true" invariant="true" loop="true" supplier_precondition="true"/>
 		</option>
 		<capability>
+			<catcall_detection support="none"/>
 			<concurrency support="scoop" use="scoop"/>
 			<void_safety support="none" use="none"/>
 		</capability>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
 		<library name="time" location="$ISE_LIBRARY\library\time\time.ecf"/>
-		<cluster name="requirements_templates" location=".\" recursive="true"/>
+		<cluster name="requirements_templates" location=".\" recursive="true">
+			<file_rule>
+				<exclude>^koymans$</exclude>
+			</file_rule>
+			<file_rule>
+				<exclude>^koymans$</exclude>
+			</file_rule>
+		</cluster>
 	</target>
 </system>

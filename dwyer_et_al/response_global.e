@@ -1,8 +1,9 @@
 note
 	description: "[
-		S responds to P after Q;
-		in LTL: ``[](Q -> [](P -> <>S))''
+		S responds to P globally;
+		in LTL: ``[](P -> <>S)''
 	]"
+	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/response/response_globally.e"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Response"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ltl.shtml#Response"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/qre.shtml#Response"
@@ -12,17 +13,13 @@ note
 	email: "anaumchev@gmail.com"
 
 deferred class
-	RESPONSE_AFTER_Q [S]
+	RESPONSE_GLOBAL [S]
 
 inherit
 
-	CONTROL_SYSTEM [S]
+	REQUIREMENT [S]
 
 feature
-
-	q (system: S): BOOLEAN
-		deferred
-		end
 
 	p (system: S): BOOLEAN
 		deferred
@@ -34,28 +31,17 @@ feature
 
 feature
 
-	frozen s_responds_to_p_after_q (system: S)
+	frozen s_responds_to_p_globally (system: S)
 		require
-			q_holds: q (system)
+			p_holds: p (system)
 		do
-			from
-			until
-				p (system) or else time_remaining (system) = 0
-			loop
-				iterate (system)
-			variant
-				time_remaining (system)
-			end
-			check
-				assume: p (system)
-			end
 			from
 			until
 				s (system)
 			loop
 				iterate (system)
 			variant
-				time_remaining (system)
+				timer
 			end
 		end
 

@@ -1,7 +1,7 @@
 note
 	description: "[
-		P becomes true after Q;
-		in LTL: ``[](!Q) | <>(Q & <>P))''
+		P becomes true before R;
+		in LTL: ``!R W (P & !R)''
 	]"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Existence"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ltl.shtml#Existence"
@@ -12,11 +12,11 @@ note
 	email: "anaumchev@gmail.com"
 
 deferred class
-	EXISTENCE_AFTER_Q [S]
+	EXISTENCE_BEFORE [S]
 
 inherit
 
-	CONTROL_SYSTEM [S]
+	REQUIREMENT [S]
 
 feature
 
@@ -24,30 +24,23 @@ feature
 		deferred
 		end
 
-	q (system: S): BOOLEAN
+	r (system: S): BOOLEAN
 		deferred
 		end
 
 feature
 
-	p_becomes_true_after_q (system: S)
+	p_becomes_true_before_r (system: S)
 		do
 			from
-				init (system)
+			invariant
+				r_does_not_hold: not r (system)
 			until
-				q (system)
+				p (system) or else timer = 0
 			loop
 				iterate (system)
 			variant
-				time_remaining (system)
-			end
-			from
-			until
-				p (system)
-			loop
-				iterate (system)
-			variant
-				time_remaining (system)
+				timer
 			end
 		end
 

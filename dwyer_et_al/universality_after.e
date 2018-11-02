@@ -1,7 +1,7 @@
 note
 	description: "[
-		P is true between Q and R;
-		in LTL: ``[]((Q & !R & <>R) -> (P U R))''
+		P is true after Q;
+		in LTL: ``[](Q -> [](P))''
 	]"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Universality"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ltl.shtml#Universality"
@@ -12,42 +12,37 @@ note
 	email: "anaumchev@gmail.com"
 
 deferred class
-	UNIVERSALITY_BETWEEN_Q_AND_R [S]
+	UNIVERSALITY_AFTER [S]
 
 inherit
 
-	CONTROL_SYSTEM [S]
+	REQUIREMENT [S]
 
 feature
-
-	p (system: S): BOOLEAN
-		deferred
-		end
 
 	q (system: S): BOOLEAN
 		deferred
 		end
 
-	r (system: S): BOOLEAN
+	p (system: S): BOOLEAN
 		deferred
 		end
 
 feature
 
-	frozen p_is_false_between_q_and_r (system: S)
+	frozen p_is_true_after_q (system: S)
 		require
 			q_holds: q (system)
-			r_does_not_hold: not r (system)
 		do
 			from
 			invariant
-				p_holds_or_else_r: p (system) or else r (system)
+				p_holds: p (system)
 			until
-				r (system)
+				timer = 0
 			loop
 				iterate (system)
 			variant
-				time_remaining (system)
+				timer
 			end
 		end
 

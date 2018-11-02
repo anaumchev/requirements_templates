@@ -12,11 +12,11 @@ note
 	email: "anaumchev@gmail.com"
 
 deferred class
-	EXISTENCE_GLOBALLY [S]
+	EXISTENCE_GLOBAL [S]
 
 inherit
 
-	CONTROL_SYSTEM [S]
+	REQUIREMENT [S]
 
 feature
 
@@ -35,7 +35,7 @@ feature
 			loop
 				iterate (system)
 			variant
-				time_remaining (system)
+				timer
 			end
 		end
 

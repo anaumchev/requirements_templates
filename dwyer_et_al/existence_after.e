@@ -1,7 +1,7 @@
 note
 	description: "[
-		P becomes true between Q and R;
-		in LTL: ``[](Q & !R -> (!R W (P & !R)))''
+		P becomes true after Q;
+		in LTL: ``[](!Q) | <>(Q & <>P))''
 	]"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Existence"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ltl.shtml#Existence"
@@ -12,11 +12,11 @@ note
 	email: "anaumchev@gmail.com"
 
 deferred class
-	EXISTENCE_BETWEEN_Q_AND_R [S]
+	EXISTENCE_AFTER [S]
 
 inherit
 
-	CONTROL_SYSTEM [S]
+	REQUIREMENT [S]
 
 feature
 
@@ -28,26 +28,26 @@ feature
 		deferred
 		end
 
-	r (system: S): BOOLEAN
-		deferred
-		end
-
 feature
 
-	p_becomes_true_between_q_and_r (system: S)
-		require
-			q_holds: q (system)
-			r_does_not_hold: not r (system)
+	p_becomes_true_after_q (system: S)
 		do
 			from
-			invariant
-				r_does_not_hold: not r (system)
+				init (system)
 			until
-				p (system) or else time_remaining (system) = 0
+				q (system)
 			loop
 				iterate (system)
 			variant
-				time_remaining (system)
+				timer
+			end
+			from
+			until
+				p (system)
+			loop
+				iterate (system)
+			variant
+				timer
 			end
 		end
 

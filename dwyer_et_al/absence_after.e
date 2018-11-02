@@ -1,8 +1,9 @@
 note
 	description: "[
-		P is false before R;
-		in LTL: ``<>R -> (!P U R)''
+		P is false after Q;
+		in LTL: ``[](Q -> [](!P))''
 	]"
+  EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/absence/absence_after_q.e"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Absence"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ltl.shtml#Absence"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/qre.shtml#Absence"
@@ -12,35 +13,35 @@ note
 	email: "anaumchev@gmail.com"
 
 deferred class
-	ABSENCE_BEFORE_R [S]
+	ABSENCE_AFTER [S]
 
 inherit
 
-	CONTROL_SYSTEM [S]
+	REQUIREMENT [S]
 
 feature
+
+	q (system: S): BOOLEAN
+		deferred
+		end
 
 	p (system: S): BOOLEAN
 		deferred
 		end
 
-	r (system: S): BOOLEAN
-		deferred
-		end
-
-feature
-
-	frozen p_is_false_before_r (system: S)
+	frozen p_is_false_after_q (system: S)
+		require
+			q_holds: q (system)
 		do
 			from
 			invariant
-				p_does_not_hold_or_else_r_holds: not p (system) or else r (system)
+				p_does_not_hold: not p (system)
 			until
-				r (system)
+				timer = 0
 			loop
 				iterate (system)
 			variant
-				time_remaining (system)
+				timer
 			end
 		end
 

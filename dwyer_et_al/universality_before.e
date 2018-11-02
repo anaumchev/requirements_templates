@@ -1,7 +1,7 @@
 note
 	description: "[
-		P is true after Q;
-		in LTL: ``[](Q -> [](P))''
+		P is true before R;
+		in LTL: ``<>R -> (P U R)''
 	]"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Universality"
 	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ltl.shtml#Universality"
@@ -12,37 +12,35 @@ note
 	email: "anaumchev@gmail.com"
 
 deferred class
-	UNIVERSALITY_AFTER_Q [S]
+	UNIVERSALITY_BEFORE [S]
 
 inherit
 
-	CONTROL_SYSTEM [S]
+	REQUIREMENT [S]
 
 feature
-
-	q (system: S): BOOLEAN
-		deferred
-		end
 
 	p (system: S): BOOLEAN
 		deferred
 		end
 
+	r (system: S): BOOLEAN
+		deferred
+		end
+
 feature
 
-	frozen p_is_true_after_q (system: S)
-		require
-			q_holds: q (system)
+	frozen p_is_true_before_r (system: S)
 		do
 			from
 			invariant
-				p_holds: p (system)
+				p (system) or else r (system)
 			until
-				time_remaining (system) = 0
+				r (system)
 			loop
 				iterate (system)
 			variant
-				time_remaining (system)
+				timer
 			end
 		end
 
