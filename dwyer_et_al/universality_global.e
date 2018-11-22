@@ -13,7 +13,7 @@ note
 	email: "anaumchev@gmail.com"
 
 deferred class
-	UNIVERSALITY_GLOBAL [S]
+	UNIVERSALITY_GLOBAL [S, expanded P -> CONDITION [S]]
 
 inherit
 
@@ -21,9 +21,7 @@ inherit
 
 feature
 
-	p (system: S): BOOLEAN
-		deferred
-		end
+	p: P
 
 feature
 
@@ -31,8 +29,9 @@ feature
 		do
 			from
 				init (system)
+				timer := time_boundary
 			invariant
-				p_holds: p (system)
+				p_holds: p.holds (system)
 			until
 				timer = 0
 			loop
@@ -40,6 +39,13 @@ feature
 			variant
 				timer
 			end
+		end
+
+feature
+
+	requirement_specific_output: STRING
+		do
+			Result := p.out + " globally"
 		end
 
 end

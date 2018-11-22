@@ -43,7 +43,16 @@ feature
 	out: STRING
 		do
 			Result := "For " + ({S}).name + ", the following should hold: " + requirement_specific_output + ". "
-			Result := Result + "The effect should be observed within " + time_boundary.out + " time units."
+			Result := Result + "The effect should be observed within " + time_boundary.out + " " + time_unit
+			if time_boundary > 1 then
+				Result := Result + "s"
+			end
+			Result := Result + "."
+			Result := Result + "%N"
+		end
+
+	time_unit: STRING
+		deferred
 		end
 
 	requirement_specific_output: STRING

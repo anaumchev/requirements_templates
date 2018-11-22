@@ -13,31 +13,28 @@ note
 	email: "anaumchev@gmail.com"
 
 deferred class
-	RESPONSE_GLOBAL [S]
+	RESPONSE_GLOBAL [G, expanded P -> CONDITION [G], expanded S -> CONDITION [G]]
 
 inherit
 
-	REQUIREMENT [S]
+	REQUIREMENT [G]
 
 feature
 
-	p (system: S): BOOLEAN
-		deferred
-		end
+	p: P
 
-	s (system: S): BOOLEAN
-		deferred
-		end
+	s: S
 
 feature
 
-	frozen s_responds_to_p_globally (system: S)
+	frozen s_responds_to_p_globally (system: G)
 		require
-			p_holds: p (system)
+			p_holds: p.holds (system)
 		do
 			from
+				timer := time_boundary
 			until
-				s (system)
+				s.holds (system)
 			loop
 				iterate (system)
 			variant
@@ -45,4 +42,10 @@ feature
 			end
 		end
 
+feature
+
+	requirement_specific_output: STRING
+		do
+			Result := s.out + " responds to " + p.out
+		end
 end
