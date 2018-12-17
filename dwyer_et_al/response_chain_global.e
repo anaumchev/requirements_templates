@@ -1,11 +1,10 @@
 note
-	description: "Summary description for {RESPONSE_CHAIN_GLOBAL}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "P responds to S, T globally."
+	author: "Alexandr Naumchev"
+	email: "anaumchev@gmail.com"
 
 deferred class
-	RESPONSE_CHAIN_GLOBAL [G, expanded S -> CONDITION [G], expanded T -> CONDITION [G], expanded P -> CONDITION [G]]
+	RESPONSE_CHAIN_GLOBAL [G, expanded P -> CONDITION [G], expanded S -> CONDITION [G], expanded T -> CONDITION [G]]
 
 inherit
 
@@ -13,20 +12,14 @@ inherit
 
 feature
 
-	s: S
-
-	t: T
-
-	p: P
-
-	p_responds_to_s_t (system: G)
+	frozen verify (system: G)
 		require
-			s.holds (system)
+			({S}).default.holds (system)
 		do
 			from
 				iterate (system)
 			until
-				t.holds (system)
+				({T}).default.holds (system)
 			loop
 				iterate (system)
 			variant
@@ -34,12 +27,16 @@ feature
 			end
 			from
 			until
-				p.holds (system)
+				({P}).default.holds (system)
 			loop
 				iterate (system)
 			variant
 				timer
 			end
 		end
-
+feature
+  requirement_specific_output: STRING
+  	do
+  	  Result := ({P}).default.out + " responds to " + ({S}).default.out + ", " + ({T}).default.out + " globally"
+  	end
 end

@@ -1,14 +1,6 @@
 note
-	description: "[
-		S responds to P globally;
-		in LTL: ``[](P -> <>S)''
-	]"
+	description: "S responds to P globally"
 	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/response/response_globally.e"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Response"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ltl.shtml#Response"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/qre.shtml#Response"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/inca.shtml#Response"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/gil.shtml#Response"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 
@@ -21,20 +13,14 @@ inherit
 
 feature
 
-	p: P
-
-	s: S
-
-feature
-
-	frozen s_responds_to_p_globally (system: G)
+	frozen verify (system: G)
 		require
-			p_holds: p.holds (system)
+			p_holds: ({P}).default.holds (system)
 		do
 			from
 				timer := time_boundary
 			until
-				s.holds (system)
+				({S}).default.holds (system)
 			loop
 				iterate (system)
 			variant
@@ -46,6 +32,7 @@ feature
 
 	requirement_specific_output: STRING
 		do
-			Result := s.out + " responds to " + p.out
+			Result := ({S}).default.out + " responds to " + ({P}).default.out + " globally"
 		end
+
 end

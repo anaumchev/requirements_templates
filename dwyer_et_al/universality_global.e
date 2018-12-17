@@ -1,14 +1,5 @@
 note
-	description: "[
-		P is true globally;
-		in LTL: ``[](P)''
-	]"
-	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/universality/universality_globally.e"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Universality"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ltl.shtml#Universality"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/qre.shtml#Universality"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/inca.shtml#Universality"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/gil.shtml#Universality"
+	description: "P is true globally"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 
@@ -18,20 +9,19 @@ deferred class
 inherit
 
 	REQUIREMENT [S]
+		undefine
+			time_boundary
+		end
 
 feature
 
-	p: P
-
-feature
-
-	frozen p_is_true_globally (system: S)
+	frozen verify (system: S)
 		do
 			from
 				init (system)
 				timer := time_boundary
 			invariant
-				p_holds: p.holds (system)
+				p_holds: ({P}).default.holds (system)
 			until
 				timer = 0
 			loop
@@ -45,7 +35,14 @@ feature
 
 	requirement_specific_output: STRING
 		do
-			Result := p.out + " globally"
+			Result := ({P}).default.out + " is true globally"
+		end
+
+feature
+
+	time_boundary: INTEGER
+		do
+			Result := 1
 		end
 
 end

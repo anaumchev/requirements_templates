@@ -1,18 +1,10 @@
 note
-	description: "[
-		P becomes true after Q;
-		in LTL: ``[](!Q) | <>(Q & <>P))''
-	]"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Existence"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ltl.shtml#Existence"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/qre.shtml#Existence"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/inca.shtml#Existence"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/gil.shtml#Existence"
+	description: "P becomes true after Q"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 
 deferred class
-	EXISTENCE_AFTER [S]
+	EXISTENCE_AFTER [S, expanded P -> CONDITION [S], expanded Q -> CONDITION [S]]
 
 inherit
 
@@ -20,22 +12,12 @@ inherit
 
 feature
 
-	p (system: S): BOOLEAN
-		deferred
-		end
-
-	q (system: S): BOOLEAN
-		deferred
-		end
-
-feature
-
-	p_becomes_true_after_q (system: S)
+	frozen verify (system: S)
 		do
 			from
 				init (system)
 			until
-				q (system)
+				({Q}).default.holds (system)
 			loop
 				iterate (system)
 			variant
@@ -43,12 +25,19 @@ feature
 			end
 			from
 			until
-				p (system)
+				({P}).default.holds (system)
 			loop
 				iterate (system)
 			variant
 				timer
 			end
+		end
+
+feature
+
+	requirement_specific_output: STRING
+		do
+			Result := ({P}).default.out + " becomes true after " + ({Q}).default.out
 		end
 
 end

@@ -1,42 +1,27 @@
 note
-	description: "[
-		P is true after Q;
-		in LTL: ``[](Q -> [](P))''
-	]"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Universality"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ltl.shtml#Universality"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/qre.shtml#Universality"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/inca.shtml#Universality"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/gil.shtml#Universality"
+	description: "P is true after Q"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 
 deferred class
-	UNIVERSALITY_AFTER [S]
+	UNIVERSALITY_AFTER [S, expanded P -> CONDITION [S], expanded Q -> CONDITION [S]]
 
 inherit
 
 	REQUIREMENT [S]
-
-feature
-
-	q (system: S): BOOLEAN
-		deferred
-		end
-
-	p (system: S): BOOLEAN
-		deferred
+		undefine
+			time_boundary
 		end
 
 feature
 
-	frozen p_is_true_after_q (system: S)
+	frozen verify (system: S)
 		require
-			q_holds: q (system)
+			q_holds: ({Q}).default.holds (system)
 		do
 			from
 			invariant
-				p_holds: p (system)
+				p_holds: ({P}).default.holds (system)
 			until
 				timer = 0
 			loop
@@ -44,6 +29,20 @@ feature
 			variant
 				timer
 			end
+		end
+
+feature
+
+	requirement_specific_output: STRING
+		do
+			Result := ({P}).default.out + " is true after " + ({Q}).default.out
+		end
+
+feature
+
+	time_boundary: INTEGER
+		do
+			Result := 1
 		end
 
 end

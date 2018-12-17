@@ -1,8 +1,7 @@
 note
-	description: "Summary description for {PRECEDENCE_CHAIN_GLOBAL}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "S, T precedes P globally."
+	author: "Alexandr Naumchev"
+	email: "anaumchev@gmail.com"
 
 deferred class
 	PRECEDENCE_CHAIN_GLOBAL [G, expanded S -> CONDITION [G], expanded T -> CONDITION [G], expanded P -> CONDITION [G]]
@@ -13,44 +12,45 @@ inherit
 
 feature
 
-	s: S
-
-	t: T
-
-	p: P
-
-	s_t_precedes_p (system: G)
+	frozen verify (system: G)
 		do
 			from
 				init (system)
 			invariant
-			  not p.holds (system)
+				not ({P}).default.holds (system)
 			until
-			  s.holds (system)
+				({S}).default.holds (system)
 			loop
 				iterate (system)
 			variant
-			  timer
+				timer
 			end
 			from
-			  iterate (system)
+				iterate (system)
 			invariant
-			  not p.holds (system) or else t.holds (system)
+				not ({P}).default.holds (system) or else ({T}).default.holds (system)
 			until
-				t.holds (system)
+				({T}).default.holds (system)
 			loop
 				iterate (system)
 			variant
-			  timer
+				timer
 			end
 			from
 			until
-			  p.holds (system)
+				({P}).default.holds (system)
 			loop
 				iterate (system)
 			variant
-			  timer
+				timer
 			end
+		end
+
+feature
+
+	requirement_specific_output: STRING
+		do
+			Result := ({S}).default.out + ", " + ({T}).default.out + " precedes " + ({P}).default.out + " globally"
 		end
 
 end

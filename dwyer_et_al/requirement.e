@@ -10,21 +10,11 @@ deferred class
 inherit
 
 	ANY
-		redefine
+		undefine
 			out
 		end
 
 feature
-
-	timer: INTEGER
-
-	time_boundary: INTEGER
-		deferred
-		end
-
-	time_growth (system: S): INTEGER
-		deferred
-		end
 
 	init (system: S)
 		deferred
@@ -37,26 +27,43 @@ feature
 	iterate (system: S)
 		do
 			main (system)
-			timer := timer - time_growth (system)
+			timer := timer - time_growth
 		end
 
 	out: STRING
 		do
-			Result := "For " + ({S}).name + ", the following should hold: " + requirement_specific_output + ". "
-			Result := Result + "The effect should be observed within " + time_boundary.out + " " + time_unit
-			if time_boundary > 1 then
-				Result := Result + "s"
+			Result := ({S}).name + " " + requirement_specific_output + ". "
+			if time_boundary /= {INTEGER}.max_value then
+				Result := Result + "The effect should be observed within " + time_boundary.out + " " + time_unit
+				if time_boundary > 1 then
+					Result := Result + "s"
+				end
+				Result := Result + "."
 			end
-			Result := Result + "."
 			Result := Result + "%N"
-		end
-
-	time_unit: STRING
-		deferred
 		end
 
 	requirement_specific_output: STRING
 		deferred
+		end
+
+feature
+
+	timer: INTEGER
+
+	time_boundary: INTEGER
+		do
+			Result := {INTEGER}.max_value
+		end
+
+	time_growth: INTEGER
+		do
+			Result := 1
+		end
+
+	time_unit: STRING
+		do
+			Result := "iteration"
 		end
 
 end

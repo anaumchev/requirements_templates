@@ -1,18 +1,10 @@
 note
-	description: "[
-		P becomes true after Q until R;
-		in LTL: ``[](Q & !R -> (!R U (P & !R)))''
-	]"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Existence"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ltl.shtml#Existence"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/qre.shtml#Existence"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/inca.shtml#Existence"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/gil.shtml#Existence"
+	description: "P becomes true after Q until R"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 
 deferred class
-	EXISTENCE_UNTIL [S]
+	EXISTENCE_UNTIL [S, expanded P -> CONDITION [S], expanded Q -> CONDITION [S], expanded R -> CONDITION [S]]
 
 inherit
 
@@ -20,35 +12,28 @@ inherit
 
 feature
 
-	p (system: S): BOOLEAN
-		deferred
-		end
-
-	q (system: S): BOOLEAN
-		deferred
-		end
-
-	r (system: S): BOOLEAN
-		deferred
-		end
-
-feature
-
-	p_becomes_true_after_q_until_r (system: S)
+	frozen verify (system: S)
 		require
-			q_holds: q (system)
-			r_does_not_hold: not r (system)
+			q_holds: ({Q}).default.holds (system)
+			r_does_not_hold: not ({R}).default.holds (system)
 		do
 			from
 			invariant
-				r_does_not_hold: not r (system)
+				r_does_not_hold: not ({R}).default.holds (system)
 			until
-				p (system)
+				({P}).default.holds (system)
 			loop
 				iterate (system)
 			variant
 				timer
 			end
+		end
+
+feature
+
+	requirement_specific_output: STRING
+		do
+			Result := ({P}).default.out + " becomes true after " + ({Q}).default.out + " until " + ({R}).default.out
 		end
 
 end

@@ -1,18 +1,10 @@
 note
-	description: "[
-		P is true before R;
-		in LTL: ``<>R -> (P U R)''
-	]"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Universality"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ltl.shtml#Universality"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/qre.shtml#Universality"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/inca.shtml#Universality"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/gil.shtml#Universality"
+	description: "P is true before R"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 
 deferred class
-	UNIVERSALITY_BEFORE [S]
+	UNIVERSALITY_BEFORE [S, expanded P -> CONDITION [S], expanded R -> CONDITION [S]]
 
 inherit
 
@@ -20,28 +12,25 @@ inherit
 
 feature
 
-	p (system: S): BOOLEAN
-		deferred
-		end
-
-	r (system: S): BOOLEAN
-		deferred
-		end
-
-feature
-
-	frozen p_is_true_before_r (system: S)
+	frozen verify (system: S)
 		do
 			from
 			invariant
-				p (system) or else r (system)
+				({P}).default.holds (system) or else ({R}).default.holds (system)
 			until
-				r (system)
+				({R}).default.holds (system)
 			loop
 				iterate (system)
 			variant
 				timer
 			end
+		end
+
+feature
+
+	requirement_specific_output: STRING
+		do
+			Result := ({P}).default.out + " is true before " + ({R}).default.out
 		end
 
 end

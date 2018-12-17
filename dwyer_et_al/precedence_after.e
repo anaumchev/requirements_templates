@@ -1,53 +1,48 @@
 note
-	description: "[
-		S precedes P after Q;
-		in LTL: ``[]!Q | <>(Q & (!P W S))''
-	]"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Precedence"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ltl.shtml#Precedence"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/qre.shtml#Precedence"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/inca.shtml#Precedence"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/gil.shtml#Precedence"
+	description: "S precedes P after Q"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 
 deferred class
-	PRECEDENCE_AFTER [S]
+	PRECEDENCE_AFTER [G, expanded S -> CONDITION [G], expanded P -> CONDITION [G], expanded Q -> CONDITION [G]]
 
 inherit
 
-	REQUIREMENT [S]
-
-feature
-
-	q (system: S): BOOLEAN
-		deferred
-		end
-
-	p (system: S): BOOLEAN
-		deferred
-		end
-
-	s (system: S): BOOLEAN
-		deferred
+	REQUIREMENT [G]
+		undefine
+			time_boundary
 		end
 
 feature
 
-	frozen s_precedes_p_after_q (system: S)
+	frozen verify (system: G)
 		require
-			q_holds: q (system)
+			q_holds: ({Q}).default.holds (system)
 		do
 			from
 			invariant
-				p_does_not_hold_or_else_s: not p (system) or else s (system)
+				p_does_not_hold_or_else_s: not ({P}).default.holds (system) or else ({S}).default.holds (system)
 			until
-				s (system) or else timer = 0
+				({S}).default.holds (system) or else timer = 0
 			loop
 				iterate (system)
 			variant
 				timer
 			end
+		end
+
+feature
+
+	requirement_specific_output: STRING
+		do
+			Result := ({S}).default.out + " precedes " + ({P}).default.out + " after " + ({Q}).default.out
+		end
+
+feature
+
+	time_boundary: INTEGER
+		do
+			Result := 100000
 		end
 
 end

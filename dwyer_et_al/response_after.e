@@ -1,57 +1,38 @@
 note
-	description: "[
-		S responds to P after Q;
-		in LTL: ``[](Q -> [](P -> <>S))''
-	]"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ctl.shtml#Response"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/ltl.shtml#Response"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/qre.shtml#Response"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/inca.shtml#Response"
-	EIS: "protocol=URI", "src=http://patterns.projects.cs.ksu.edu/documentation/patterns/gil.shtml#Response"
+	description: "S responds to P after Q"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 
 deferred class
-	RESPONSE_AFTER [S]
+	RESPONSE_AFTER [G, expanded S -> CONDITION [G], expanded P -> CONDITION [G], expanded Q -> CONDITION [G]]
 
 inherit
 
-	REQUIREMENT [S]
-
-feature
-
-	q (system: S): BOOLEAN
-		deferred
-		end
-
-	p (system: S): BOOLEAN
-		deferred
-		end
-
-	s (system: S): BOOLEAN
-		deferred
+	REQUIREMENT [G]
+		undefine
+			time_boundary
 		end
 
 feature
 
-	frozen s_responds_to_p_after_q (system: S)
+	frozen verify (system: G)
 		require
-			q_holds: q (system)
+			q_holds: ({Q}).default.holds (system)
 		do
 			from
 			until
-				p (system) or else timer = 0
+				({P}).default.holds (system) or else timer = 0
 			loop
 				iterate (system)
 			variant
 				timer
 			end
 			check
-				assume: p (system)
+				assume: ({P}).default.holds (system)
 			end
 			from
 			until
-				s (system)
+				({S}).default.holds (system)
 			loop
 				iterate (system)
 			variant
@@ -61,21 +42,16 @@ feature
 
 feature
 
-	q_out: STRING
-		deferred
-		end
-
-	p_out: STRING
-		deferred
-		end
-
-	s_out: STRING
-		deferred
-		end
-
 	requirement_specific_output: STRING
 		do
-			Result := s_out + " responds to " + p_out + " after " + q_out + "."
+			Result := ({S}).default.out + " responds to " + ({P}).default.out + " after " + ({Q}).default.out + "."
+		end
+
+feature
+
+	time_boundary: INTEGER
+		do
+			Result := 100000
 		end
 
 end

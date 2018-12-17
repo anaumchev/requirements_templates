@@ -13,23 +13,17 @@ inherit
 
 feature
 
-	p: P
-
-	q: Q
-
-	r: R
-
-	frozen p_is_true_between_q_and_r (system: S)
+	frozen verify (system: S)
 		require
-			q_holds: q.holds (system)
-			r_does_not_hold: not r.holds (system)
+			q_holds: ({Q}).default.holds (system)
+			r_does_not_hold: not ({R}).default.holds (system)
 		do
 			from
 				timer := time_boundary
 			invariant
-				p_holds_or_else_r: p.holds (system) or else r.holds (system)
+				p_holds_or_else_r: ({P}).default.holds (system) or else ({R}).default.holds (system)
 			until
-				r.holds (system)
+				({R}).default.holds (system)
 			loop
 				iterate (system)
 			variant
@@ -41,7 +35,7 @@ feature
 
 	requirement_specific_output: STRING
 		do
-			Result := r.out + " occurs eventually after " + q.out + ", and " + p.out + " is observed in between"
+			Result := ({P}).default.out + " is true between " + ({Q}).default.out + " and " + ({R}).default.out
 		end
 
 end
