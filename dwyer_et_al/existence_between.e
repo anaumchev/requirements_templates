@@ -1,5 +1,6 @@
 note
 	description: "P becomes true between Q and R"
+	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/existence_between.e"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 

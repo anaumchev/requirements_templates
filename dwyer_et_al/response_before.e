@@ -1,5 +1,6 @@
 note
 	description: "S responds to P before R"
+	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/response_before.e"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 

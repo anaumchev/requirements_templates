@@ -1,5 +1,6 @@
 note
 	description: "P becomes true before R"
+	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/existence_before.e"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 

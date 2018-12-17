@@ -1,6 +1,6 @@
 note
 	description: "S responds to P globally"
-	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/response/response_globally.e"
+	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/response_global.e"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 

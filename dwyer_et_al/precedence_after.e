@@ -1,5 +1,6 @@
 note
 	description: "S precedes P after Q"
+	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/precedence_after.e"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 

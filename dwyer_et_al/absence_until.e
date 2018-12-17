@@ -1,5 +1,6 @@
 note
 	description: "P is false after Q until R"
+	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/absence_until.e"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 

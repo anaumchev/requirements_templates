@@ -1,6 +1,6 @@
 note
 	description: "P is false between Q and R"
-	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/absence/absence_between_q_and_r.e"
+	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/absence_between.e"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 

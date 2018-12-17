@@ -1,6 +1,7 @@
 note
 	description: "P is true between Q and R"
 	EIS: "protocol=URI", "src=https://onedrive.live.com/redir?resid=32E19ADBFB60CEC5!114988&authkey=!AA3WI_oulecl9Dg&page=View&wd=target(Requirement Patterns.one|/Universality Between|40f8ad24-fe5b-471a-929f-78bf41dafad0/)"
+	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/universality_between.e"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 

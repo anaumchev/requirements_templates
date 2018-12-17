@@ -1,5 +1,6 @@
 note
 	description: "P responds to S, T globally."
+	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/response_chain_global.e"
 	author: "Alexandr Naumchev"
 	email: "anaumchev@gmail.com"
 
