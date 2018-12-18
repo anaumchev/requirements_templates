@@ -36,9 +36,17 @@ feature
 				timer
 			end
 		end
+
 feature
-  requirement_specific_output: STRING
-  	do
-  	  Result := ({P}).default.out + " responds to " + ({S}).default.out + ", " + ({T}).default.out + " globally"
-  	end
+
+	requirement_specific_output: STRING
+		do
+			Result := ({P}).default.out + " responds to " + ({S}).default.out + ", " + ({T}).default.out + " globally"
+		end
+
+	time_boundary: INTEGER
+		do
+			Result := {INTEGER}.max_value
+		end
+
 end

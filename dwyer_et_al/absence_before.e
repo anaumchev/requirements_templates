@@ -35,4 +35,9 @@ feature
 			Result := ({P}).default.out + " is false before " + ({R}).default.out
 		end
 
+	time_boundary: INTEGER
+		do
+			Result := {INTEGER}.max_value
+		end
+
 end

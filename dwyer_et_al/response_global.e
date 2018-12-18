@@ -36,4 +36,9 @@ feature
 			Result := ({S}).default.out + " responds to " + ({P}).default.out + " globally"
 		end
 
+	time_boundary: INTEGER
+		do
+			Result := {INTEGER}.max_value
+		end
+
 end

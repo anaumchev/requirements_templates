@@ -38,4 +38,9 @@ feature
 			Result := ({P}).default.out + " is false between " + ({Q}).default.out + " and " + ({R}).default.out
 		end
 
+	time_boundary: INTEGER
+		do
+			Result := {INTEGER}.max_value
+		end
+
 end

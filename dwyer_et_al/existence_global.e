@@ -34,4 +34,9 @@ feature
 			Result := ({P}).default.out + " becomes true globally"
 		end
 
+	time_boundary: INTEGER
+		do
+			Result := {INTEGER}.max_value
+		end
+
 end

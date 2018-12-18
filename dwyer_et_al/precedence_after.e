@@ -11,9 +11,6 @@ deferred class
 inherit
 
 	REQUIREMENT [G]
-		undefine
-			time_boundary
-		end
 
 feature
 
@@ -39,8 +36,6 @@ feature
 		do
 			Result := ({S}).default.out + " precedes " + ({P}).default.out + " after " + ({Q}).default.out
 		end
-
-feature
 
 	time_boundary: INTEGER
 		do

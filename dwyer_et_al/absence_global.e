@@ -11,9 +11,6 @@ deferred class
 inherit
 
 	REQUIREMENT [S]
-		undefine
-			time_boundary
-		end
 
 feature
 

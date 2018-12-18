@@ -42,4 +42,9 @@ feature
 			Result := ({P}).default.out + " becomes true after " + ({Q}).default.out
 		end
 
+	time_boundary: INTEGER
+		do
+			Result := {INTEGER}.max_value
+		end
+
 end

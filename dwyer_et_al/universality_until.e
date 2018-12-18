@@ -11,9 +11,6 @@ deferred class
 inherit
 
 	REQUIREMENT [S]
-		undefine
-			time_boundary
-		end
 
 feature
 
@@ -40,8 +37,6 @@ feature
 		do
 			Result := ({P}).default.out + " is true after " + ({Q}).default.out + " until " + ({R}).default.out
 		end
-
-feature
 
 	time_boundary: INTEGER
 		do

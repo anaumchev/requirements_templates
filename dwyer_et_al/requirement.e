@@ -52,18 +52,15 @@ feature
 	timer: INTEGER
 
 	time_boundary: INTEGER
-		do
-			Result := {INTEGER}.max_value
+		deferred
 		end
 
 	time_growth: INTEGER
-		do
-			Result := 1
+		deferred
 		end
 
 	time_unit: STRING
-		do
-			Result := "iteration"
+		deferred
 		end
 
 end

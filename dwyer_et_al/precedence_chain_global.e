@@ -55,4 +55,9 @@ feature
 			Result := ({S}).default.out + ", " + ({T}).default.out + " precedes " + ({P}).default.out + " globally"
 		end
 
+	time_boundary: INTEGER
+		do
+			Result := {INTEGER}.max_value
+		end
+
 end

@@ -79,4 +79,9 @@ feature
 			Result := "transitions to " + ({P}).default.out + " occur at most 2 times between " + ({Q}).default.out + " and " + ({R}).default.out
 		end
 
+	time_boundary: INTEGER
+		do
+			Result := {INTEGER}.max_value
+		end
+
 end
