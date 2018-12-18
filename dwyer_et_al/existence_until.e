@@ -20,6 +20,7 @@ feature
 			r_does_not_hold: not ({R}).default.holds (system)
 		do
 			from
+				timer := time_boundary
 			invariant
 				r_does_not_hold: not ({R}).default.holds (system)
 			until

@@ -19,6 +19,7 @@ feature
 			({S}).default.holds (system)
 		do
 			from
+				timer := time_boundary
 				iterate (system)
 			until
 				({T}).default.holds (system)

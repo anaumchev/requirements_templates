@@ -19,6 +19,7 @@ feature
 			q_holds: ({Q}).default.holds (system)
 		do
 			from
+				timer := time_boundary
 			invariant
 				p_holds: ({P}).default.holds (system)
 			until

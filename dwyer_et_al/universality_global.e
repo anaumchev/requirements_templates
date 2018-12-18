@@ -17,8 +17,8 @@ feature
 	frozen verify (system: S)
 		do
 			from
-				init (system)
 				timer := time_boundary
+				init (system)
 			invariant
 				p_holds: ({P}).default.holds (system)
 			until

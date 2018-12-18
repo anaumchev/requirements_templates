@@ -19,6 +19,7 @@ feature
 			q_holds: ({Q}).default.holds (system)
 		do
 			from
+				timer := time_boundary
 			invariant
 				p_does_not_hold_or_else_s: not ({P}).default.holds (system) or else ({S}).default.holds (system)
 			until

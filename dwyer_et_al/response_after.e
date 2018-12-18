@@ -19,6 +19,7 @@ feature
 			q_holds: ({Q}).default.holds (system)
 		do
 			from
+				timer := time_boundary
 			until
 				({P}).default.holds (system) or else timer = 0
 			loop
