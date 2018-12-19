@@ -2,8 +2,6 @@ note
 	description: "Reusable abstract data type specification of file."
 	description: "The signature is taken from ``The design of data type specifications'' article by Guttag, Horowitz and Musser, page 5."
 	EIS: "protocol=URI", "src=http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.4685&rep=rep1&type=pdf"
-	author: "Alexandr Naumchev"
-	email: "anaumchev@gmail.com"
 
 deferred class
 	FILE_ADT [F, R]

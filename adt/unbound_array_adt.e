@@ -4,8 +4,6 @@ note
 	EIS: "protocol=URI", "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
 	description: "Follow the EIS link below for an example."
 	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/examples/is_linked_stack_stack.e"
-	author: "Alexandr Naumchev"
-	email: "anaumchev@gmail.com"
 
 
 deferred class

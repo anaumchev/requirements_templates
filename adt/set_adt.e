@@ -2,8 +2,6 @@ note
 	description: "Reusable abstract data type specification of set."
 	description: "Taken from pages 2-3 of the ``The Algebraic Specification of Abstract Data Types'' article by J.V. Guttag and J.J. Horning."
 	EIS: "protocol=URI", "src=https://link.springer.com/article/10.1007/BF00260922"
-	author: "Alexandr Naumchev"
-	email: "anaumchev@gmail.com"
 
 deferred class
 	SET_ADT [S, E]

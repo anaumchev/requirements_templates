@@ -10,8 +10,6 @@ note
 	EIS: "protocol=URI", "src=http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.4685&rep=rep1&type=pdf"
 	description: "Follow the EIS link below for an example."
 	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/examples/is_linked_stack_stack.e"
-	author: "Alexandr Naumchev"
-	email: "anaumchev@gmail.com"
 
 deferred class
 	STACK_ADT [S, T]

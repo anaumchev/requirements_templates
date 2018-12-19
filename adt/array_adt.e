@@ -4,8 +4,6 @@ note
 	EIS: "protocol=URI", "src=https://www.cise.ufl.edu/class/cen6075/notes/Lecture34_fa16.ppt"
 	description: "Follow the EIS link below for an example."
 	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/examples/is_array_array.e"
-	author: "Alexandr Naumchev"
-	email: "anaumchev@gmail.com"
 
 deferred class
 	ARRAY_ADT [A, E]

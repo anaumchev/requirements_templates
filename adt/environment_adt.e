@@ -2,8 +2,6 @@ note
 	description: "Reusable abstract data type specification of environment."
 	description: "Taken from page 6 of the ``An abstract data type for name analysis'' article by Kastens and Waite."
 	EIS: "protocol=URI", "src=https://www.researchgate.net/profile/William_Waite/publication/220197497_An_Abstract_Data_Type_for_Name_Analysis/links/02e7e51eee56744a24000000.pdf"
-	author: "Alexandr Naumchev"
-	email: "anaumchev@gmail.com"
 
 deferred class
 	ENVIRONMENT_ADT [E, I, D]

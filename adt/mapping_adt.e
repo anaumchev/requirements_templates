@@ -3,8 +3,6 @@ note
 	description: "From the ``Abstract Data Types and Software Validation'' article by Guttag, Horowitz and Musser, p. 17"
 	description: "Follow the EIS link below for details."
 	EIS: "protocol=URI", "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
-	author: "Alexandr Naumchev"
-	email: "anaumchev@gmail.com"
 
 deferred class
 	MAPPING_ADT [M, D, R]

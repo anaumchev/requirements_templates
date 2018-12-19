@@ -9,8 +9,6 @@ note
 									The resulting class has to be effective (non-deferred).
 									Test or model check the resulting class.
 						]"
-	author: "Alexandr Naumchev"
-	email: "anaumchev@gmail.com"
 
 deferred class
 	QUEUE_WITH_APPEND_ADT [Q, T]

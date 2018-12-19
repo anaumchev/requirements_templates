@@ -3,8 +3,6 @@ note
 	description: "Taken from Wikipedia."
 	EIS: "protocol=URI", "src=https://en.wikipedia.org/wiki/Commutative_ring#Definition"
 	EIS: "protocol=URI", "src=https://en.wikipedia.org/wiki/Ring_(mathematics)#Definition"
-	author: "Alexandr Naumchev"
-	email: "anaumchev@gmail.com"
 
 deferred class
 	COMMUTATIVE_RING_ADT [R]

@@ -2,8 +2,6 @@ note
 	description: "Reusable abstract data type specification of a type with a copy operation."
 	description: "Follow the EIS link below for an example."
 	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/example_specifications/is_array2_with_copy.e"
-	author: "Alexandr Naumchev"
-	email: "anaumchev@gmail.com"
 
 deferred class
 	COPY_ADT [G]

@@ -1,8 +1,6 @@
 note
 	description: "Verifiable requirement over S."
 	EIS: "name=Location on GitHub", "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/requirement.e"
-	author: "Alexandr Naumchev"
-	email: "anaumchev@gmail.com"
 
 deferred class
 	REQUIREMENT [S]

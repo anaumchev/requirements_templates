@@ -1,7 +1,5 @@
 note
 	description: "Reusable abstract data type specification of a type with equality."
-	author: "Alexandr Naumchev"
-	email: "anaumchev@gmail.com"
 
 deferred class
 	EQUALITY_ADT [G]

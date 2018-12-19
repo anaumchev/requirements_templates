@@ -2,8 +2,6 @@ note
 	description: "Reusable abstract data type specification of library."
 	description: "Taken from page 170 of the ``Requirements Engineering'' book by Axel van Lamsweerde."
 	EIS: "protocol=URI", "src=https://www.amazon.com/Requirements-Engineering-System-Software-Specifications/dp/0470012706"
-	author: "Alexandr Naumchev"
-	email: "anaumchev@gmail.com"
 
 deferred class
 	LIBRARY_ADT [L, B]

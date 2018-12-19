@@ -3,8 +3,6 @@ note
 	description: "Dound in the ``Abstract Data Types and Software Validation '' article by Guttag, Horowitz and Musser, p. 44."
 	EIS: "protocol=URI", "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
 	description: "Replaced errors with identity transformations."
-	author: "Alexandr Naumchev"
-	email: "anaumchev@gmail.com"
 
 deferred class
 	BOUNDED_STACK_ADT [B, E]

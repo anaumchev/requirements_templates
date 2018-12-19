@@ -1,6 +1,5 @@
 note
 	description: "Summary description for {PRODUCER_CONSUMER_ADT}."
-	author: ""
 	date: "$Date$"
 	revision: "$Revision$"
 

@@ -4,8 +4,6 @@ note
 	EIS: "protocol=URI", "src=https://www.irit.fr/ABZ2014/landing_system.pdf"
 	description: "Follow the EIS link below for an example."
 	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/examples/is_asm_lgs_lgs.e"
-	author: "Alexandr Naumchev"
-	email: "anaumchev@gmail.com"
 
 deferred class
 	LGS_ADT [L]

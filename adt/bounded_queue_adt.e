@@ -2,8 +2,6 @@ note
 	description: "Reusable abstract data type specification of bounded queue."
 	description: "The signature is taken from ``The design of data type specifications'' article by Guttag, Horowitz and Musser, page 6."
 	EIS: "protocol=URI", "src=http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.4685&rep=rep1&type=pdf"
-	author: "Alexandr Naumchev"
-	email: "anaumchev@gmail.com"
 
 deferred class
 	BOUNDED_QUEUE_ADT [B, I]

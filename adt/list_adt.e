@@ -2,8 +2,6 @@ note
 	description: "Reusable abstract data type specification of list."
 	description: "Follow the EIS link below for details."
 	EIS: "protocol=URI", "src=https://en.wikipedia.org/wiki/List_(abstract_data_type)#Abstract_definition"
-	author: "Alexandr Naumchev"
-	email: "anaumchev@gmail.com"
 
 deferred class
 	LIST_ADT [L, E]

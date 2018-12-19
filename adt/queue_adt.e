@@ -2,8 +2,6 @@ note
 	description: "Reusable abstract data type specification of queue."
 	description: "The signature is taken from ``Implementing Algebraically Specified Abstract Data Types in an imperative Programming Language '' article by Muffy Thomas, page 4."
 	EIS: "protocol=URI", "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
-	author: "Alexandr Naumchev"
-	email: "anaumchev@gmail.com"
 
 deferred class
 	QUEUE_ADT [Q, T]
