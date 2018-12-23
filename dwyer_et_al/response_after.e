@@ -42,7 +42,7 @@ feature
 
 	requirement_specific_output: STRING
 		do
-			Result := ({S}).default.out + " responds to " + ({P}).default.out + " after " + ({Q}).default.out + "."
+			Result := ({S}).name + " responds to " + ({P}).name + " after " + ({Q}).name + "."
 		end
 
 	time_boundary: INTEGER

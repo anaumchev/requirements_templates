@@ -32,7 +32,7 @@ feature
 
 	requirement_specific_output: STRING
 		do
-			Result := ({P}).default.out + " is true globally"
+			Result := ({P}).name + " is true globally"
 		end
 
 	time_boundary: INTEGER

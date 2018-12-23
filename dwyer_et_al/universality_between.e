@@ -34,7 +34,7 @@ feature
 
 	requirement_specific_output: STRING
 		do
-			Result := ({P}).default.out + " is true between " + ({Q}).default.out + " and " + ({R}).default.out
+			Result := ({P}).name + " is true between " + ({Q}).name + " and " + ({R}).name
 		end
 
 	time_boundary: INTEGER

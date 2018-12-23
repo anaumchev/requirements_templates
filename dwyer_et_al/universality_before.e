@@ -31,7 +31,7 @@ feature
 
 	requirement_specific_output: STRING
 		do
-			Result := ({P}).default.out + " is true before " + ({R}).default.out
+			Result := ({P}).name + " is true before " + ({R}).name
 		end
 
 	time_boundary: INTEGER

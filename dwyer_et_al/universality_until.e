@@ -34,7 +34,7 @@ feature
 
 	requirement_specific_output: STRING
 		do
-			Result := ({P}).default.out + " is true after " + ({Q}).default.out + " until " + ({R}).default.out
+			Result := ({P}).name + " is true after " + ({Q}).name + " until " + ({R}).name
 		end
 
 	time_boundary: INTEGER

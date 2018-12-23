@@ -31,13 +31,13 @@ feature
 	out: STRING
 		do
 			Result := ({S}).name + " " + requirement_specific_output + ". "
-			if time_boundary /= {INTEGER}.max_value then
-				Result := Result + "The effect should be observed within " + time_boundary.out + " " + time_unit
-				if time_boundary > 1 then
-					Result := Result + "s"
-				end
-				Result := Result + "."
-			end
+--			if time_boundary /= {INTEGER}.max_value then
+--				Result := Result + "The effect should be observed within " + time_boundary.out + " " + time_unit
+--				if time_boundary > 1 then
+--					Result := Result + "s"
+--				end
+--				Result := Result + "."
+--			end
 			Result := Result + "%N"
 		end
 

@@ -51,7 +51,7 @@ feature
 
 	requirement_specific_output: STRING
 		do
-			Result := ({S}).default.out + ", " + ({T}).default.out + " precedes " + ({P}).default.out + " globally"
+			Result := ({S}).name + ", " + ({T}).name + " precedes " + ({P}).name + " globally"
 		end
 
 	time_boundary: INTEGER

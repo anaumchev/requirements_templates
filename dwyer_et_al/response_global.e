@@ -31,7 +31,7 @@ feature
 
 	requirement_specific_output: STRING
 		do
-			Result := ({S}).default.out + " responds to " + ({P}).default.out + " globally"
+			Result := ({S}).name + " responds to " + ({P}).name + " globally"
 		end
 
 	time_boundary: INTEGER

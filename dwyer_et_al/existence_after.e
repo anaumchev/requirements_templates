@@ -38,7 +38,7 @@ feature
 
 	requirement_specific_output: STRING
 		do
-			Result := ({P}).default.out + " becomes true after " + ({Q}).default.out
+			Result := ({P}).name + " becomes true after " + ({Q}).name
 		end
 
 	time_boundary: INTEGER

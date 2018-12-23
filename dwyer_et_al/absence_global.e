@@ -32,7 +32,7 @@ feature
 
 	requirement_specific_output: STRING
 		do
-			Result := ({P}).default.out + " is false globally"
+			Result := ({P}).name + " is false globally"
 		end
 
 feature

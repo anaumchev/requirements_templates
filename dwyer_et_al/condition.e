@@ -5,13 +5,6 @@ note
 deferred class
 	CONDITION [S]
 
-inherit
-
-	ANY
-		undefine
-			out
-		end
-
 feature
 
 	holds (system: S): BOOLEAN

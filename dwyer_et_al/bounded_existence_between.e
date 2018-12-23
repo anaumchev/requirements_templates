@@ -75,7 +75,7 @@ feature
 
 	requirement_specific_output: STRING
 		do
-			Result := "transitions to " + ({P}).default.out + " occur at most 2 times between " + ({Q}).default.out + " and " + ({R}).default.out
+			Result := "transitions to " + ({P}).name + " occur at most 2 times between " + ({Q}).name + " and " + ({R}).name
 		end
 
 	time_boundary: INTEGER

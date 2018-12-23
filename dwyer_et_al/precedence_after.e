@@ -33,7 +33,7 @@ feature
 
 	requirement_specific_output: STRING
 		do
-			Result := ({S}).default.out + " precedes " + ({P}).default.out + " after " + ({Q}).default.out
+			Result := ({S}).name + " precedes " + ({P}).name + " after " + ({Q}).name
 		end
 
 	time_boundary: INTEGER
