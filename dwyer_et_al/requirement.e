@@ -30,7 +30,7 @@ feature
 
 	out: STRING
 		do
-			Result := ({S}).name + " " + requirement_specific_output + ". "
+			Result := Current.generating_type.name + ": in " + ({S}).name + ", " + requirement_specific_output + ". "
 --			if time_boundary /= {INTEGER}.max_value then
 --				Result := Result + "The effect should be observed within " + time_boundary.out + " " + time_unit
 --				if time_boundary > 1 then
@@ -54,11 +54,13 @@ feature
 		end
 
 	time_growth: INTEGER
-		deferred
+		do
+		  Result := 1
 		end
 
 	time_unit: STRING
-		deferred
+		do
+		  Result := "time unit"
 		end
 
 end
