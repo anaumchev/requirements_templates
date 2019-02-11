@@ -4,7 +4,7 @@ note
 	EIS: "name=Location on GitHub", "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/precedence_global.e"
 
 deferred class
-	PRECEDENCE_GLOBAL [G, expanded P -> CONDITION [G], expanded S -> CONDITION [G]]
+	PRECEDENCE_GLOBAL [G, expanded S -> CONDITION [G], expanded P -> CONDITION [G]]
 
 inherit
 
