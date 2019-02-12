@@ -30,13 +30,15 @@ feature
 
 	out: STRING
 		do
-			Result := Current.generating_type.name + ": in " + ({S}).name + ", " + requirement_specific_output + ". "
-			Result := Result + "The effect should be observed within " + time_boundary.out + " " + time_unit
+			Result := Current.generating_type.name + ": in "
+			Result := Result + ({S}).name + ", "
+			Result := Result + requirement_specific_output + ". "
+			Result := Result + "The effect should be observed within " + time_boundary.out + " "
+			Result := Result + time_unit
 			if time_boundary > 1 then
 				Result := Result + "s"
 			end
-			Result := Result + "."
-			Result := Result + "%N"
+			Result := Result + ".%N"
 		end
 
 	requirement_specific_output: STRING
@@ -62,3 +64,14 @@ feature
 		end
 
 end
+
+
+
+
+
+
+
+
+
+
+
