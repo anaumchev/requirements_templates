@@ -1,5 +1,5 @@
 note
-	description: "Reusable abstract data type specification of stack."
+	description: "Reusable abstract data type specification of unbounded array."
 	description: "Found in the ``Abstract Data Types and Software Validation '' article by Guttag, Horowitz and Musser, p. 17."
 	EIS: "protocol=URI", "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
 	description: "Follow the EIS link below for an example."
@@ -7,7 +7,7 @@ note
 
 
 deferred class
-	UNBOUND_ARRAY_ADT [A, D, R]
+	UNBOUNDED_ARRAY_ADT [A, D, R]
 	--	Arrays ``A'' contain ``R'' objects indexed by ``D'' objects.
 	--	To apply this template to your concept,
 	--	inherit from this class with your concepts for ``A'', ``D'' and ``R''.
