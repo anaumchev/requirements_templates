@@ -1,9 +1,10 @@
 note
 	description: "Reusable abstract data type specification of symbol table."
-	description: "Taken from page 4 of the ``Abstract Data Types and the Development of Data Structures'' article by John Guttag."
-	EIS: "protocol=URI", "src=http://cecs.wright.edu/people/faculty/tkprasad/courses/cs784/guttag-cacm77.pdf"
-	description: "Also found in the ``Abstract Data Types and Software Validation '' article by Guttag, Horowitz and Musser, p. 16."
-	EIS: "protocol=URI", "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
+	description: "Found in ``Abstract Data Types and Software Validation '' by Guttag, Horowitz and Musser:"
+	EIS: "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
+	description: "Found in ``Abstract Data Types and the Development of Data Structures'' by Guttag:"
+	EIS: "src=http://cecs.wright.edu/people/faculty/tkprasad/courses/cs784/guttag-cacm77.pdf"
+
 
 deferred class
 	SYMBOL_TABLE_ADT [S, I, A]

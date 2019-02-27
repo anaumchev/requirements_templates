@@ -14,7 +14,7 @@ feature
 	frozen equality_reflexivity (v: G)
 			--	Equality is reflexive.
 		note
-			EIS: "protocol=URI", "src=http://www.mathwords.com/r/reflexive_property.htm"
+			EIS: "src=http://www.mathwords.com/r/reflexive_property.htm"
 		do
 		ensure
 			v ~ v
@@ -23,7 +23,7 @@ feature
 	frozen equality_commutativity (v_1, v_2: G)
 			--	Equality is symmetric.
 		note
-			EIS: "protocol=URI", "src=http://www.mathwords.com/s/symmetric_property.htm"
+			EIS: "src=http://www.mathwords.com/s/symmetric_property.htm"
 		require
 			v_1 ~ v_2
 		do
@@ -34,7 +34,7 @@ feature
 	frozen equality_transitivity (v_1, v_2, v_3: G)
 			--	Equality is transitive.
 		note
-			EIS: "protocol=URI", "src=http://www.mathwords.com/t/transitive_property.htm"
+			EIS: "src=http://www.mathwords.com/t/transitive_property.htm"
 		require
 			v_1 ~ v_2
 			v_2 ~ v_3

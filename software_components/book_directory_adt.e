@@ -1,7 +1,7 @@
 note
 	description: "Reusable abstract data type specification of searchable book directory."
-	description: "Taken from page 171 of the ``Requirements Engineering'' book by Axel van Lamsweerde."
-	EIS: "protocol=URI", "src=https://www.amazon.com/Requirements-Engineering-System-Software-Specifications/dp/0470012706"
+	description: "Found in ``Requirements engineering: From system goals to UML models to software.'' by van Lamsweerde:"
+	EIS: "src=https://www.amazon.com/Requirements-Engineering-System-Software-Specifications/dp/0470012706"
 
 deferred class
 	BOOK_DIRECTORY_ADT [D, B, BC, T, L, LS -> LIST_ADT [L, B]]

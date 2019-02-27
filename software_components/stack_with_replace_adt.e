@@ -1,8 +1,9 @@
 note
 	description: "Reusable abstract data type specification of stack with ``replace'' operation."
-	description: "From the ``Abstract Data Types and Software Validation '' article by Guttag, Horowitz and Musser, page 8."
-	description: "Follow the EIS link below for details."
-	EIS: "protocol=URI", "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
+	description: "Found in ``Abstract Data Types and Software Validation '' by Guttag, Horowitz and Musser:"
+	EIS: "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
+	description: "Found in ``Abstract Data Types and the Development of Data Structures'' by Guttag:"
+	EIS: "src=http://cecs.wright.edu/people/faculty/tkprasad/courses/cs784/guttag-cacm77.pdf"
 
 deferred class
 	STACK_WITH_REPLACE_ADT [S, E]
@@ -19,7 +20,7 @@ inherit
 			new as new_stack,
 			empty as is_new
 		end
-	--	The above article uses different names of the ``new'' and ``empty'' operations.
+	--	The above articles use different names of the ``new'' and ``empty'' operations.
 
 feature
 	-- Deferred definitions.

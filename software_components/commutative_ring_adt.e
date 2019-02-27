@@ -1,8 +1,8 @@
 note
 	description: "Reusable abstract data type specification of commutative ring."
-	description: "Taken from Wikipedia."
-	EIS: "protocol=URI", "src=https://en.wikipedia.org/wiki/Commutative_ring#Definition"
-	EIS: "protocol=URI", "src=https://en.wikipedia.org/wiki/Ring_(mathematics)#Definition"
+	description: "Found in Wikipedia:"
+	EIS: "src=https://en.wikipedia.org/wiki/Commutative_ring#Definition"
+	EIS: "src=https://en.wikipedia.org/wiki/Ring_(mathematics)#Definition"
 
 deferred class
 	COMMUTATIVE_RING_ADT [R]

@@ -1,9 +1,9 @@
 note
 	description: "Reusable abstract data type specification of array."
-	description: "Find a detailed description by the EIS link below."
-	EIS: "protocol=URI", "src=https://www.cise.ufl.edu/class/cen6075/notes/Lecture34_fa16.ppt"
-	description: "Follow the EIS link below for an example."
-	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/examples/is_array_array.e"
+	description: "Found in ``Abstract Data Types and Software Validation '' by Guttag, Horowitz and Musser:"
+	EIS: "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
+	description: "Found in ``Abstract Data Types and the Development of Data Structures'' by Guttag:"
+	EIS: "src=https://dl.acm.org/citation.cfm?id=359618"
 
 deferred class
 	ARRAY_ADT [A, E]

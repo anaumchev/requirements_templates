@@ -1,7 +1,13 @@
 note
 	description: "Reusable abstract data type specification of queue."
-	description: "The signature is taken from ``Implementing Algebraically Specified Abstract Data Types in an imperative Programming Language '' article by Muffy Thomas, page 4."
-	EIS: "protocol=URI", "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
+	description: "Found in ``The Algebraic Specification of Abstract Data Types'' by Guttag and Horning:"
+	EIS: "src=https://link.springer.com/article/10.1007/BF00260922"
+	description: "Found in ``The design of data type specifications'' by Guttag, Horowitz and Musser:"
+	EIS: "src=http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.4685&rep=rep1&type=pdf"
+	description: "Found in ``Implementing Algebraically Specified Abstract Data Types in an imperative Programming Language '' by Thomas:"
+	EIS: "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
+	description: "Found in ``Abstract Data Types and the Development of Data Structures'' by Guttag:"
+	EIS: "src=http://cecs.wright.edu/people/faculty/tkprasad/courses/cs784/guttag-cacm77.pdf"
 
 deferred class
 	QUEUE_ADT [Q, T]
@@ -54,7 +60,7 @@ feature
 	frozen a_3_empty (q_1, q_2: Q)
 			-- Querying a queue for emptyness does not change its equivalence class.
 		note
-			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
+			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		require
 			q_1 ~ q_2
 		local
@@ -68,7 +74,7 @@ feature
 	frozen a_3_size (q_1, q_2: Q)
 			--	Querying a queue for size does not change its equivalence class.
 		note
-			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
+			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		require
 			q_1 ~ q_2
 		local
@@ -82,7 +88,7 @@ feature
 	frozen a_3_front (q_1, q_2: Q)
 			--	Querying a queue for front does not change its equivalence class.
 		note
-			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
+			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		require
 			q_1 ~ q_2
 		local
@@ -96,7 +102,7 @@ feature
 	frozen a_4_if (q: Q)
 			--	A queue is empty if its' size is zero.
 		note
-			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
+			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		require
 			size (q) ~ 0
 		do
@@ -107,7 +113,7 @@ feature
 	frozen a_4_only_if (q: Q)
 			--	A queue is empty only if its' size is zero.
 		note
-			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
+			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		require
 			isempty (q)
 		do
@@ -119,7 +125,7 @@ feature
 			--	Suppose a queue's size is n and the next element to add is t;
 			--	then, after n elements have been dequeued, t will become the queue's front.
 		note
-			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
+			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		require
 			size (q) ~ n
 		local
@@ -141,7 +147,7 @@ feature
 	frozen a_6 (q: Q; t: T; old_size: INTEGER)
 			--	Adding to a queue increases its size by 1.
 		note
-			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
+			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		require
 			size (q) ~ old_size
 		do
@@ -153,7 +159,7 @@ feature
 	frozen a_7 (q: Q; t: T; old_size: INTEGER)
 			--	Dequeueing a non-empty queue decreases its size by 1.
 		note
-			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
+			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		require
 			size (q) ~ old_size
 			not isempty (q)
@@ -166,8 +172,8 @@ feature
 	frozen a_9 (q: Q; t: T)
 			--	Adding to a queue makes it non-empty.
 		note
-			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
-			EIS: "protocol=URI", "src=www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
+			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
+			EIS: "src=www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		do
 			add (q, t)
 		ensure
@@ -177,8 +183,8 @@ feature
 	frozen a_10
 			--	A newly created queue is empty.
 		note
-			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
-			EIS: "protocol=URI", "src=www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
+			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
+			EIS: "src=www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		local
 			q: Q
 		do
@@ -191,7 +197,7 @@ feature
 	frozen a_11
 			--	A newly created queue has zero size.
 		note
-			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
+			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		local
 			q: Q
 		do
@@ -203,7 +209,7 @@ feature
 
 	frozen a_12
 		note
-			EIS: "protocol=URI", "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
+			EIS: "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		local
 			q_1, q_2: Q
 		do
@@ -217,7 +223,7 @@ feature
 
 	frozen a_13 (t: T)
 		note
-			EIS: "protocol=URI", "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
+			EIS: "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		local
 			q_1, q_2: Q
 		do
@@ -232,7 +238,7 @@ feature
 
 	frozen a_14 (q_1, q_2: Q; t_1, t_2: T)
 		note
-			EIS: "protocol=URI", "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
+			EIS: "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		require
 			q_1 ~ q_2
 			q_1 /= q_2
@@ -249,7 +255,7 @@ feature
 
 	frozen a_15 (t: T)
 		note
-			EIS: "protocol=URI", "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
+			EIS: "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		local
 			q: Q
 		do
@@ -262,7 +268,7 @@ feature
 
 	frozen a_16 (q_1, q_2: Q; t_1, t_2: T)
 		note
-			EIS: "protocol=URI", "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
+			EIS: "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		require
 			q_1 ~ q_2
 			q_1 /= q_2
@@ -276,7 +282,7 @@ feature
 
 	frozen a_17 (t: T)
 		note
-			EIS: "protocol=URI", "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
+			EIS: "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		local
 			q: Q
 		do
@@ -293,7 +299,7 @@ feature
 			--	Pushing a stack k times increases its size by k.
 			--	Follow the EIS link below for details.
 		note
-			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide08.html"
+			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide08.html"
 		require
 			size (q) ~ n
 			k >= 1
@@ -316,7 +322,7 @@ feature
 			--	Popping a stack k times decreases its size by k.
 			--	Follow the EIS link below for details.
 		note
-			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide08.html"
+			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide08.html"
 		require
 			size (q) ~ n
 			k >= 1

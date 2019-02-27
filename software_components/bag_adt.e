@@ -1,7 +1,7 @@
 note
 	description: "Reusable abstract data type specification of bag."
-	description: "Taken from pages 2-3 of the ``The Algebraic Specification of Abstract Data Types'' article by J.V. Guttag and J.J. Horning."
-	EIS: "protocol=URI", "src=https://link.springer.com/article/10.1007/BF00260922"
+	description: "Found in ``The Algebraic Specification of Abstract Data Types'' by Guttag and Horning:"
+	EIS: "src=https://link.springer.com/article/10.1007/BF00260922"
 
 deferred class
 	BAG_ADT [B, E]

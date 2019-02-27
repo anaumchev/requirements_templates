@@ -1,7 +1,5 @@
 note
 	description: "Reusable abstract data type specification of a type with a copy operation."
-	description: "Follow the EIS link below for an example."
-	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/example_specifications/is_array2_with_copy.e"
 
 deferred class
 	COPY_ADT [G]
@@ -37,7 +35,7 @@ feature
 			-- Copying from one and the same object
 			-- must not affect the equality relation.
 		note
-			EIS: "protocol=URI", "src=https://en.wikipedia.org/wiki/Well-defined"
+			EIS: "src=https://en.wikipedia.org/wiki/Well-defined"
 		require
 			object_1 ~ object_2
 		do

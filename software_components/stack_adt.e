@@ -1,15 +1,12 @@
 note
 	description: "Reusable abstract data type specification of stack."
-	description: "Find a detailed description by the EIS link below."
-	EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide02.html"
-	description: "Also found in the ``Abstract Data Types and the Development of Data Structures'' article by John Guttag, page 2."
-	EIS: "protocol=URI", "src=http://www.unc.edu/~stotts/comp723/guttagADT77.pdf"
-	description: "Also found in the ``Abstract Data Types and Software Validation '' article by Guttag, Horowitz and Musser, p. 17."
-	EIS: "protocol=URI", "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
-	description: "Also found in ``THE DESIGN OF DATA TYPE SPECIFICATIONS'' article by Guttag, Horowitz and Musser, p. 17."
-	EIS: "protocol=URI", "src=http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.4685&rep=rep1&type=pdf"
-	description: "Follow the EIS link below for an example."
-	EIS: "protocol=URI", "src=https://github.com/anaumchev/requirements_templates/blob/master/examples/is_linked_stack_stack.e"
+	description: "Found in ``The design of data type specifications'' by Guttag, Horowitz and Musser:"
+	EIS: "src=http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.4685&rep=rep1&type=pdf"
+	description: "Found in ``Abstract Data Types and the Development of Data Structures'' by Guttag:"
+	EIS: "src=http://cecs.wright.edu/people/faculty/tkprasad/courses/cs784/guttag-cacm77.pdf"
+	description: "Found in ``Programming with Abstract Data Types'' by Liskov and Zilles:"
+	EIS: "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
+
 
 deferred class
 	STACK_ADT [S, T]
@@ -61,7 +58,7 @@ feature
 
 	frozen a_1 (t: T; other: S)
 		note
-			EIS: "protocol=URI", "src=http://www.unc.edu/~stotts/comp723/guttagADT77.pdf"
+			EIS: "src=http://www.unc.edu/~stotts/comp723/guttagADT77.pdf"
 		local
 			s: S
 		do
@@ -74,7 +71,7 @@ feature
 
 	frozen a_2 (t: T)
 		note
-			EIS: "protocol=URI", "src=http://www.unc.edu/~stotts/comp723/guttagADT77.pdf"
+			EIS: "src=http://www.unc.edu/~stotts/comp723/guttagADT77.pdf"
 		local
 			s: S
 		do
@@ -215,7 +212,7 @@ feature
 			--	Pushing a stack k times increases its size by k.
 			--	Follow the EIS link below for details.
 		note
-			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide04.html"
+			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide04.html"
 		require
 			size (s) ~ n
 			k >= 1
@@ -238,7 +235,7 @@ feature
 			--	Popping a stack k times decreases its size by k.
 			--	Follow the EIS link below for details.
 		note
-			EIS: "protocol=URI", "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide04.html"
+			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide04.html"
 		require
 			size (s) ~ n
 			k >= 1

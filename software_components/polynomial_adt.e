@@ -1,7 +1,7 @@
 note
 	description: "Reusable abstract data type specification of polynomial."
-	description: "The signature is taken from ``The design of data type specifications'' article by Guttag, Horowitz and Musser, page 5."
-	EIS: "protocol=URI", "src=http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.4685&rep=rep1&type=pdf"
+	description: "Found in ``The design of data type specifications'' by Guttag, Horowitz and Musser:"
+	EIS: "src=http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.4685&rep=rep1&type=pdf"
 
 deferred class
 	POLYNOMIAL_ADT [P, C, CS -> COMMUTATIVE_RING_ADT [C]]
