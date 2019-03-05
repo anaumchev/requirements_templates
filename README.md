@@ -1,14 +1,12 @@
 A library of reusable templates for constructing verifiable and expressive requirements.
 
 
-The "adt" direcotry contains abstract data types specifications templates for idiomatic software behaviors.
-The "dwyer_et_al" directory contains requirements templates for control systems capturing the patterns reported by Dwyer et al in "Patterns in Property Specifications for Finite-State Verification" (https://dl.acm.org/citation.cfm?id=302672).
-The "koymans" directory contains quanitative real-time properties templates for real-time systems reported by Koymans in "Specifying Real-Time Properties with Metric Temporal Logic" (https://link.springer.com/article/10.1007/BF01995674).
+The "software_components" direcotry contains abstract data types specifications templates for idiomatic software behaviors.
+The "control_software" directory contains requirements templates for control systems capturing the patterns reported by Dwyer et al in "Patterns in Property Specifications for Finite-State Verification" (https://dl.acm.org/citation.cfm?id=302672).
 
 Instead of writing verifiable specifications for you components from scratch, you can apply the ready-to-use templates.
 The resulting specifications are verifiable either through parameterized unit testing or automated program proving.
 The templates include natural-language explanations in the form of code comments, and links to relevant online resources.
-
 
 To get started with the project, clone the project inside your $ISE_LIBRARY/library directory:
 
@@ -19,7 +17,7 @@ Having done that, connect it to your Eiffel project as an external library.
 
 If you want to apply a requirement template, say, STACK_ADT.e:
 
-1. Inherit from STACK_ADT in a new class marked as "expanded" (https://www.eiffel.org/doc/eiffel/ET-_The_Dynamic_Structure-_Execution_Model#Type_categories), providing the types you want to verify as generic arguments.
+1. Inherit from STACK_ADT in a new expanded class (https://www.eiffel.org/doc/eiffel/ET-_The_Dynamic_Structure-_Execution_Model#Type_categories), providing the types you want to verify as generic arguments.
 2. Implement all the STACK_ADT features marked as "deferred" (https://www.eiffel.org/doc/eiffel/ET-_Inheritance#Deferred_features_and_classes).
 3. The routines marked as "frozen" (https://www.eiffel.org/doc/eiffel/Eiffel_programming_language_reserved_words#frozen) are the abstract data type (ADT) axioms describing the behavior. You will need to verify them.
 4. If you use testing, call each of the "frozen" routines with arguments that meet the routine's precondition.
