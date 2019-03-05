@@ -5,23 +5,11 @@ note
 
 deferred class
 	QUEUE_WITH_APPEND_ADT [Q, T]
-	--	Queues ``Q'' contain ``T'' objects.
-	--	To apply this template to your concept,
-	--	inherit from this class with your concepts for ``Q'' and ``T''.
-	--	The resulting class has to be effective (non-deferred).
-	--	Test or model check the resulting class.
+	--	``Q'' behaves as a queue of ``T'' elements.
 
 inherit
 
 	QUEUE_ADT [Q, T]
-		rename
-			eq as newq,
-			add as addq,
-			dequeue as deleteq,
-			front as frontq,
-			isempty as isnewq
-		end
-	-- The above article uses its own names for some of the operations.
 
 feature
 	-- Deferred definitions.
@@ -72,3 +60,23 @@ feature
 		end
 
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

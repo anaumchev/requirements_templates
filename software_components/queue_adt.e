@@ -24,27 +24,27 @@ inherit
 feature
 	-- Deferred definitions.
 
-	eq: Q
+	newq: Q
 			-- Define a new queue in terms of your concept.
 		deferred
 		end
 
-	add (q: Q; t: T)
+	addq (q: Q; t: T)
 			-- Define what it means to add a queue in terms of your concept.
 		deferred
 		end
 
-	dequeue (q: Q)
+	deleteq (q: Q)
 			-- Define what it means to dequeue a queue in terms of your concept.
 		deferred
 		end
 
-	front (q: Q): T
+	frontq (q: Q): T
 			-- Define a queue's front in terms of your concept.
 		deferred
 		end
 
-	isempty (q: Q): BOOLEAN
+	isnewq (q: Q): BOOLEAN
 			-- Define a queue's emptyness in terms of your concept.
 		deferred
 		end
@@ -66,7 +66,7 @@ feature
 		local
 			empty_: BOOLEAN
 		do
-			empty_ := isempty (q_1)
+			empty_ := isnewq (q_1)
 		ensure
 			q_1 ~ q_2
 		end
@@ -94,7 +94,7 @@ feature
 		local
 			front_: T
 		do
-			front_ := front (q_1)
+			front_ := frontq (q_1)
 		ensure
 			q_1 ~ q_2
 		end
@@ -107,7 +107,7 @@ feature
 			size (q) ~ 0
 		do
 		ensure
-			isempty (q)
+			isnewq (q)
 		end
 
 	frozen a_4_only_if (q: Q)
@@ -115,7 +115,7 @@ feature
 		note
 			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		require
-			isempty (q)
+			isnewq (q)
 		do
 		ensure
 			size (q) ~ 0
@@ -131,17 +131,17 @@ feature
 		local
 			i: INTEGER
 		do
-			add (q, t)
+			addq (q, t)
 			from
 				i := 0
 			until
 				i ~ n
 			loop
-				dequeue (q)
+				deleteq (q)
 				i := i + 1
 			end
 		ensure
-			front (q) ~ t
+			frontq (q) ~ t
 		end
 
 	frozen a_6 (q: Q; t: T; old_size: INTEGER)
@@ -151,7 +151,7 @@ feature
 		require
 			size (q) ~ old_size
 		do
-			add (q, t)
+			addq (q, t)
 		ensure
 			size (q) ~ old_size + 1
 		end
@@ -162,9 +162,9 @@ feature
 			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		require
 			size (q) ~ old_size
-			not isempty (q)
+			not isnewq (q)
 		do
-			dequeue (q)
+			deleteq (q)
 		ensure
 			size (q) ~ old_size - 1
 		end
@@ -175,9 +175,9 @@ feature
 			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 			EIS: "src=www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		do
-			add (q, t)
+			addq (q, t)
 		ensure
-			not isempty (q)
+			not isnewq (q)
 		end
 
 	frozen a_10
@@ -188,9 +188,9 @@ feature
 		local
 			q: Q
 		do
-			q := eq
+			q := newq
 			check
-				isempty (q)
+				isnewq (q)
 			end
 		end
 
@@ -201,7 +201,7 @@ feature
 		local
 			q: Q
 		do
-			q := eq
+			q := newq
 			check
 				size (q) ~ 0
 			end
@@ -213,9 +213,9 @@ feature
 		local
 			q_1, q_2: Q
 		do
-			q_1 := eq
-			q_2 := eq
-			dequeue (q_1)
+			q_1 := newq
+			q_2 := newq
+			deleteq (q_1)
 			check
 				q_1 ~ q_2
 			end
@@ -227,10 +227,10 @@ feature
 		local
 			q_1, q_2: Q
 		do
-			q_1 := eq
-			q_2 := eq
-			add (q_1, t)
-			dequeue (q_1)
+			q_1 := newq
+			q_2 := newq
+			addq (q_1, t)
+			deleteq (q_1)
 			check
 				q_1 ~ q_2
 			end
@@ -243,12 +243,12 @@ feature
 			q_1 ~ q_2
 			q_1 /= q_2
 		do
-			add (q_1, t_1)
-			add (q_1, t_2)
-			dequeue (q_1)
-			add (q_2, t_1)
-			dequeue (q_2)
-			add (q_2, t_2)
+			addq (q_1, t_1)
+			addq (q_1, t_2)
+			deleteq (q_1)
+			addq (q_2, t_1)
+			deleteq (q_2)
+			addq (q_2, t_2)
 		ensure
 			q_1 ~ q_2
 		end
@@ -259,10 +259,10 @@ feature
 		local
 			q: Q
 		do
-			q := eq
-			add (q, t)
+			q := newq
+			addq (q, t)
 			check
-				front (q) ~ t
+				frontq (q) ~ t
 			end
 		end
 
@@ -273,11 +273,11 @@ feature
 			q_1 ~ q_2
 			q_1 /= q_2
 		do
-			add (q_1, t_1)
-			add (q_1, t_2)
-			add (q_2, t_1)
+			addq (q_1, t_1)
+			addq (q_1, t_2)
+			addq (q_2, t_1)
 		ensure
-			front (q_1) ~ front (q_2)
+			frontq (q_1) ~ frontq (q_2)
 		end
 
 	frozen a_17 (t: T)
@@ -286,9 +286,9 @@ feature
 		local
 			q: Q
 		do
-			q := eq
+			q := newq
 			check
-				front (q) /~ t
+				frontq (q) /~ t
 			end
 		end
 
@@ -311,7 +311,7 @@ feature
 			until
 				i ~ k
 			loop
-				add (q, t)
+				addq (q, t)
 				i := i + 1
 			end
 		ensure
@@ -327,7 +327,7 @@ feature
 			size (q) ~ n
 			k >= 1
 			k <= n
-			not isempty (q)
+			not isnewq (q)
 		local
 			i: INTEGER
 		do
@@ -336,7 +336,7 @@ feature
 			until
 				i ~ k
 			loop
-				dequeue (q)
+				deleteq (q)
 				i := i + 1
 			end
 		ensure
@@ -350,8 +350,8 @@ feature
 		local
 			q_1, q_2: Q
 		do
-			q_1 := eq
-			q_2 := eq
+			q_1 := newq
+			q_2 := newq
 			check
 				q_1 ~ q_2
 			end
@@ -361,8 +361,8 @@ feature
 		require
 			q_1 ~ q_2
 		do
-			add (q_1, t)
-			add (q_2, t)
+			addq (q_1, t)
+			addq (q_2, t)
 		ensure
 			q_1 ~ q_2
 		end
@@ -371,11 +371,11 @@ feature
 		require
 			q_1 ~ q_2
 			q_1 /= q_2
-			not isempty (q_1)
-			not isempty (q_2)
+			not isnewq (q_1)
+			not isnewq (q_2)
 		do
-			dequeue (q_1)
-			dequeue (q_2)
+			deleteq (q_1)
+			deleteq (q_2)
 		ensure
 			q_1 ~ q_2
 		end
@@ -385,7 +385,7 @@ feature
 			q_1 ~ q_2
 		do
 		ensure
-			front (q_1) ~ front (q_2)
+			frontq (q_1) ~ frontq (q_2)
 		end
 
 	frozen empty_well_defined (q_1, q_2: Q)
@@ -393,7 +393,7 @@ feature
 			q_1 ~ q_2
 		do
 		ensure
-			isempty (q_1) ~ isempty (q_2)
+			isnewq (q_1) ~ isnewq (q_2)
 		end
 
 	frozen size_well_defined (q_1, q_2: Q)
