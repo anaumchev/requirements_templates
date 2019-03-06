@@ -1,6 +1,6 @@
 note
 	description: "S responds to P before R"
-	EIS: "name=Multirequirement", "src=https://onedrive.live.com/redir?resid=32E19ADBFB60CEC5!114988&authkey=!AA3WI_oulecl9Dg&page=View&wd=target(The Dweyer's Patterns.one|fcd1e8e5-8bf8-407b-9341-841fb4afc81f/Response Before|0921bc8c-777c-432b-b9ec-d5018df7617b/)"
+	EIS: "name=Multirequirement", "src=http://tinyurl.com/y2b69k9o"
 	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/response_before.e"
 
 deferred class

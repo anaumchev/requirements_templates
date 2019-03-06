@@ -1,6 +1,6 @@
 note
 	description: "P becomes true between Q and R"
-	EIS: "name=Multirequirement", "src=https://onedrive.live.com/redir?resid=32E19ADBFB60CEC5!114988&authkey=!AA3WI_oulecl9Dg&page=View&wd=target(The Dweyer's Patterns.one|fcd1e8e5-8bf8-407b-9341-841fb4afc81f/Existence Between|03b06131-fbf3-4fd9-8995-dbf46fffef6d/)"
+	EIS: "name=Multirequirement", "src=http://tinyurl.com/y2prdopt"
 	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/existence_between.e"
 
 deferred class

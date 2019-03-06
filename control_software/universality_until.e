@@ -1,6 +1,6 @@
 note
 	description: "P is true after Q until R"
-	EIS: "name=Multirequirement", "src=https://onedrive.live.com/redir?resid=32E19ADBFB60CEC5!114988&authkey=!AA3WI_oulecl9Dg&page=View&wd=target(The Dweyer's Patterns.one|fcd1e8e5-8bf8-407b-9341-841fb4afc81f/Universality Until|22311323-0d20-4c3b-8d25-33499a31a29f/)"
+	EIS: "name=Multirequirement", "src=http://tinyurl.com/y3mgklvw"
 	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/universality_until.e"
 
 deferred class
