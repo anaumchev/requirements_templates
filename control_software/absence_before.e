@@ -1,7 +1,7 @@
 note
 	description: "P is false before R"
 	EIS: "name=Multirequirement", "src=http://tinyurl.com/y28f8xxg"
-	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/absence_before.e"
+	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/control_software/absence_before.e"
 
 deferred class
 	ABSENCE_BEFORE [S, expanded P -> CONDITION [S], expanded R -> CONDITION [S]]

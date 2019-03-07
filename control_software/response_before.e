@@ -1,7 +1,7 @@
 note
 	description: "S responds to P before R"
 	EIS: "name=Multirequirement", "src=http://tinyurl.com/y2b69k9o"
-	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/response_before.e"
+	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/control_software/response_before.e"
 
 deferred class
 	RESPONSE_BEFORE [G, expanded S -> CONDITION [G], expanded P -> CONDITION [G], expanded R -> CONDITION [G]]

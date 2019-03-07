@@ -1,7 +1,7 @@
 note
 	description: "P is false between Q and R"
 	EIS: "name=Multirequirement", "src=http://tinyurl.com/y4nkt92q"
-	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/absence_between.e"
+	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/control_software/absence_between.e"
 
 deferred class
 	ABSENCE_BETWEEN [S, expanded P -> CONDITION [S], expanded Q -> CONDITION [S], expanded R -> CONDITION [S]]

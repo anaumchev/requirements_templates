@@ -1,7 +1,7 @@
 note
 	description: "P becomes true before R"
 	EIS: "name=Multirequirement", "src=http://tinyurl.com/y584yaqr"
-	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/existence_before.e"
+	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/control_software/existence_before.e"
 
 deferred class
 	EXISTENCE_BEFORE [S, expanded P -> CONDITION [S], expanded R -> CONDITION [S]]

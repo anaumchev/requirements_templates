@@ -1,7 +1,7 @@
 note
 	description: "Transitions to P occur at most 2 times between Q and R."
 	EIS: "name=Multirequirement", "src=http://tinyurl.com/y4nr2h8x"
-	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/bounded_existence_between.e"
+	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/control_software/bounded_existence_between.e"
 
 deferred class
 	BOUNDED_EXISTENCE_BETWEEN [S, expanded P -> CONDITION [S], expanded Q -> CONDITION [S], expanded R -> CONDITION [S]]

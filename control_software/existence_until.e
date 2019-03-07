@@ -1,7 +1,7 @@
 note
 	description: "P becomes true after Q until R"
 	EIS: "name=Multirequirement", "src=http://tinyurl.com/y55xy2aq"
-	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/dwyer_et_al/existence_until.e"
+	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/control_software/existence_until.e"
 
 deferred class
 	EXISTENCE_UNTIL [S, expanded P -> CONDITION [S], expanded Q -> CONDITION [S], expanded R -> CONDITION [S]]
