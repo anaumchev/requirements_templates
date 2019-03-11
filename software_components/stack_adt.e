@@ -1,20 +1,16 @@
 note
 	description: "Reusable abstract data type specification of stack."
 	description: "Found in ``The design of data type specifications'' by Guttag, Horowitz and Musser:"
-	EIS: "src=http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.4685&rep=rep1&type=pdf"
+	EIS: "src=http://tinyurl.com/yxmnv23w"
 	description: "Found in ``Abstract Data Types and the Development of Data Structures'' by Guttag:"
-	EIS: "src=http://cecs.wright.edu/people/faculty/tkprasad/courses/cs784/guttag-cacm77.pdf"
+	EIS: "src=http://tinyurl.com/y45o32hq"
 	description: "Found in ``Programming with Abstract Data Types'' by Liskov and Zilles:"
-	EIS: "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
-
+	EIS: "src=http://tinyurl.com/y5dc5k9h"
+	EIS: "name=Location on GitHub", "src=https://tinyurl.com/y62gkzyz"
 
 deferred class
 	STACK_ADT [S, T]
-	--	Stacks ``S'' contain ``T'' objects.
-	--	To apply this template to your concept,
-	--	inherit from this class with your concepts for ``S'' and ``T''.
-	--	The resulting class has to be effective (non-deferred).
-	--	Test or model check the resulting class.
+	--	Stacks ``S'' contain elements of ``T''.
 
 inherit
 
@@ -24,32 +20,26 @@ feature
 	-- Deferred definitions.
 
 	new: S
-			-- Define a new stack in terms of your concept.
 		deferred
 		end
 
 	push (s: S; t: T)
-			-- Define what it means to push a stack in terms of your concept.
 		deferred
 		end
 
 	pop (s: S)
-			-- Define what it means to pop a stack in terms of your concept.
 		deferred
 		end
 
 	top (s: S): T
-			-- Define a stack's top in terms of your concept.
 		deferred
 		end
 
-	empty (s: S): BOOLEAN
-			-- Define a stack's emptyness in terms of your concept.
+	is_new (s: S): BOOLEAN
 		deferred
 		end
 
 	size (s: S): INTEGER
-			-- Define a stack's size in terms of your concept.
 		deferred
 		end
 
@@ -57,8 +47,6 @@ feature
 	-- Abstract data type axioms.
 
 	frozen a_1 (t: T; other: S)
-		note
-			EIS: "src=http://www.unc.edu/~stotts/comp723/guttagADT77.pdf"
 		local
 			s: S
 		do
@@ -70,8 +58,6 @@ feature
 		end
 
 	frozen a_2 (t: T)
-		note
-			EIS: "src=http://www.unc.edu/~stotts/comp723/guttagADT77.pdf"
 		local
 			s: S
 		do
@@ -82,19 +68,17 @@ feature
 		end
 
 	frozen a_3_empty (s_1, s_2: S)
-			-- Querying a stack for emptyness does not change its equivalence class.
 		require
 			s_1 ~ s_2
 		local
 			empty_: BOOLEAN
 		do
-			empty_ := empty (s_1)
+			empty_ := is_new (s_1)
 		ensure
 			s_1 ~ s_2
 		end
 
 	frozen a_3_size (s_1, s_2: S)
-			--	Querying a stack for size does not change its equivalence class.
 		require
 			s_1 ~ s_2
 		local
@@ -106,7 +90,6 @@ feature
 		end
 
 	frozen a_3_top (s_1, s_2: S)
-			--	Querying a stack for top does not change its equivalence class.
 		require
 			s_1 ~ s_2
 		local
@@ -118,25 +101,22 @@ feature
 		end
 
 	frozen a_4_if (s: S)
-			--	A stack is empty if its' size is zero.
 		require
 			size (s) ~ 0
 		do
 		ensure
-			empty (s)
+			is_new (s)
 		end
 
 	frozen a_4_only_if (s: S)
-			--	A stack is empty only if its' size is zero.
 		require
-			empty (s)
+			is_new (s)
 		do
 		ensure
 			size (s) ~ 0
 		end
 
 	frozen a_5 (s_1, s_2: S; t: T)
-			--	Pushing and then popping a stack does not change its' equivalence class.
 		require
 			s_1 ~ s_2
 		do
@@ -147,7 +127,6 @@ feature
 		end
 
 	frozen a_6 (s: S; t: T)
-			--	Pushing an element on a stack makes it the top element.
 		do
 			push (s, t)
 		ensure
@@ -155,7 +134,6 @@ feature
 		end
 
 	frozen a_7 (s: S; t: T; old_size: INTEGER)
-			--	Pushing a stack increases its size by 1.
 		require
 			size (s) ~ old_size
 		do
@@ -165,10 +143,9 @@ feature
 		end
 
 	frozen a_8 (s: S; t: T; old_size: INTEGER)
-			--	Popping a non-empty stack decreases its size by 1.
 		require
 			size (s) ~ old_size
-			not empty (s)
+			not is_new (s)
 		do
 			pop (s)
 		ensure
@@ -176,26 +153,23 @@ feature
 		end
 
 	frozen a_9 (s: S; t: T)
-			--	Pushing a stack makes it non-empty.
 		do
 			push (s, t)
 		ensure
-			not empty (s)
+			not is_new (s)
 		end
 
 	frozen a_10
-			--	A newly created stack is empty.
 		local
 			s: S
 		do
 			s := new
 			check
-				empty (s)
+				is_new (s)
 			end
 		end
 
 	frozen a_11
-			--	A newly created stack has zero size.
 		local
 			s: S
 		do
@@ -203,57 +177,6 @@ feature
 			check
 				size (s) ~ 0
 			end
-		end
-
-feature
-	-- Theorems.
-
-	frozen theorem_1 (s: S; t: T; k, n: INTEGER)
-			--	Pushing a stack k times increases its size by k.
-			--	Follow the EIS link below for details.
-		note
-			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide04.html"
-		require
-			size (s) ~ n
-			k >= 1
-		local
-			i: INTEGER
-		do
-			from
-				i := 0
-			until
-				i ~ k
-			loop
-				push (s, t)
-				i := i + 1
-			end
-		ensure
-			size (s) ~ n + k
-		end
-
-	frozen theorem_2 (s: S; k, n: INTEGER)
-			--	Popping a stack k times decreases its size by k.
-			--	Follow the EIS link below for details.
-		note
-			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide04.html"
-		require
-			size (s) ~ n
-			k >= 1
-			k <= n
-			not empty (s)
-		local
-			i: INTEGER
-		do
-			from
-				i := 0
-			until
-				i ~ k
-			loop
-				pop (s)
-				i := i + 1
-			end
-		ensure
-			size (s) ~ n - k
 		end
 
 feature
@@ -284,8 +207,8 @@ feature
 		require
 			s_1 ~ s_2
 			s_1 /= s_2
-			not empty (s_1)
-			not empty (s_2)
+			not is_new (s_1)
+			not is_new (s_2)
 		do
 			pop (s_1)
 			pop (s_2)
@@ -306,7 +229,7 @@ feature
 			s_1 ~ s_2
 		do
 		ensure
-			empty (s_1) ~ empty (s_2)
+			is_new (s_1) ~ is_new (s_2)
 		end
 
 	frozen size_well_defined (s_1, s_2: S)

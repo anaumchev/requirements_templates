@@ -1,7 +1,7 @@
 note
 	description: "P is false after Q until R"
 	EIS: "name=Multirequirement", "src=http://tinyurl.com/y3onr2bn"
-	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/control_software/absence_until.e"
+	EIS: "name=Location on GitHub", "src=http://tinyurl.com/y69x5dlr"
 
 deferred class
 	ABSENCE_UNTIL [S, expanded P -> CONDITION [S], expanded Q -> CONDITION [S], expanded R -> CONDITION [S]]

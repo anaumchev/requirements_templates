@@ -1,15 +1,12 @@
 note
 	description: "Reusable abstract data type specification of list."
 	description: "Found in Wikipedia:"
-	EIS: "src=https://en.wikipedia.org/wiki/List_(abstract_data_type)#Abstract_definition"
+	EIS: "src=http://tinyurl.com/yxu9yze9"
+	EIS: "name=Location on GitHub", "src=https://tinyurl.com/yym548bu"
 
 deferred class
 	LIST_ADT [L, E]
-	--	Lists ``L'' contain ``E'' objects.
-	--	To apply this template to your concept,
-	--	inherit from this class with your concepts for ``L'' and ``E''.
-	--	The resulting class has to be effective (non-deferred).
-	--	Test or model check the resulting class.
+	--	Lists ``L'' contain elements of ``E''.
 
 inherit
 

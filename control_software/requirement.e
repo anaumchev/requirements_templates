@@ -1,6 +1,6 @@
 note
 	description: "Verifiable requirement over S."
-	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/control_software/requirement.e"
+	EIS: "name=Location on GitHub", "src=http://tinyurl.com/y5rqwzs9"
 
 deferred class
 	REQUIREMENT [S]

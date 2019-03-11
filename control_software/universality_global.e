@@ -1,7 +1,7 @@
 note
 	description: "P is true globally"
 	EIS: "name=Multirequirement", "src=http://tinyurl.com/y3hrpltn"
-	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/control_software/universality_global.e"
+	EIS: "name=Location on GitHub", "src=http://tinyurl.com/y46rbz87"
 
 deferred class
 	UNIVERSALITY_GLOBAL [S, expanded P -> CONDITION [S]]

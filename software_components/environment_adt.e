@@ -1,17 +1,12 @@
 note
 	description: "Reusable abstract data type specification of environment."
 	description: "Found in ``An abstract data type for name analysis'' by Kastens and Waite:"
-	EIS: "src=https://www.researchgate.net/profile/William_Waite/publication/220197497_An_Abstract_Data_Type_for_Name_Analysis/links/02e7e51eee56744a24000000.pdf"
+	EIS: "src=http://tinyurl.com/y2ghqjq7"
+	EIS: "name=Location on GitHub", "src=https://tinyurl.com/yyb6uwxy"
 
 deferred class
 	ENVIRONMENT_ADT [E, I, D]
-	--	E - The compiler's internal representation of a scope.
-	--	I - The compiler's internal representatino of an identifier.
-	--	D - The compiler's internal representation of a key.
-	--	To apply this template to your concept,
-	--	inherit from this class with your concepts for ``E'', ``I'' and ``D''.
-	--	The resulting class has to be effective (non-deferred).
-	--	Test or model check the resulting class.
+	--	Environments ``E'' contain keys ``D'' inentified by elements of ``I''.
 
 inherit
 

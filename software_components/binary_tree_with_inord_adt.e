@@ -1,15 +1,14 @@
 note
 	description: "Reusable abstract data type specification of binary tree with ``inord'' operation."
 	description: "Found in ``The design of data type specifications'' by Guttag, Horowitz and Musser:"
-	EIS: "src=http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.4685&rep=rep1&type=pdf"
+	EIS: "src=http://tinyurl.com/yxmnv23w"
+	EIS: "name=Location on GitHub", "src=https://tinyurl.com/y3peoll5"
 
 deferred class
 	BINARY_TREE_WITH_INORD_ADT [B, I, Q, QS -> QUEUE_WITH_APPEND_ADT [Q, I]]
-	--	Binary trees ``B'' contain ``I'' objects and may be represented as queues conforming to the ``QUEUE_WITH_APPEND'' specification.
-	--	To apply this template to your concept,
-	--	inherit from this class with your concepts for ``B'', ``I'', ``Q'', and ``QS''.
-	--	The resulting class has to be effective (non-deferred).
-	--	Test or model check the resulting class.
+	--	Binary trees ``B'' contain elements of ``I''.
+	--  They rely on queues ``Q'' with elements of ``I'' conforming to the
+	--  ``QUEUE_WITH_APPEND_ADT'' specification.
 
 inherit
 
@@ -62,3 +61,11 @@ feature
 		end
 
 end
+
+
+
+
+
+
+
+

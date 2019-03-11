@@ -1,15 +1,12 @@
 note
 	description: "Reusable abstract data type specification of polynomial."
 	description: "Found in ``The design of data type specifications'' by Guttag, Horowitz and Musser:"
-	EIS: "src=http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.4685&rep=rep1&type=pdf"
+	EIS: "src=http://tinyurl.com/yxmnv23w"
+	EIS: "name=Location on GitHub", "src=https://tinyurl.com/y5u8hubc"
 
 deferred class
 	POLYNOMIAL_ADT [P, C, CS -> COMMUTATIVE_RING_ADT [C]]
-	--	Polynomials ``P'' have coefficients from commutative ring ``C''.
-	--	To apply this template to your concept,
-	--	inherit from this class with your concepts for ``P'', ``C'', ``CS''.
-	--	The resulting class has to be effective (non-deferred).
-	--	Test or model check the resulting class.
+	--	Polynomials ``P'' have coefficients from the commutative ring ``C''.
 
 inherit
 
@@ -18,48 +15,39 @@ inherit
 			sum as add,
 			product as mult
 		end
-	--	Polynomials form a commutative ring up to some renaming.
 
 feature
 	-- Deferred definitions.
 
 	add_term (polynomial: P; coefficient: C; exponent: INTEGER)
-			--	ADDTERM(Polynomial,Coef,Exp) --> Polynomial
 		deferred
 		end
 
 	rem_term (polynomial: P; exponent: INTEGER)
-			--	REMTERM(Polynomial,Exp) ~ Polynomial
 		deferred
 		end
 
 	mult_term (polynomial: P; coefficient: C; exponent: INTEGER)
-			--	MULTTERM(Polynomial,Coef,Exp) ~ Polynomial
 		deferred
 		end
 
 	reductum (polynomial: P)
-			--	REDUCTUM(Polynomial) --> Polynomial
 		deferred
 		end
 
 	is_zero (polynomial: P): BOOLEAN
-			--	ISZERO(Polynomial) --> Boolean
 		deferred
 		end
 
 	coef (polynomial: P; exponent: INTEGER): C
-			--	Coef(Polynomial,Exp) --> Coef
 		deferred
 		end
 
 	degree (polynomial: P): INTEGER
-			--	DEGREE(Polynomial) --> Exp
 		deferred
 		end
 
 	ldcf (polynomial: P): C
-			--	LDCF(Polynomial) --> Coef
 		deferred
 		end
 
@@ -67,7 +55,6 @@ feature
 	-- Abstract data type axioms.
 
 	frozen a_11 (exponent: INTEGER)
-			--	REMTERM(ZERO,f) = ZERO
 		local
 			polynomial_1, polynomial_2: P
 		do
@@ -80,7 +67,6 @@ feature
 		end
 
 	frozen a_12 (polynomial_1, polynomial_2: P; coefficient: C; exponent: INTEGER)
-			--	REMTERM(ADDTERM(p,c,e),f) = if e=f then REMTERM(p,f) >>
 		require
 			polynomial_1 ~ polynomial_2
 		do
@@ -92,7 +78,6 @@ feature
 		end
 
 	frozen a_13 (polynomial_1, polynomial_2: P; coefficient: C; exponent_1, exponent_2: INTEGER)
-			--	>> else ADDTERM(REMTERM(p,f),c,e)
 		require
 			exponent_1 /~ exponent_2
 			polynomial_1 ~ polynomial_2
@@ -106,7 +91,6 @@ feature
 		end
 
 	frozen a_14 (coefficient: C; exponent: INTEGER)
-			--	MULTTERM(ZERO,d,f) = ZERO
 		local
 			polynomial_1, polynomial_2: P
 		do
@@ -119,7 +103,6 @@ feature
 		end
 
 	frozen a_15 (polynomial_1, polynomial_2: P; coefficient_1, coefficient_2: C; exponent_1, exponent_2: INTEGER)
-			--	MULTTERM(ADDTERM(p,c,e),d,f) = ADDTERM(MULTTERM(p,d,f),c*d,e+f)
 		require
 			polynomial_1 ~ polynomial_2
 		do
@@ -132,7 +115,6 @@ feature
 		end
 
 	frozen a_16 (polynomial: P)
-			--	ADD(p,ZERO) = p
 		local
 			zero_p: P
 		do
@@ -143,7 +125,6 @@ feature
 		end
 
 	frozen a_17 (p, q, s: P; d: C; f: INTEGER)
-			--	ADD(p,ADDTERM(q,d,f)) = ADDTERM(ADD(p,q),d,f)
 		require
 			add (p, q) ~ s
 		do
@@ -165,7 +146,6 @@ feature
 		end
 
 	frozen a_19 (p_1, p_2, p_3, q_1, q_2: P; d: C; f: INTEGER)
-			--	MULT(p,ADDTERM(q,d,f)) = ADD(MULT(p,q),MULTTERM(p,d,f))
 		require
 			p_1 ~ p_2
 			q_1 ~ q_2
@@ -177,7 +157,6 @@ feature
 		end
 
 	frozen a_20 (polynomial_1, polynomial_2: P)
-			--	REDUCTUM(p) = REMTERM(p,DEGREE(p))
 		require
 			polynomial_1 ~ polynomial_2
 		do
@@ -188,7 +167,6 @@ feature
 		end
 
 	frozen a_21
-			--	ISZERO(ZERO) = true
 		local
 			polynomial: P
 		do
@@ -199,7 +177,6 @@ feature
 		end
 
 	frozen a_22 (polynomial_1, polynomial_2: P; coefficient: C; exponent: INTEGER)
-			--	ISZERO(ADDTERM(p,c,e)) = if COEF(p,e)=-c then ISZERO(REMTERM(p,e)) >>
 		require
 			coef (polynomial_1, exponent) ~ ({CS}).default.additive_inverse (coefficient)
 			polynomial_1 ~ polynomial_2
@@ -211,7 +188,6 @@ feature
 		end
 
 	frozen a_23 (polynomial: P; coefficient: C; exponent: INTEGER)
-			--	>> else false
 		require
 			coef (polynomial, exponent) /~ ({CS}).default.additive_inverse (coefficient)
 		do
@@ -221,7 +197,6 @@ feature
 		end
 
 	frozen a_24 (exponent: INTEGER)
-			--	COEF(ZERO,e) = 0
 		local
 			polynomial: P
 		do
@@ -232,7 +207,6 @@ feature
 		end
 
 	frozen a_25 (polynomial: P; coefficient: C; exponent: INTEGER; old_coefficient: C)
-			--	COEF(ADDTERM(p,c,e),f ) = if e=f then c+COEF(p,f) >>
 		require
 			coef (polynomial, exponent) ~ old_coefficient
 		do
@@ -242,7 +216,6 @@ feature
 		end
 
 	frozen a_26 (polynomial: P; coefficient: C; exponent_1, exponent_2: INTEGER; old_coefficient: C)
-			--	>> else COEF(p,f)
 		require
 			coef (polynomial, exponent_2) ~ old_coefficient
 		do
@@ -252,7 +225,6 @@ feature
 		end
 
 	frozen a_27
-			--	DEGREE(ZERO) = 0
 		local
 			polynomial: P
 		do
@@ -263,7 +235,6 @@ feature
 		end
 
 	frozen a_28 (polynomial: P; coefficient: C; exponent: INTEGER)
-			--	DEGREE(ADDTERM(p,c,e)) = if e > DEGREE(p) then e >>
 		require
 			exponent > degree (polynomial)
 		do
@@ -273,7 +244,6 @@ feature
 		end
 
 	frozen a_29 (polynomial: P; coefficient: C; exponent: INTEGER; old_degree: INTEGER)
-			--	>> else if e < DEGREE(p) then DEGREE(p) >>
 		require
 			exponent < degree (polynomial)
 			degree (polynomial) ~ old_degree
@@ -284,7 +254,6 @@ feature
 		end
 
 	frozen a_30 (polynomial_1, polynomial_2: P; coefficient: C; exponent: INTEGER; old_degree: INTEGER)
-			--	>> else if COEF(p,e) = -c then DEGREE(REDUCTUM(p))  >>
 		require
 			exponent = degree (polynomial_1)
 			coef (polynomial_1, exponent) ~ ({CS}).default.additive_inverse (coefficient)
@@ -297,7 +266,6 @@ feature
 		end
 
 	frozen a_31 (polynomial: P; coefficient: C; exponent: INTEGER; old_degree: INTEGER)
-			--	>> else DEGREE(p)
 		require
 			exponent = degree (polynomial)
 			coef (polynomial, exponent) /~ ({CS}).default.additive_inverse (coefficient)
@@ -309,7 +277,6 @@ feature
 		end
 
 	frozen a_32 (polynomial: P)
-			--	LDCF(p) = COEF(p,DEGREE(p))
 		do
 		ensure
 			ldcf (polynomial) ~ coef (polynomial, degree (polynomial))

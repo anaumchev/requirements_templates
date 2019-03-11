@@ -2,14 +2,11 @@ note
 	description: "Reusable abstract data type specification of bounded stack."
 	description: "Found in ``Abstract Data Types and Software Validation '' by Guttag, Horowitz and Musser:"
 	EIS: "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
+	EIS: "name=Location on GitHub", "src=https://tinyurl.com/y4wswh3t"
 
 deferred class
 	BOUNDED_STACK_ADT [B, E]
-	--	Bounded stacks ``B'' contain ``E'' objects.
-	--	To apply this template to your concept,
-	--	inherit from this class with your concepts for ``B'' and ``E''.
-	--	The resulting class has to be effective (non-deferred).
-	--	Test or model check the resulting class.
+	--	Bounded stacks ``B'' contain elements of ``E''.
 
 inherit
 

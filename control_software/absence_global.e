@@ -1,7 +1,7 @@
 note
 	description: "P is false globally"
 	EIS: "name=Multirequirement", "src=http://tinyurl.com/y5a6bb8u"
-	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/control_software/absence_global.e"
+	EIS: "name=Location on GitHub", "src=http://tinyurl.com/yx9cd6va"
 
 deferred class
 	ABSENCE_GLOBAL [S, expanded P -> CONDITION [S]]

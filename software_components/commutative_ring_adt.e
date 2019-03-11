@@ -2,11 +2,11 @@ note
 	description: "Reusable abstract data type specification of commutative ring."
 	description: "Found in Wikipedia:"
 	EIS: "src=https://en.wikipedia.org/wiki/Commutative_ring#Definition"
-	EIS: "src=https://en.wikipedia.org/wiki/Ring_(mathematics)#Definition"
+	EIS: "name=Location on GitHub", "src=https://tinyurl.com/yytyfmqj"
 
 deferred class
 	COMMUTATIVE_RING_ADT [R]
-	--	R is a mathematical commutative ring.
+	--	``R'' is a mathematical commutative ring.
 
 inherit
 
@@ -16,12 +16,10 @@ feature
 	-- Deferred definitions.
 
 	one: R
-			--	Multiplicative identity.
 		deferred
 		end
 
 	zero: R
-			--	Additive identity.
 		deferred
 		end
 

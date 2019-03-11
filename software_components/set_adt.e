@@ -2,14 +2,11 @@ note
 	description: "Reusable abstract data type specification of set."
 	description: "Found in ``The Algebraic Specification of Abstract Data Types'' by Guttag and Horning:"
 	EIS: "src=https://link.springer.com/article/10.1007/BF00260922"
+	EIS: "name=Location on GitHub", "src=https://tinyurl.com/y2thcfbr"
 
 deferred class
 	SET_ADT [S, E]
-	--	Sets ``S'' contain ``E'' objects.
-	--	To apply this template to your concept,
-	--	inherit from this class with your concepts for ``S'' and ``E''.
-	--	The resulting class has to be effective (non-deferred).
-	--	Test or model check the resulting class.
+	--	Sets ``S'' contain elements of ``E''.
 
 inherit
 

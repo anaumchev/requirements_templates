@@ -1,15 +1,12 @@
 note
 	description: "Reusable abstract data type specification of library."
 	description: "Found in ``Requirements engineering: From system goals to UML models to software.'' by van Lamsweerde:"
-	EIS: "src=https://www.amazon.com/Requirements-Engineering-System-Software-Specifications/dp/0470012706"
+	EIS: "src=http://tinyurl.com/yxd3zxd2"
+	EIS: "name=Location on GitHub", "src=https://tinyurl.com/y4jnocr4"
 
 deferred class
 	LIBRARY_ADT [L, B]
 	--	Libraries ``L'' contain books ``B''.
-	--	To apply this template to your concepts,
-	--	inherit from this class with your concepts for ``L'' and ``B''.
-	--	The resulting class has to be effective (non-deferred).
-	--	Test or model check the resulting class.
 
 inherit
 

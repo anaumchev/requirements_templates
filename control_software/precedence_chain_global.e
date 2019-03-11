@@ -1,7 +1,7 @@
 note
 	description: "S, T precedes P globally."
 	EIS: "name=Multirequirement", "src=http://tinyurl.com/y22s7fed"
-	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/control_software/precedence_chain_global.e"
+	EIS: "name=Location on GitHub", "src=http://tinyurl.com/yxgqazkn"
 
 deferred class
 	PRECEDENCE_CHAIN_GLOBAL [G, expanded S -> CONDITION [G], expanded T -> CONDITION [G], expanded P -> CONDITION [G]]

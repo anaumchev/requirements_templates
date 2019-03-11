@@ -1,15 +1,12 @@
 note
 	description: "Reusable abstract data type specification of binary tree."
 	description: "Found in ``The design of data type specifications'' by Guttag, Horowitz and Musser:"
-	EIS: "src=http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.4685&rep=rep1&type=pdf"
+	EIS: "src=http://tinyurl.com/yxmnv23w"
+	EIS: "name=Location on GitHub", "src=https://tinyurl.com/y2rhrktn"
 
 deferred class
 	BINARY_TREE_ADT [B, I]
-	--	Binary trees ``B'' contain ``I'' objects.
-	--	To apply this template to your concept,
-	--	inherit from this class with your concepts for ``B'' and ``I''.
-	--	The resulting class has to be effective (non-deferred).
-	--	Test or model check the resulting class.
+	--	Binary trees ``B'' contain elements of ``I''.
 
 inherit
 

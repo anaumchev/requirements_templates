@@ -1,15 +1,12 @@
 note
 	description: "Reusable abstract data type specification of graph edge."
 	description: "Found in ``The design of data type specifications'' by Guttag, Horowitz and Musser:"
-	EIS: "src=http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.4685&rep=rep1&type=pdf"
+	EIS: "src=http://tinyurl.com/yxmnv23w"
+	EIS: "name=Location on GitHub", "src=https://tinyurl.com/y4g93wpo"
 
 deferred class
 	EDGE_ADT [E, N]
-	--	Edges ``E'' consist of nodes ``N''.
-	--	To apply this template to your concept,
-	--	inherit from this class with your concepts for ``E'' and ``N''.
-	--	The resulting class has to be effective (non-deferred).
-	--	Test or model check the resulting class.
+	--	Edges ``E'' connect nodes ``N''.
 
 inherit
 

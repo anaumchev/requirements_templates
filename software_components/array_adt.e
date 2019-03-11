@@ -3,15 +3,12 @@ note
 	description: "Found in ``Abstract Data Types and Software Validation '' by Guttag, Horowitz and Musser:"
 	EIS: "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
 	description: "Found in ``Abstract Data Types and the Development of Data Structures'' by Guttag:"
-	EIS: "src=https://dl.acm.org/citation.cfm?id=359618"
+	EIS: "src=http://tinyurl.com/y45o32hq"
+	EIS: "name=Location on GitHub", "src=https://tinyurl.com/y69xc6fy"
 
 deferred class
 	ARRAY_ADT [A, E]
-	--	Arrays ``A'' contain ``E'' objects.
-	--	To apply this template to your concept,
-	--	inherit from this class with your concepts for ``A'' and ``E''.
-	--	The resulting class has to be effective (non-deferred).
-	--	Test or model check the resulting class.
+	--	Arrays ``A'' contain elements of ``E''.
 
 inherit
 
@@ -21,27 +18,22 @@ feature
 	-- Deferred definitions.
 
 	make (new_first, new_last: INTEGER): A
-			-- Define making up a new array from given indexes in terms of your concept.
 		deferred
 		end
 
 	put (array: A; index: INTEGER; element: E)
-			-- Define putting an indexed element into a new array in terms of your concept.
 		deferred
 		end
 
 	first (array: A): INTEGER
-			-- Define retrieving the index of the first element in an array in terms of your concept.
 		deferred
 		end
 
 	last (array: A): INTEGER
-			-- Define retrieving the index of the last element in an array in terms of your concept.
 		deferred
 		end
 
 	eval (array: A; index: INTEGER): E
-			-- Define retrieving an element of an array by index in terms of your concept.
 		deferred
 		end
 
@@ -49,8 +41,6 @@ feature
 	-- Abstract data type axioms.
 
 	frozen a_1 (new_first, new_last: INTEGER)
-			--	The index of the first element of a newly created array equals the
-			--	value of the first argument supplied to the creation routine.
 		local
 			new_array: A
 		do
@@ -61,8 +51,6 @@ feature
 		end
 
 	frozen a_2 (array: A; index: INTEGER; element: E; old_first: INTEGER)
-			--	Putting an element by index to an array does not affect
-			--	the index of the first element of the array.
 		require
 			first (array) ~ old_first
 		do
@@ -72,8 +60,6 @@ feature
 		end
 
 	frozen a_3 (new_first, new_last: INTEGER)
-			--	The index of the last element of a newly created array equals the
-			--	value of the second argument supplied to the creation routine.
 		local
 			new_array: A
 		do
@@ -84,8 +70,6 @@ feature
 		end
 
 	frozen a_4 (array: A; index: INTEGER; element: E; old_last: INTEGER)
-			--	Putting an element by index to an array does not affect
-			--	the index of the last element of the array.
 		require
 			last (array) ~ old_last
 		do
@@ -123,8 +107,6 @@ feature
 		end
 
 	frozen a_8 (array: A; index: INTEGER; element: E)
-			--	For an index from the interval between the indexes of the first and the last elements of an array,
-			--	putting an element by the index to the array makes the element available for retrieval by the index.
 		require
 			index >= first (array)
 			index <= last (array)
@@ -135,8 +117,6 @@ feature
 		end
 
 	frozen a_9 (array: A; index_put: INTEGER; element: E; index_eval: INTEGER; old_element: E)
-			--	For an index from the interval between the indexes of the first and the last elements of an array,
-			--	putting an element by the index to the array does not affect the elements available by other indexes.
 		require
 			index_eval >= first (array)
 			index_eval <= last (array)
@@ -149,7 +129,6 @@ feature
 		end
 
 feature
-	-- Well-definedness axioms.
 
 	frozen make_well_defined (new_first, new_last: INTEGER)
 		local

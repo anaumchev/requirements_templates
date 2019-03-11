@@ -1,6 +1,6 @@
 note
 	description: "Condition over S."
-	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/control_software/condition.e"
+	EIS: "name=Location on GitHub", "src=http://tinyurl.com/yya4fncg"
 
 deferred class
 	CONDITION [S]

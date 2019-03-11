@@ -1,7 +1,7 @@
 note
 	description: "S precedes P after Q"
 	EIS: "name=Multirequirement", "src=http://tinyurl.com/y54958zw"
-	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/control_software/precedence_after.e"
+	EIS: "name=Location on GitHub", "src=http://tinyurl.com/y4bqc3eb"
 
 deferred class
 	PRECEDENCE_AFTER [G, expanded S -> CONDITION [G], expanded P -> CONDITION [G], expanded Q -> CONDITION [G]]

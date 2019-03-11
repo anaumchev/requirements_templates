@@ -3,19 +3,16 @@ note
 	description: "Found in ``The Algebraic Specification of Abstract Data Types'' by Guttag and Horning:"
 	EIS: "src=https://link.springer.com/article/10.1007/BF00260922"
 	description: "Found in ``The design of data type specifications'' by Guttag, Horowitz and Musser:"
-	EIS: "src=http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.4685&rep=rep1&type=pdf"
+	EIS: "src=http://tinyurl.com/yxmnv23w"
 	description: "Found in ``Implementing Algebraically Specified Abstract Data Types in an imperative Programming Language '' by Thomas:"
 	EIS: "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 	description: "Found in ``Abstract Data Types and the Development of Data Structures'' by Guttag:"
-	EIS: "src=http://cecs.wright.edu/people/faculty/tkprasad/courses/cs784/guttag-cacm77.pdf"
+	EIS: "src=http://tinyurl.com/y45o32hq"
+	EIS: "name=Location on GitHub", "src=https://tinyurl.com/y4qv86kz"
 
 deferred class
 	QUEUE_ADT [Q, T]
-	--	Queues ``Q'' contain ``T'' objects.
-	--	To apply this template to your concept,
-	--	inherit from this class with your concepts for ``Q'' and ``T''.
-	--	The resulting class has to be effective (non-deferred).
-	--	Test or model check the resulting class.
+	--	Queues ``Q'' contain elements of ``T''.
 
 inherit
 
@@ -25,32 +22,26 @@ feature
 	-- Deferred definitions.
 
 	newq: Q
-			-- Define a new queue in terms of your concept.
 		deferred
 		end
 
 	addq (q: Q; t: T)
-			-- Define what it means to add a queue in terms of your concept.
 		deferred
 		end
 
 	deleteq (q: Q)
-			-- Define what it means to dequeue a queue in terms of your concept.
 		deferred
 		end
 
 	frontq (q: Q): T
-			-- Define a queue's front in terms of your concept.
 		deferred
 		end
 
 	isnewq (q: Q): BOOLEAN
-			-- Define a queue's emptyness in terms of your concept.
 		deferred
 		end
 
 	size (q: Q): INTEGER
-			-- Define a queue's size in terms of your concept.
 		deferred
 		end
 
@@ -58,9 +49,6 @@ feature
 	-- Abstract data type axioms.
 
 	frozen a_3_empty (q_1, q_2: Q)
-			-- Querying a queue for emptyness does not change its equivalence class.
-		note
-			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		require
 			q_1 ~ q_2
 		local
@@ -72,9 +60,6 @@ feature
 		end
 
 	frozen a_3_size (q_1, q_2: Q)
-			--	Querying a queue for size does not change its equivalence class.
-		note
-			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		require
 			q_1 ~ q_2
 		local
@@ -86,9 +71,6 @@ feature
 		end
 
 	frozen a_3_front (q_1, q_2: Q)
-			--	Querying a queue for front does not change its equivalence class.
-		note
-			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		require
 			q_1 ~ q_2
 		local
@@ -100,9 +82,6 @@ feature
 		end
 
 	frozen a_4_if (q: Q)
-			--	A queue is empty if its' size is zero.
-		note
-			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		require
 			size (q) ~ 0
 		do
@@ -111,9 +90,6 @@ feature
 		end
 
 	frozen a_4_only_if (q: Q)
-			--	A queue is empty only if its' size is zero.
-		note
-			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		require
 			isnewq (q)
 		do
@@ -122,10 +98,6 @@ feature
 		end
 
 	frozen a_5 (q: Q; n: INTEGER; t: T)
-			--	Suppose a queue's size is n and the next element to add is t;
-			--	then, after n elements have been dequeued, t will become the queue's front.
-		note
-			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		require
 			size (q) ~ n
 		local
@@ -145,9 +117,6 @@ feature
 		end
 
 	frozen a_6 (q: Q; t: T; old_size: INTEGER)
-			--	Adding to a queue increases its size by 1.
-		note
-			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		require
 			size (q) ~ old_size
 		do
@@ -157,9 +126,6 @@ feature
 		end
 
 	frozen a_7 (q: Q; t: T; old_size: INTEGER)
-			--	Dequeueing a non-empty queue decreases its size by 1.
-		note
-			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		require
 			size (q) ~ old_size
 			not isnewq (q)
@@ -170,10 +136,6 @@ feature
 		end
 
 	frozen a_9 (q: Q; t: T)
-			--	Adding to a queue makes it non-empty.
-		note
-			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
-			EIS: "src=www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		do
 			addq (q, t)
 		ensure
@@ -181,10 +143,6 @@ feature
 		end
 
 	frozen a_10
-			--	A newly created queue is empty.
-		note
-			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
-			EIS: "src=www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		local
 			q: Q
 		do
@@ -195,9 +153,6 @@ feature
 		end
 
 	frozen a_11
-			--	A newly created queue has zero size.
-		note
-			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide06.html"
 		local
 			q: Q
 		do
@@ -208,8 +163,6 @@ feature
 		end
 
 	frozen a_12
-		note
-			EIS: "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		local
 			q_1, q_2: Q
 		do
@@ -222,8 +175,6 @@ feature
 		end
 
 	frozen a_13 (t: T)
-		note
-			EIS: "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		local
 			q_1, q_2: Q
 		do
@@ -237,8 +188,6 @@ feature
 		end
 
 	frozen a_14 (q_1, q_2: Q; t_1, t_2: T)
-		note
-			EIS: "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		require
 			q_1 ~ q_2
 			q_1 /= q_2
@@ -254,8 +203,6 @@ feature
 		end
 
 	frozen a_15 (t: T)
-		note
-			EIS: "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		local
 			q: Q
 		do
@@ -267,8 +214,6 @@ feature
 		end
 
 	frozen a_16 (q_1, q_2: Q; t_1, t_2: T)
-		note
-			EIS: "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		require
 			q_1 ~ q_2
 			q_1 /= q_2
@@ -281,8 +226,6 @@ feature
 		end
 
 	frozen a_17 (t: T)
-		note
-			EIS: "src=http://www.dcs.gla.ac.uk/~muffy/papers/Tapsoft_87.pdf"
 		local
 			q: Q
 		do
@@ -290,57 +233,6 @@ feature
 			check
 				frontq (q) /~ t
 			end
-		end
-
-feature
-	-- Theorems.
-
-	frozen theorem_1 (q: Q; t: T; k, n: INTEGER)
-			--	Pushing a stack k times increases its size by k.
-			--	Follow the EIS link below for details.
-		note
-			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide08.html"
-		require
-			size (q) ~ n
-			k >= 1
-		local
-			i: INTEGER
-		do
-			from
-				i := 0
-			until
-				i ~ k
-			loop
-				addq (q, t)
-				i := i + 1
-			end
-		ensure
-			size (q) ~ n + k
-		end
-
-	frozen theorem_2 (q: Q; k, n: INTEGER)
-			--	Popping a stack k times decreases its size by k.
-			--	Follow the EIS link below for details.
-		note
-			EIS: "src=http://www.cs.fsu.edu/~lacher/lectures/Output/adts/slide08.html"
-		require
-			size (q) ~ n
-			k >= 1
-			k <= n
-			not isnewq (q)
-		local
-			i: INTEGER
-		do
-			from
-				i := 0
-			until
-				i ~ k
-			loop
-				deleteq (q)
-				i := i + 1
-			end
-		ensure
-			size (q) ~ n - k
 		end
 
 feature

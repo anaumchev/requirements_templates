@@ -1,7 +1,7 @@
 note
 	description: "S responds to P after Q"
 	EIS: "name=Multirequirement", "src=http://tinyurl.com/yyso3qn8"
-	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/control_software/response_after.e"
+	EIS: "name=Location on GitHub", "src=http://tinyurl.com/yyl4ebge"
 
 deferred class
 	RESPONSE_AFTER [G, expanded S -> CONDITION [G], expanded P -> CONDITION [G], expanded Q -> CONDITION [G]]

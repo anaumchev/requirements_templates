@@ -1,7 +1,7 @@
 note
 	description: "P responds to S, T globally."
 	EIS: "name=Multirequirement", "src=http://tinyurl.com/y32tgtcm"
-	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/control_software/response_chain_global.e"
+	EIS: "name=Location on GitHub", "src=http://tinyurl.com/yyr8xw2b"
 
 deferred class
 	RESPONSE_CHAIN_GLOBAL [G, expanded P -> CONDITION [G], expanded S -> CONDITION [G], expanded T -> CONDITION [G]]

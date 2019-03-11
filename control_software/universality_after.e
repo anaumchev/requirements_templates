@@ -1,7 +1,7 @@
 note
 	description: "P is true after Q"
 	EIS: "name=Multirequirement", "src=http://tinyurl.com/y3e7vrvx"
-	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/control_software/universality_after.e"
+	EIS: "name=Location on GitHub", "src=http://tinyurl.com/y35pz34n"
 
 deferred class
 	UNIVERSALITY_AFTER [S, expanded P -> CONDITION [S], expanded Q -> CONDITION [S]]

@@ -1,7 +1,7 @@
 note
 	description: "P becomes true between Q and R"
 	EIS: "name=Multirequirement", "src=http://tinyurl.com/y2prdopt"
-	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/control_software/existence_between.e"
+	EIS: "name=Location on GitHub", "src=http://tinyurl.com/y5vq9hg9"
 
 deferred class
 	EXISTENCE_BETWEEN [S, expanded P -> CONDITION [S], expanded Q -> CONDITION [S], expanded R -> CONDITION [S]]

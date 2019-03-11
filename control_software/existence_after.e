@@ -1,7 +1,7 @@
 note
 	description: "P becomes true after Q"
 	EIS: "name=Multirequirement", "src=http://tinyurl.com/y644k9hl"
-	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/control_software/existence_after.e"
+	EIS: "name=Location on GitHub", "src=http://tinyurl.com/y2psqqzk"
 
 deferred class
 	EXISTENCE_AFTER [S, expanded P -> CONDITION [S], expanded Q -> CONDITION [S]]

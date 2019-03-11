@@ -1,7 +1,7 @@
 note
 	description: "P is true between Q and R"
 	EIS: "name=Multirequirement", "src=http://tinyurl.com/yxmkw6s5"
-	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/control_software/universality_between.e"
+	EIS: "name=Location on GitHub", "src=http://tinyurl.com/yypj6uhf"
 
 deferred class
 	UNIVERSALITY_BETWEEN [S, expanded P -> CONDITION [S], expanded Q -> CONDITION [S], expanded R -> CONDITION [S]]

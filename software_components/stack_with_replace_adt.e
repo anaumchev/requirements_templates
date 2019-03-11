@@ -3,24 +3,16 @@ note
 	description: "Found in ``Abstract Data Types and Software Validation '' by Guttag, Horowitz and Musser:"
 	EIS: "src=https://pdfs.semanticscholar.org/372d/4f331d0a6cd5fb4ee0c04d4a0753b8eb659f.pdf"
 	description: "Found in ``Abstract Data Types and the Development of Data Structures'' by Guttag:"
-	EIS: "src=http://cecs.wright.edu/people/faculty/tkprasad/courses/cs784/guttag-cacm77.pdf"
+	EIS: "src=http://tinyurl.com/y45o32hq"
+	EIS: "name=Location on GitHub", "src=https://tinyurl.com/y4ql2lgn"
 
 deferred class
 	STACK_WITH_REPLACE_ADT [S, E]
-	--	Stacks ``S'' contain ``E'' objects.
-	--	To apply this template to your concept,
-	--	inherit from this class with your concepts for ``S'' and ``E''.
-	--	The resulting class has to be effective (non-deferred).
-	--	Test or model check the resulting class.
+	--	Stacks ``S'' with replacing contain elements of ``E''.
 
 inherit
 
 	STACK_ADT [S, E]
-		rename
-			new as new_stack,
-			empty as is_new
-		end
-	--	The above articles use different names of the ``new'' and ``empty'' operations.
 
 feature
 	-- Deferred definitions.
@@ -36,8 +28,8 @@ feature
 		local
 			stk_1, stk_2: S
 		do
-			stk_1 := new_stack
-			stk_2 := new_stack
+			stk_1 := new
+			stk_2 := new
 			pop (stk_1)
 			check
 				stk_1 ~ stk_2
@@ -48,7 +40,7 @@ feature
 		local
 			stk: S
 		do
-			stk := new_stack
+			stk := new
 			check
 				top (stk) /~ elm
 			end

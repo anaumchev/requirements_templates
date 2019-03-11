@@ -1,15 +1,17 @@
 note
 	description: "Reusable abstract data type specification of graph."
 	description: "Found in ``The design of data type specifications'' by Guttag, Horowitz and Musser:"
-	EIS: "src=http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.4685&rep=rep1&type=pdf"
+	EIS: "src=http://tinyurl.com/yxmnv23w"
+	EIS: "name=Location on GitHub", "src=https://tinyurl.com/y5y6l6ax"
 
 deferred class
 	GRAPH_ADT [G, N, E, SN, SE, ES -> EDGE_ADT [E, N], SNS -> SET_WITH_ISEMPTYSET_ADT [SN, N], SES -> SET_WITH_ISEMPTYSET_ADT [SE, E]]
-	--	Graphs ``G'' contain nodes ``N'' and edges ``E''.
-	--	To apply this template to your concept,
-	--	inherit from this class with your concepts for ``G'', ``N'', ``E'', ``SN'', ``SE'', ``ES'', ``SNS'', and ``SES''.
-	--	The resulting class has to be effective (non-deferred).
-	--	Test or model check the resulting class.
+	--	Graphs ``G'' contain edges ``E'' connecting nodes ``N''
+	--  conforming to the ``EDGE_ADT'' specification.
+	--  They depend on sets ``SE'' of edges ``E'' conforming to the
+	--  ``SET_WITH_ISEMPTYSET_ADT'' specification.
+	--  They depend on sets ``SN'' of nodes ``N'' conforming to the
+	--  ``SET_WITH_ISEMPTYSET_ADT'' specification.
 
 inherit
 

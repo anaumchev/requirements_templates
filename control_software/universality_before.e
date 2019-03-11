@@ -1,7 +1,7 @@
 note
 	description: "P is true before R"
 	EIS: "name=Multirequirement", "src=http://tinyurl.com/yxmn65yo"
-	EIS: "name=Location on GitHub", "src=https://github.com/anaumchev/requirements_templates/blob/master/control_software/universality_before.e"
+	EIS: "name=Location on GitHub", "src=http://tinyurl.com/y42m9uth"
 
 deferred class
 	UNIVERSALITY_BEFORE [S, expanded P -> CONDITION [S], expanded R -> CONDITION [S]]

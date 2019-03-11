@@ -1,11 +1,12 @@
 note
 	description: "Reusable abstract data type specification of queue with the ``append'' operation."
 	description: "Found in ``The design of data type specifications'' by Guttag, Horowitz and Musser:"
-	EIS: "src=http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.4685&rep=rep1&type=pdf"
+	EIS: "src=http://tinyurl.com/yxmnv23w"
+	EIS: "name=Location on GitHub", "src=https://tinyurl.com/y44w738n"
 
 deferred class
 	QUEUE_WITH_APPEND_ADT [Q, T]
-	--	``Q'' behaves as a queue of ``T'' elements.
+	--	Queues ``Q'' with appending other queues contain elements of ``T''.
 
 inherit
 
