@@ -2,7 +2,7 @@ note
 	description: "Reusable abstract data type specification of the observer pattern."
 	description: "Found in ``Flexible Invariants Through Semantic Collaboration'' by Polikarpova et al."
 	EIS: "src=https://cseweb.ucsd.edu/~npolikarpova/publications/fm14.pdf"
-	EIS: "name=Location on GitHub", "src=http://tinyurl.com/y65zzxke"
+	EIS: "name=Location on GitHub", "src=https://tinyurl.com/y2x2xeat"
 
 deferred class
 	SUBJECT_OBSERVER [S, O, V]
