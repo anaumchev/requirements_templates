@@ -8,8 +8,7 @@ deferred class
 	SUBJECT_OBSERVER [S, O, V]
 	-- Types ``S'' and ``O'' form an observer pattern with shared state of type ``V''.
 
-feature
-	-- Deferred definitions.
+feature -- Deferred definitions.
 
 	value (s: S): V
 		deferred
@@ -43,8 +42,7 @@ feature
 		deferred
 		end
 
-feature
-	-- Abstract data type axioms.
+feature -- Abstract data type axioms.
 
 	update_axiom (s: S; v: V; o: O)
 		require
