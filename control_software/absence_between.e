@@ -34,7 +34,7 @@ feature
 
 	requirement_specific_output: STRING
 		do
-			Result := ({P}).name + " is false between " + ({Q}).name + " and " + ({R}).name
+			Result := "if " + ({P}).name + " remains false after " + ({Q}).name + " then the system will eventually reach " + ({R}).name
 		end
 
 	time_boundary: INTEGER
